@@ -2,7 +2,7 @@
 // PRAJAPATI ELECTRICAL — Service Worker (PWA)
 // ============================================
 
-const CACHE_NAME = 'pe-cache-v1';
+const CACHE_NAME = 'pe-cache-v2';
 const urlsToCache = [
   '/',
   '/index.html',
