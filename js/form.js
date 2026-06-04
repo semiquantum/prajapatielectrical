@@ -31,42 +31,67 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Simulate form submission
+    // Submit to FormSubmit
     const submitBtn = form.querySelector('.btn-submit');
     const originalText = submitBtn.innerHTML;
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
     submitBtn.disabled = true;
 
-    setTimeout(() => {
-      // Show success message
-      formContent.style.display = 'none';
-      formSuccess.classList.add('show');
+    fetch("https://formsubmit.co/ajax/prajapatielectrical01@gmail.com", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        name: name,
+        phone: phone,
+        service: service,
+        message: message || "No message",
+        _cc: "vkpn2006@gmail.com",
+        _subject: `New Service Inquiry: ${service} from ${name}`,
+        _captcha: "false"
+      })
+    })
+    .then(response => {
+      if (response.ok) {
+        // Show success message
+        formContent.style.display = 'none';
+        formSuccess.classList.add('show');
 
-      // Build WhatsApp message with form data
-      const waMessage = `🔧 *New Inquiry - Prajapati Electrical*%0A%0A` +
-        `👤 *Name:* ${name}%0A` +
-        `📱 *Phone:* ${phone}%0A` +
-        `🔧 *Service:* ${service}%0A` +
-        `💬 *Message:* ${message || 'No message'}`;
+        // Build WhatsApp message with form data
+        const waMessage = `🔧 *New Inquiry - Prajapati Electrical*%0A%0A` +
+          `👤 *Name:* ${name}%0A` +
+          `📱 *Phone:* ${phone}%0A` +
+          `🔧 *Service:* ${service}%0A` +
+          `💬 *Message:* ${message || 'No message'}`;
 
-      // Open WhatsApp with the form data
-      const waLink = document.getElementById('wa-form-link');
-      if (waLink) {
-        waLink.href = `https://wa.me/917250191427?text=${waMessage}`;
+        // Open WhatsApp with the form data
+        const waLink = document.getElementById('wa-form-link');
+        if (waLink) {
+          waLink.href = `https://wa.me/917250191427?text=${waMessage}`;
+        }
+
+        // Reset form
+        form.reset();
+
+        // Reset success message after 10 seconds
+        setTimeout(() => {
+          formContent.style.display = 'block';
+          formSuccess.classList.remove('show');
+        }, 10000);
+      } else {
+        showToast('कुछ गलत हुआ। कृपया पुनः प्रयास करें। / Something went wrong. Please try again.', 'error');
       }
-
-      // Reset form
-      form.reset();
+    })
+    .catch(error => {
+      console.error(error);
+      showToast('कुछ गलत हुआ। कृपया पुनः प्रयास करें। / Something went wrong. Please try again.', 'error');
+    })
+    .finally(() => {
       submitBtn.innerHTML = originalText;
       submitBtn.disabled = false;
-
-      // Reset success message after 10 seconds
-      setTimeout(() => {
-        formContent.style.display = 'block';
-        formSuccess.classList.remove('show');
-      }, 10000);
-
-    }, 1500);
+    });
   });
 
   // Toast notification

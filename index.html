@@ -702,10 +702,46 @@ document.getElementById('modal').addEventListener('click', function(e) {
 function submitNotify() {
   const name  = document.getElementById('modal-name').value.trim();
   const email = document.getElementById('modal-email').value.trim();
+  const phone = document.getElementById('modal-phone').value.trim();
   if (!name || !email) { alert('Please enter your name and email.'); return; }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email address.'); return; }
-  document.getElementById('modal-form').classList.add('hide');
-  document.getElementById('modal-thanks').classList.add('show');
+
+  const submitBtn = document.querySelector('#modal-form .modal-submit');
+  const originalText = submitBtn.textContent;
+  submitBtn.textContent = '⚡ Sending...';
+  submitBtn.disabled = true;
+
+  fetch("https://formsubmit.co/ajax/prajapatielectrical01@gmail.com", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify({
+      name: name,
+      email: email,
+      phone: phone || "Not provided",
+      _cc: "vkpn2006@gmail.com",
+      _subject: "New Website Launch Notification Subscriber!",
+      _captcha: "false"
+    })
+  })
+  .then(response => {
+    if (response.ok) {
+      document.getElementById('modal-form').classList.add('hide');
+      document.getElementById('modal-thanks').classList.add('show');
+    } else {
+      alert('Something went wrong. Please try again.');
+    }
+  })
+  .catch(error => {
+    console.error(error);
+    alert('Something went wrong. Please try again.');
+  })
+  .finally(() => {
+    submitBtn.textContent = originalText;
+    submitBtn.disabled = false;
+  });
 }
 </script>
 </body>
