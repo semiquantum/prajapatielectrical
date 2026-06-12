@@ -18,3 +18,7 @@ Desktop.ini
 *.log
 
 .vercel
+
+# Environment secrets
+.env
+js/env.js

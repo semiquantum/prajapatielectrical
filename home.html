@@ -139,27 +139,43 @@
   <header>
     <nav class="navbar" id="navbar" role="navigation" aria-label="Main Navigation">
       <div class="nav-container">
-        <a href="#hero" class="nav-logo" aria-label="Prajapati Electrical Home">
+        <a href="home.html" class="nav-logo" aria-label="Prajapati Electrical Home">
           <img src="images/logo.png" alt="Prajapati Electrical Logo" width="44" height="44">
           <span>Prajapati Electrical</span>
         </a>
 
         <div class="nav-links" id="nav-links">
-          <a href="#hero">Home</a>
-          <a href="#about">About</a>
-          <a href="#services">Services</a>
-          <a href="#wholesale">Products</a>
-          <a href="#gallery">Gallery</a>
-          <a href="#contact">Contact</a>
+          <a href="home.html" class="active">Home</a>
+          <a href="about.html">About</a>
+          <a href="services.html">Services</a>
+          <a href="products.html">Shop</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="contact.html">Contact</a>
+          <!-- Mobile-only Login/Dashboard link -->
+          <a href="auth.html" class="mobile-nav-cta" id="mobile-nav-auth">
+            <i class="fas fa-sign-in-alt"></i> Login / Sign Up
+          </a>
         </div>
 
         <div class="nav-actions">
           <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
             <i class="fas fa-moon"></i>
           </button>
-          <a href="tel:+917250191427" class="nav-cta desktop-only">
-            <i class="fas fa-phone"></i> Call Now
-          </a>
+
+          <!-- Auth Buttons (visible when logged out) -->
+          <div id="nav-auth-buttons" style="display:flex;gap:8px;">
+            <a href="auth.html" class="nav-cta desktop-only">
+              <i class="fas fa-sign-in-alt"></i> Login
+            </a>
+          </div>
+
+          <!-- User Menu (visible when logged in) -->
+          <div id="nav-user-menu" style="display:none;align-items:center;gap:8px;">
+            <a href="dashboard.html" class="nav-cta desktop-only">
+              <i class="fas fa-user"></i> <span class="user-name">Dashboard</span>
+            </a>
+          </div>
+
           <button class="hamburger" id="hamburger" aria-label="Open Menu">
             <span></span>
             <span></span>
@@ -169,6 +185,9 @@
       </div>
     </nav>
   </header>
+
+  <!-- Mobile Menu Backdrop Overlay -->
+  <div id="nav-overlay"></div>
 
   <main>
     <!-- ========== HERO SECTION ========== -->
@@ -253,32 +272,11 @@
               Prajapati Electrical is a trusted and reliable electrical repair and wholesale shop located in <strong>Rampur Bujurg, Deoria, Uttar Pradesh</strong>. Founded by <strong>Sohan Kumar</strong>, we have been serving customers with dedication and quality workmanship for over a decade.
             </p>
             <p>
-              We specialize in all types of electrical repairing including AC repair, fan repair, fridge repair, house wiring, and provide wholesale electrical materials at the most affordable prices. Our skilled electricians are known for fast, reliable, and quality service.
+              We specialize in all types of electrical repairing including AC repair, fan repair, fridge repair, house wiring, and provide wholesale electrical materials at the most affordable prices.
             </p>
-            <p>
-              We proudly serve customers in <strong>Rampur Bujurg, Salempur, Sohanpur, Mairwa, Siwan, Deoria</strong> and all nearby villages, delivering trusted electrical solutions right to your doorstep.
-            </p>
-
-            <div class="about-features">
-              <div class="about-feature">
-                <i class="fas fa-check-circle"></i> Certified Electricians
-              </div>
-              <div class="about-feature">
-                <i class="fas fa-check-circle"></i> Affordable Prices
-              </div>
-              <div class="about-feature">
-                <i class="fas fa-check-circle"></i> Quality Products
-              </div>
-              <div class="about-feature">
-                <i class="fas fa-check-circle"></i> Fast Service
-              </div>
-              <div class="about-feature">
-                <i class="fas fa-check-circle"></i> Customer Satisfaction
-              </div>
-              <div class="about-feature">
-                <i class="fas fa-check-circle"></i> Warranty Support
-              </div>
-            </div>
+            <a href="about.html" class="btn btn-secondary" style="margin-top: 16px; display: inline-flex; align-items: center; gap: 8px;">
+              Read More About Us <i class="fas fa-arrow-right"></i>
+            </a>
           </div>
         </div>
       </div>
@@ -296,72 +294,32 @@
         </div>
 
         <div class="services-grid">
-          <!-- Iron Repair -->
+          <!-- AC Repair -->
           <div class="service-card">
-            <div class="service-icon"><i class="fas fa-fire"></i></div>
-            <h3>Iron Repair</h3>
-            <p>Expert iron box repairing service. We fix all types of dry and steam irons quickly and affordably.</p>
-          </div>
-          <!-- Mixer Repair -->
-          <div class="service-card">
-            <div class="service-icon"><i class="fas fa-blender"></i></div>
-            <h3>Mixer Repair</h3>
-            <p>Professional mixer grinder repair. Motor rewinding, blade replacement and complete servicing available.</p>
+            <div class="service-icon"><i class="fas fa-snowflake"></i></div>
+            <h3>AC Repair</h3>
+            <p>Split AC and window AC repair, gas charging, servicing and installation by trained technicians.</p>
+            <a href="dashboard.html?tab=book&service=4" class="service-book-link"><i class="fas fa-calendar-plus"></i> Book Service</a>
           </div>
           <!-- Fan Repair -->
           <div class="service-card">
             <div class="service-icon"><i class="fas fa-fan"></i></div>
             <h3>Fan Repair</h3>
             <p>Ceiling fan, table fan, and exhaust fan repair. Capacitor change, rewinding & installation services.</p>
-          </div>
-          <!-- AC Repair -->
-          <div class="service-card">
-            <div class="service-icon"><i class="fas fa-snowflake"></i></div>
-            <h3>AC Repair</h3>
-            <p>Split AC and window AC repair, gas charging, servicing and installation by trained technicians.</p>
-          </div>
-          <!-- Cooler Repair -->
-          <div class="service-card">
-            <div class="service-icon"><i class="fas fa-wind"></i></div>
-            <h3>Cooler Repair</h3>
-            <p>Desert cooler and air cooler repair. Motor replacement, pump repair and full servicing available.</p>
-          </div>
-          <!-- Fridge Repair -->
-          <div class="service-card">
-            <div class="service-icon"><i class="fas fa-temperature-low"></i></div>
-            <h3>Fridge Repair</h3>
-            <p>Refrigerator repair and servicing. Gas charging, thermostat repair, compressor servicing and more.</p>
+            <a href="dashboard.html?tab=book&service=3" class="service-book-link"><i class="fas fa-calendar-plus"></i> Book Service</a>
           </div>
           <!-- House Wiring -->
           <div class="service-card">
             <div class="service-icon"><i class="fas fa-house-signal"></i></div>
             <h3>House Wiring</h3>
             <p>Complete house wiring and rewiring services. New construction and renovation electrical work done professionally.</p>
+            <a href="dashboard.html?tab=book&service=7" class="service-book-link"><i class="fas fa-calendar-plus"></i> Book Service</a>
           </div>
-          <!-- Electrical Fitting -->
-          <div class="service-card">
-            <div class="service-icon"><i class="fas fa-plug"></i></div>
-            <h3>Electrical Fitting</h3>
-            <p>All types of electrical fittings including switches, sockets, MCBs, distribution boards and more.</p>
-          </div>
-          <!-- Installation Services -->
-          <div class="service-card">
-            <div class="service-icon"><i class="fas fa-tools"></i></div>
-            <h3>Installation Services</h3>
-            <p>Professional installation of AC, ceiling fans, geysers, inverters, and all electrical appliances.</p>
-          </div>
-          <!-- Switch Board Repair -->
-          <div class="service-card">
-            <div class="service-icon"><i class="fas fa-toggle-on"></i></div>
-            <h3>Switch Board Repair</h3>
-            <p>Switchboard repair, replacement and new installation. Modular switchboard fitting available.</p>
-          </div>
-          <!-- Motor Repair -->
-          <div class="service-card">
-            <div class="service-icon"><i class="fas fa-gear"></i></div>
-            <h3>Motor Repair</h3>
-            <p>Electric motor rewinding and repair. Submersible pump, monoblock pump and all motor servicing.</p>
-          </div>
+        </div>
+        <div style="text-align: center; margin-top: 40px;">
+          <a href="services.html" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">
+            View All 11 Services <i class="fas fa-arrow-right"></i>
+          </a>
         </div>
       </div>
     </section>
@@ -459,6 +417,12 @@
 
         <div class="wholesale-hindi anim-fade-up">
           <p>⚡ हमारे यहाँ सभी प्रकार के इलेक्ट्रिक सामान होलसेल और रिटेल में उपलब्ध हैं। ⚡</p>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+          <a href="products.html" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">
+            Browse Product Catalog <i class="fas fa-arrow-right"></i>
+          </a>
         </div>
       </div>
     </section>
@@ -682,18 +646,11 @@
             <img src="images/gallery/wholesale-shop.png" alt="Electrical wholesale shop in Rampur Bujurg" loading="lazy" width="400" height="300">
             <div class="gallery-overlay"><span>Wholesale Shop Interior</span></div>
           </div>
-          <div class="gallery-item">
-            <img src="images/gallery/fan-repair.png" alt="Fan repair service by Prajapati Electrical" loading="lazy" width="400" height="300">
-            <div class="gallery-overlay"><span>Fan Repair Work</span></div>
-          </div>
-          <div class="gallery-item">
-            <img src="images/gallery/house-wiring.png" alt="House wiring service in Deoria" loading="lazy" width="400" height="300">
-            <div class="gallery-overlay"><span>Professional House Wiring</span></div>
-          </div>
-          <div class="gallery-item">
-            <img src="images/gallery/tools.png" alt="Professional electrician tools at Prajapati Electrical" loading="lazy" width="400" height="300">
-            <div class="gallery-overlay"><span>Professional Tools</span></div>
-          </div>
+        </div>
+        <div style="text-align: center; margin-top: 30px;">
+          <a href="gallery.html" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px;">
+            View Full Gallery <i class="fas fa-arrow-right"></i>
+          </a>
         </div>
       </div>
     </section>
@@ -834,12 +791,12 @@
       <div>
         <h4>Quick Links</h4>
         <ul class="footer-links">
-          <li><a href="#hero"><i class="fas fa-chevron-right"></i> Home</a></li>
-          <li><a href="#about"><i class="fas fa-chevron-right"></i> About</a></li>
-          <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
-          <li><a href="#wholesale"><i class="fas fa-chevron-right"></i> Products</a></li>
-          <li><a href="#gallery"><i class="fas fa-chevron-right"></i> Gallery</a></li>
-          <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+          <li><a href="home.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+          <li><a href="about.html"><i class="fas fa-chevron-right"></i> About</a></li>
+          <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+          <li><a href="products.html"><i class="fas fa-chevron-right"></i> Products</a></li>
+          <li><a href="gallery.html"><i class="fas fa-chevron-right"></i> Gallery</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
         </ul>
       </div>
 
@@ -847,12 +804,12 @@
       <div>
         <h4>Our Services</h4>
         <ul class="footer-links">
-          <li><a href="#services"><i class="fas fa-chevron-right"></i> AC Repair</a></li>
-          <li><a href="#services"><i class="fas fa-chevron-right"></i> Fan Repair</a></li>
-          <li><a href="#services"><i class="fas fa-chevron-right"></i> Fridge Repair</a></li>
-          <li><a href="#services"><i class="fas fa-chevron-right"></i> House Wiring</a></li>
-          <li><a href="#services"><i class="fas fa-chevron-right"></i> Motor Repair</a></li>
-          <li><a href="#services"><i class="fas fa-chevron-right"></i> Wholesale</a></li>
+          <li><a href="services.html"><i class="fas fa-chevron-right"></i> AC Repair</a></li>
+          <li><a href="services.html"><i class="fas fa-chevron-right"></i> Fan Repair</a></li>
+          <li><a href="services.html"><i class="fas fa-chevron-right"></i> Refrigerator Repair</a></li>
+          <li><a href="services.html"><i class="fas fa-chevron-right"></i> House Wiring</a></li>
+          <li><a href="services.html"><i class="fas fa-chevron-right"></i> Motor Repair</a></li>
+          <li><a href="products.html"><i class="fas fa-chevron-right"></i> Wholesale Products</a></li>
         </ul>
       </div>
 
@@ -909,6 +866,10 @@
   </div>
 
   <!-- ========== SCRIPTS ========== -->
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
@@ -917,5 +878,12 @@
   <script src="js/main.js" defer></script>
   <script src="js/animations.js" defer></script>
   <script src="js/form.js" defer></script>
+
+  <!-- Auth Nav Update -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      updateNavAuth();
+    });
+  </script>
 </body>
 </html>

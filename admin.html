@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel | Prajapati Electrical</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+
+  <div class="admin-layout">
+    <!-- ========== SIDEBAR ========== -->
+    <aside class="admin-sidebar" id="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <img src="images/logo.png" alt="Logo" width="40" height="40">
+        <div>
+          <div class="brand-text">Prajapati Electrical</div>
+          <div class="brand-sub">Admin Panel</div>
+        </div>
+      </div>
+
+      <nav class="admin-sidebar-nav">
+        <div class="admin-nav-label">Main</div>
+        <button class="admin-nav-item active" data-panel="dashboard"><i class="fas fa-chart-pie"></i> Dashboard</button>
+        <button class="admin-nav-item" data-panel="products"><i class="fas fa-box"></i> Products</button>
+        <button class="admin-nav-item" data-panel="categories"><i class="fas fa-tags"></i> Categories</button>
+
+        <div class="admin-nav-label">Management</div>
+        <button class="admin-nav-item" data-panel="bookings"><i class="fas fa-calendar-check"></i> Bookings</button>
+        <button class="admin-nav-item" data-panel="services"><i class="fas fa-cogs"></i> Services</button>
+        <button class="admin-nav-item" data-panel="users"><i class="fas fa-users"></i> Users</button>
+      </nav>
+
+      <div class="admin-sidebar-footer">
+        <a href="home.html" class="admin-nav-item"><i class="fas fa-globe"></i> View Website</a>
+        <button class="admin-nav-item" id="admin-logout" style="color:#f87171;"><i class="fas fa-sign-out-alt"></i> Logout</button>
+      </div>
+    </aside>
+
+    <!-- Sidebar overlay (mobile) -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- ========== MAIN ========== -->
+    <main class="admin-main">
+      <!-- Top Bar -->
+      <div class="admin-topbar">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <button class="mobile-menu-btn" id="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+          <h2 id="topbar-title">Dashboard</h2>
+        </div>
+        <div class="admin-topbar-right">
+          <span id="admin-name" style="font-size:0.85rem;color:rgba(255,255,255,0.6);">Admin</span>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="admin-content">
+
+        <!-- ═══ DASHBOARD PANEL ═══ -->
+        <div class="admin-panel active" id="panel-dashboard">
+          <div class="stats-grid" id="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon orange"><i class="fas fa-box"></i></div>
+              <div class="stat-info">
+                <div class="stat-num" id="stat-products">0</div>
+                <div class="stat-label">Products</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon blue"><i class="fas fa-calendar-check"></i></div>
+              <div class="stat-info">
+                <div class="stat-num" id="stat-bookings">0</div>
+                <div class="stat-label">Bookings</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon green"><i class="fas fa-users"></i></div>
+              <div class="stat-info">
+                <div class="stat-num" id="stat-users">0</div>
+                <div class="stat-label">Users</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon purple"><i class="fas fa-cogs"></i></div>
+              <div class="stat-info">
+                <div class="stat-num" id="stat-services">0</div>
+                <div class="stat-label">Services</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Bookings -->
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3><i class="fas fa-clock"></i> Recent Bookings</h3>
+            </div>
+            <div class="admin-table-wrap">
+              <table class="admin-table" id="recent-bookings-table">
+                <thead>
+                  <tr>
+                    <th>Customer</th>
+                    <th>Service</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="recent-bookings-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ PRODUCTS PANEL ═══ -->
+        <div class="admin-panel" id="panel-products">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3><i class="fas fa-box"></i> All Products</h3>
+              <button class="btn-add" id="btn-add-product"><i class="fas fa-plus"></i> Add Product</button>
+            </div>
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Featured</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="products-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ CATEGORIES PANEL ═══ -->
+        <div class="admin-panel" id="panel-categories">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3><i class="fas fa-tags"></i> Categories</h3>
+              <button class="btn-add" id="btn-add-category"><i class="fas fa-plus"></i> Add Category</button>
+            </div>
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Icon</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Order</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="categories-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ BOOKINGS PANEL ═══ -->
+        <div class="admin-panel" id="panel-bookings">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3><i class="fas fa-calendar-check"></i> All Bookings</h3>
+            </div>
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Customer</th>
+                    <th>Phone</th>
+                    <th>Service</th>
+                    <th>Preferred Date</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Notes</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="bookings-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ SERVICES PANEL ═══ -->
+        <div class="admin-panel" id="panel-services">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3><i class="fas fa-cogs"></i> Services</h3>
+            </div>
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Icon</th>
+                    <th>Name</th>
+                    <th>Price Range</th>
+                    <th>Active</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="services-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ USERS PANEL ═══ -->
+        <div class="admin-panel" id="panel-users">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3><i class="fas fa-users"></i> Registered Users</h3>
+            </div>
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Role</th>
+                    <th>Joined</th>
+                  </tr>
+                </thead>
+                <tbody id="users-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ═══ PRODUCT MODAL ═══ -->
+  <div class="admin-modal-overlay" id="product-modal">
+    <div class="admin-modal">
+      <h3><i class="fas fa-box"></i> <span id="product-modal-title">Add Product</span></h3>
+      <form id="product-form">
+        <input type="hidden" id="product-edit-id">
+        <div class="form-group">
+          <label for="product-name">Product Name *</label>
+          <input type="text" id="product-name" required placeholder="e.g. Havells 1.5mm Wire">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="product-price">Selling Price (₹)</label>
+            <input type="number" id="product-price" step="0.01" min="0" placeholder="0">
+          </div>
+          <div class="form-group">
+            <label for="product-mrp">MRP (₹)</label>
+            <input type="number" id="product-mrp" step="0.01" min="0" placeholder="0">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="product-category">Category</label>
+            <select id="product-category">
+              <option value="">-- Select --</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="product-brand">Brand</label>
+            <input type="text" id="product-brand" placeholder="e.g. Havells">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="product-desc">Description</label>
+          <textarea id="product-desc" placeholder="Product description..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="product-image">Product Image</label>
+          <input type="file" id="product-image" accept="image/*">
+          <img class="img-preview" id="product-image-preview" alt="Preview">
+        </div>
+        <div class="form-row">
+          <div class="form-check">
+            <input type="checkbox" id="product-in-stock" checked>
+            <label for="product-in-stock">In Stock</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" id="product-featured">
+            <label for="product-featured">Featured</label>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="modal-btn-cancel" onclick="closeProductModal()">Cancel</button>
+          <button type="submit" class="modal-btn-save" id="product-save-btn">Save Product</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ═══ CATEGORY MODAL ═══ -->
+  <div class="admin-modal-overlay" id="category-modal">
+    <div class="admin-modal">
+      <h3><i class="fas fa-tags"></i> <span id="category-modal-title">Add Category</span></h3>
+      <form id="category-form">
+        <input type="hidden" id="category-edit-id">
+        <div class="form-group">
+          <label for="category-name">Category Name *</label>
+          <input type="text" id="category-name" required placeholder="e.g. LED Lights">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="category-icon">Icon Class</label>
+            <input type="text" id="category-icon" placeholder="fas fa-lightbulb">
+          </div>
+          <div class="form-group">
+            <label for="category-sort">Sort Order</label>
+            <input type="number" id="category-sort" min="0" value="0">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="category-desc">Description</label>
+          <textarea id="category-desc" placeholder="Category description..."></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="modal-btn-cancel" onclick="closeCategoryModal()">Cancel</button>
+          <button type="submit" class="modal-btn-save" id="category-save-btn">Save Category</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="admin-toast" id="admin-toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="admin-toast-text"></span>
+  </div>
+
+  <!-- Supabase JS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

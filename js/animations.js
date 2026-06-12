@@ -3,11 +3,15 @@
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Register GSAP ScrollTrigger plugin
-  gsap.registerPlugin(ScrollTrigger);
+  function initAnimations() {
+    // Register GSAP ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger);
 
-  // --- Hero Entrance Animations ---
-  const heroTl = gsap.timeline({ delay: 2.2 });
+    // Refresh ScrollTrigger to ensure accurate layout calculations
+    ScrollTrigger.refresh();
+
+    // --- Hero Entrance Animations ---
+    const heroTl = gsap.timeline({ delay: 0.1 });
 
   heroTl
     .from('.hero-badge', {
@@ -244,5 +248,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (badge) tl.from(badge, { opacity: 0, y: 20, duration: 0.5 });
     if (title) tl.from(title, { opacity: 0, y: 30, duration: 0.6 }, '-=0.3');
     if (desc) tl.from(desc, { opacity: 0, y: 20, duration: 0.5 }, '-=0.3');
-  });
+  }
+
+  // Defer animation initialization until preloader fades out, or run immediately if no preloader
+  const preloader = document.getElementById('preloader');
+  if (preloader) {
+    // Wait 2.6s (2.0s preloader timeout + 0.6s css transition time)
+    setTimeout(initAnimations, 2600);
+  } else {
+    initAnimations();
+  }
 });

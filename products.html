@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products | Prajapati Electrical - Wholesale & Retail Electrical Materials</title>
+  <meta name="description" content="Browse our complete range of electrical products at wholesale and retail prices. Wires, switches, LED lights, fans, MCBs and more.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/products.css">
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <header>
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main Navigation">
+      <div class="nav-container">
+        <a href="home.html" class="nav-logo" aria-label="Prajapati Electrical Home">
+          <img src="images/logo.png" alt="Prajapati Electrical Logo" width="44" height="44">
+          <span>Prajapati Electrical</span>
+        </a>
+
+        <div class="nav-links" id="nav-links">
+          <a href="home.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="services.html">Services</a>
+          <a href="products.html" class="active">Shop</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="contact.html">Contact</a>
+          <!-- Mobile-only Login/Dashboard link -->
+          <a href="auth.html" class="mobile-nav-cta" id="mobile-nav-auth">
+            <i class="fas fa-sign-in-alt"></i> Login / Sign Up
+          </a>
+        </div>
+
+        <div class="nav-actions">
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
+            <i class="fas fa-moon"></i>
+          </button>
+
+          <!-- Auth Buttons (visible when logged out) -->
+          <div id="nav-auth-buttons" style="display:flex;gap:8px;">
+            <a href="auth.html" class="nav-cta desktop-only">
+              <i class="fas fa-sign-in-alt"></i> Login
+            </a>
+          </div>
+
+          <!-- User Menu (visible when logged in) -->
+          <div id="nav-user-menu" style="display:none;align-items:center;gap:8px;">
+            <a href="dashboard.html" class="nav-cta desktop-only">
+              <i class="fas fa-user"></i> <span class="user-name">Dashboard</span>
+            </a>
+          </div>
+
+          <button class="hamburger" id="hamburger" aria-label="Open Menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Menu Backdrop Overlay -->
+  <div id="nav-overlay"></div>
+
+  <!-- ========== HERO ========== -->
+  <section class="products-hero">
+    <div class="hero-bg-effects">
+      <div class="hero-glow hero-glow-1"></div>
+      <div class="hero-glow hero-glow-2"></div>
+      <div class="hero-glow hero-glow-3"></div>
+      <div class="circuit-line"></div>
+      <div class="circuit-line"></div>
+      <div class="circuit-line"></div>
+      <div class="circuit-line"></div>
+    </div>
+    <div class="hero-content" style="padding-top: 20px; margin: 0 auto;">
+      <div class="hero-badge">
+        <i class="fas fa-bolt"></i>
+        <span>Our Catalog</span>
+      </div>
+      <h1>Our <span class="text-gradient">Products</span></h1>
+      <p class="hero-subtitle" style="margin-bottom: 0;">Quality electrical materials at wholesale and retail prices. Browse our complete catalog.</p>
+    </div>
+  </section>
+
+  <!-- ========== PRODUCTS ========== -->
+  <section class="products-section">
+    <div class="products-container">
+      <!-- Category Chips -->
+      <div class="cat-chips" id="cat-chips">
+        <button class="cat-chip active" data-cat="">All Products</button>
+      </div>
+
+      <!-- Filter Bar -->
+      <div class="products-filter-bar">
+        <div class="search-wrap">
+          <i class="fas fa-search"></i>
+          <input type="text" class="products-search" id="products-search" placeholder="Search products by name, brand...">
+        </div>
+        <select class="products-cat-filter" id="products-cat-select">
+          <option value="">All Categories</option>
+        </select>
+      </div>
+
+      <!-- Count -->
+      <div class="products-count" id="products-count"></div>
+
+      <!-- Products Grid -->
+      <div class="products-grid" id="products-grid"></div>
+
+      <!-- Loading Skeleton -->
+      <div class="products-loading" id="products-loading">
+        <div class="product-skeleton"><div class="skel-img"></div><div class="skel-body"><div class="skel-line w60"></div><div class="skel-line w40"></div><div class="skel-line w80"></div></div></div>
+        <div class="product-skeleton"><div class="skel-img"></div><div class="skel-body"><div class="skel-line w60"></div><div class="skel-line w40"></div><div class="skel-line w80"></div></div></div>
+        <div class="product-skeleton"><div class="skel-img"></div><div class="skel-body"><div class="skel-line w60"></div><div class="skel-line w40"></div><div class="skel-line w80"></div></div></div>
+        <div class="product-skeleton"><div class="skel-img"></div><div class="skel-body"><div class="skel-line w60"></div><div class="skel-line w40"></div><div class="skel-line w80"></div></div></div>
+      </div>
+
+      <!-- Empty State -->
+      <div class="products-empty-state" id="products-empty" style="display:none;">
+        <i class="fas fa-box-open"></i>
+        <h3>No products found</h3>
+        <p>Try adjusting your search or filter criteria.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <div class="footer-logo">
+          <img src="images/logo.png" alt="Prajapati Electrical" width="44" height="44">
+          <span>Prajapati Electrical</span>
+        </div>
+        <p>Your trusted partner for all electrical products and services in Rampur Bujurg and nearby areas.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="home.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+          <li><a href="about.html"><i class="fas fa-chevron-right"></i> About</a></li>
+          <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+          <li><a href="products.html"><i class="fas fa-chevron-right"></i> Shop</a></li>
+          <li><a href="gallery.html"><i class="fas fa-chevron-right"></i> Gallery</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact Us</h4>
+        <div class="footer-contact-item">
+          <i class="fas fa-phone"></i>
+          <a href="tel:+917250191427">+91 7250191427</a>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-location-dot"></i>
+          <p>Rampur Bujurg, Deoria, UP</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="current-year">2026</span> Prajapati Electrical. All Rights Reserved.</p>
+      <p>Developed by <a href="https://www.semiquantum.live" target="_blank" rel="noopener">SemiQuantum Technologies</a></p>
+    </div>
+  </footer>
+
+  <!-- ========== FLOATING BUTTONS ========== -->
+  <div class="floating-btns">
+    <a href="https://wa.me/917250191427?text=Hello%20Prajapati%20Electrical!" class="float-btn float-btn-whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="tel:+917250191427" class="float-btn float-btn-call" aria-label="Call Now">
+      <i class="fas fa-phone"></i>
+    </a>
+    <button class="float-btn float-btn-top" id="back-to-top" aria-label="Back to Top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+  </div>
+
+  <!-- Supabase JS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

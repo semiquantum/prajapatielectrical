@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Dashboard | Prajapati Electrical</title>
+  <meta name="description" content="Manage your profile, book electrical services, and track your bookings.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body class="dash-body">
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="dash-navbar">
+    <a href="home.html" class="dash-nav-brand">
+      <img src="images/logo.png" alt="Prajapati Electrical" width="36" height="36">
+      <span>Prajapati Electrical</span>
+    </a>
+    <div class="dash-nav-right">
+      <a href="home.html" class="dash-nav-btn"><i class="fas fa-home"></i> <span>Home</span></a>
+      <a href="products.html" class="dash-nav-btn"><i class="fas fa-store"></i> <span>Products</span></a>
+      <div class="dash-user-info">
+        <div class="dash-user-avatar" id="user-avatar">U</div>
+        <span class="dash-user-name" id="user-display-name">User</span>
+      </div>
+      <button class="dash-nav-btn logout" id="logout-btn"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></button>
+    </div>
+  </nav>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main class="dash-main">
+    <!-- Welcome -->
+    <div class="dash-welcome">
+      <h1 id="welcome-heading">Welcome!</h1>
+      <p>Manage your profile, book services, and track your bookings.</p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="dash-tabs">
+      <button class="dash-tab active" data-panel="profile"><i class="fas fa-user"></i> Profile</button>
+      <button class="dash-tab" data-panel="book"><i class="fas fa-calendar-plus"></i> Book Service</button>
+      <button class="dash-tab" data-panel="bookings"><i class="fas fa-list-check"></i> My Bookings <span class="tab-badge" id="bookings-count">0</span></button>
+      <button class="dash-tab" data-panel="products"><i class="fas fa-store"></i> Products</button>
+    </div>
+
+    <!-- ═══ PROFILE PANEL ═══ -->
+    <div class="dash-panel active" id="panel-profile">
+      <div class="dash-card">
+        <h3><i class="fas fa-user-edit"></i> My Profile</h3>
+        <form class="profile-form" id="profile-form">
+          <div class="form-group">
+            <label for="profile-name">Full Name</label>
+            <input type="text" id="profile-name" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <label for="profile-email">Email (cannot change)</label>
+            <input type="email" id="profile-email" class="profile-email" disabled>
+          </div>
+          <div class="form-group">
+            <label for="profile-phone">Phone Number</label>
+            <input type="tel" id="profile-phone" placeholder="+91 XXXXXXXXXX">
+          </div>
+          <div class="form-group full-width">
+            <label for="profile-address">Address</label>
+            <textarea id="profile-address" placeholder="Your full address..."></textarea>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn-save" id="save-profile-btn">
+              <i class="fas fa-save"></i> Save Changes
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- ═══ BOOK SERVICE PANEL ═══ -->
+    <div class="dash-panel" id="panel-book">
+      <div class="dash-card">
+        <h3><i class="fas fa-bolt"></i> Book a Service</h3>
+        <form class="booking-form" id="booking-form">
+          <div class="form-group full-width">
+            <label for="booking-service">Select Service *</label>
+            <select id="booking-service" required>
+              <option value="">-- Choose a Service --</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="booking-date">Preferred Date</label>
+            <input type="date" id="booking-date">
+          </div>
+          <div class="form-group">
+            <label for="booking-time">Preferred Time</label>
+            <select id="booking-time">
+              <option value="">-- Select Time --</option>
+              <option value="Morning (8 AM - 12 PM)">Morning (8 AM - 12 PM)</option>
+              <option value="Afternoon (12 PM - 4 PM)">Afternoon (12 PM - 4 PM)</option>
+              <option value="Evening (4 PM - 8 PM)">Evening (4 PM - 8 PM)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="booking-phone">Contact Phone *</label>
+            <input type="tel" id="booking-phone" placeholder="+91 XXXXXXXXXX" required>
+          </div>
+          <div class="form-group">
+            <label for="booking-address">Service Address *</label>
+            <input type="text" id="booking-address" placeholder="Where should we come?" required>
+          </div>
+          <div class="form-group full-width">
+            <label for="booking-desc">Describe the Issue</label>
+            <textarea id="booking-desc" placeholder="Tell us about the problem or what you need..."></textarea>
+          </div>
+          <div class="form-group full-width">
+            <button type="submit" class="btn-save" id="submit-booking-btn">
+              <i class="fas fa-paper-plane"></i> Submit Booking
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- ═══ MY BOOKINGS PANEL ═══ -->
+    <div class="dash-panel" id="panel-bookings">
+      <div class="dash-card">
+        <h3><i class="fas fa-list-check"></i> My Bookings</h3>
+        <div class="bookings-list" id="bookings-list">
+          <div class="empty-state" id="bookings-empty">
+            <i class="fas fa-calendar-xmark"></i>
+            <h4>No bookings yet</h4>
+            <p>Book a service to see your bookings here.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ PRODUCTS PANEL ═══ -->
+    <div class="dash-panel" id="panel-products">
+      <div class="dash-card">
+        <h3><i class="fas fa-store"></i> Browse Products</h3>
+        <div class="filter-bar">
+          <input type="text" id="product-search" placeholder="Search products...">
+          <select id="product-category-filter">
+            <option value="">All Categories</option>
+          </select>
+        </div>
+        <div class="dash-products-grid" id="products-grid">
+          <div class="empty-state" id="products-empty">
+            <i class="fas fa-box-open"></i>
+            <h4>No products available</h4>
+            <p>Check back soon for our product catalog.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Toast -->
+  <div class="dash-toast" id="dash-toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toast-text"></span>
+  </div>
+
+<!-- Supabase JS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

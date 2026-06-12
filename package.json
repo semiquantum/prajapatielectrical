@@ -1,0 +1,15 @@
+{
+  "name": "prajapati-electrical",
+  "version": "1.0.0",
+  "description": "Prajapati Electrical - Dynamic Website with Supabase Integration",
+  "main": "generate-env.js",
+  "scripts": {
+    "generate-env": "node generate-env.js",
+    "dev": "node generate-env.js && npx serve -p 3000",
+    "start": "node generate-env.js && npx serve -p 3000",
+    "build": "node generate-env.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

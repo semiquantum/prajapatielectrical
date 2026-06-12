@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login / Sign Up | Prajapati Electrical</title>
+  <meta name="description" content="Login or create an account to book electrical services with Prajapati Electrical.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+
+<div class="auth-page">
+  <!-- Background Effects -->
+  <div class="auth-bg-effects">
+    <div class="auth-glow auth-glow-1"></div>
+    <div class="auth-glow auth-glow-2"></div>
+    <div class="auth-glow auth-glow-3"></div>
+  </div>
+
+  <div class="auth-container">
+    <!-- Logo -->
+    <div class="auth-logo">
+      <a href="home.html">
+        <img src="images/logo.png" alt="Prajapati Electrical" width="52" height="52">
+        <span>Prajapati Electrical</span>
+      </a>
+    </div>
+
+    <!-- Auth Card -->
+    <div class="auth-card">
+      <!-- Main Auth View -->
+      <div id="auth-main-view">
+        <h2 id="auth-heading">Welcome Back</h2>
+        <p class="auth-subtitle" id="auth-subtitle">Login to book services & manage your account</p>
+
+        <!-- Tabs -->
+        <div class="auth-tabs">
+          <button class="auth-tab active" data-tab="login" id="tab-login">Login</button>
+          <button class="auth-tab" data-tab="signup" id="tab-signup">Sign Up</button>
+        </div>
+
+        <!-- Message -->
+        <div class="auth-message" id="auth-message">
+          <i class="fas fa-info-circle"></i>
+          <span id="auth-message-text"></span>
+        </div>
+
+        <!-- Login Form -->
+        <form class="auth-form active" id="login-form" autocomplete="on">
+          <div class="form-group">
+            <label for="login-email">Email Address</label>
+            <div class="input-icon-wrap">
+              <i class="fas fa-envelope"></i>
+              <input type="email" id="login-email" placeholder="your@email.com" required autocomplete="email">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <div class="input-icon-wrap">
+              <i class="fas fa-lock"></i>
+              <input type="password" id="login-password" placeholder="Enter your password" required autocomplete="current-password">
+              <button type="button" class="password-toggle" data-target="login-password" aria-label="Toggle password visibility">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="auth-forgot">
+            <a href="#" id="forgot-password-link">Forgot Password?</a>
+          </div>
+
+          <button type="submit" class="auth-submit" id="login-btn">
+            <span class="btn-text"><i class="fas fa-sign-in-alt"></i> Login</span>
+            <span class="spinner"></span>
+          </button>
+        </form>
+
+        <!-- Signup Form -->
+        <form class="auth-form" id="signup-form" autocomplete="on">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="signup-name">Full Name</label>
+              <div class="input-icon-wrap">
+                <i class="fas fa-user"></i>
+                <input type="text" id="signup-name" placeholder="Your Name" required autocomplete="name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="signup-phone">Phone Number</label>
+              <div class="input-icon-wrap">
+                <i class="fas fa-phone"></i>
+                <input type="tel" id="signup-phone" placeholder="+91 XXXXXXXXXX" autocomplete="tel">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="signup-email">Email Address</label>
+            <div class="input-icon-wrap">
+              <i class="fas fa-envelope"></i>
+              <input type="email" id="signup-email" placeholder="your@email.com" required autocomplete="email">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="signup-password">Password</label>
+            <div class="input-icon-wrap">
+              <i class="fas fa-lock"></i>
+              <input type="password" id="signup-password" placeholder="Min 6 characters" required minlength="6" autocomplete="new-password">
+              <button type="button" class="password-toggle" data-target="signup-password" aria-label="Toggle password visibility">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <button type="submit" class="auth-submit" id="signup-btn">
+            <span class="btn-text"><i class="fas fa-user-plus"></i> Create Account</span>
+            <span class="spinner"></span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Reset Password View -->
+      <div class="auth-reset-view" id="auth-reset-view">
+        <button type="button" class="auth-reset-back" id="reset-back-btn">
+          <i class="fas fa-arrow-left"></i> Back to Login
+        </button>
+        <h2>Reset Password</h2>
+        <p>Enter your email and we'll send you a link to reset your password.</p>
+
+        <div class="auth-message" id="reset-message">
+          <i class="fas fa-info-circle"></i>
+          <span id="reset-message-text"></span>
+        </div>
+
+        <form id="reset-form">
+          <div class="form-group">
+            <label for="reset-email">Email Address</label>
+            <div class="input-icon-wrap">
+              <i class="fas fa-envelope"></i>
+              <input type="email" id="reset-email" placeholder="your@email.com" required>
+            </div>
+          </div>
+
+          <button type="submit" class="auth-submit" id="reset-btn">
+            <span class="btn-text"><i class="fas fa-paper-plane"></i> Send Reset Link</span>
+            <span class="spinner"></span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="auth-back">
+      <a href="home.html"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+  </div>
+</div>
+
+<!-- Supabase JS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>
