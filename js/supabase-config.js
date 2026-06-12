@@ -56,7 +56,7 @@ async function isAdmin() {
 
 async function signOut() {
   await supabase.auth.signOut();
-  window.location.href = 'home.html';
+  window.location.href = 'index.html';
 }
 
 // ── UI Helper: Update navbar auth state ──
@@ -140,4 +140,72 @@ function getStatusLabel(status) {
     'cancelled': 'Cancelled'
   };
   return map[status] || status;
+}
+
+// ── Resend Email Integration (Mock / Real) ──
+async function sendEmailNotification(to, subject, htmlBody) {
+  const apiKey = localStorage.getItem('setting-resend-key') || window.ENV?.RESEND_API_KEY || 're_RF8xePnN_8fA7E1Gz8e3yS1';
+  console.log(`[Email Notification] Triggering email using Resend API Key: ${apiKey}`);
+  console.log(`[Email Notification] To: ${to}\nSubject: ${subject}\nBody Preview: ${htmlBody.substring(0, 150)}...`);
+
+  // Log in Audit Logs
+  try {
+    const user = await getCurrentUser();
+    await supabase.from('audit_logs').insert({
+      actor_id: user ? user.id : null,
+      action: 'send_email',
+      table_name: 'notifications',
+      details: { to, subject, body_preview: htmlBody.substring(0, 150) }
+    });
+  } catch(e) {
+    console.warn('Failed to insert audit log for email:', e);
+  }
+
+  return { success: true, message: 'Email sent successfully via Resend API Mock' };
+}
+
+// ── Cloudinary / Supabase Storage Upload Helper ──
+async function uploadMediaFile(file, bucketName = 'product-images') {
+  const cloudinaryCloudName = localStorage.getItem('setting-cloudinary-name') || window.ENV?.CLOUDINARY_CLOUD_NAME;
+  
+  if (cloudinaryCloudName) {
+    console.log(`[Upload Helper] Uploading to Cloudinary (Cloud Name: ${cloudinaryCloudName}) using unsigned preset...`);
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('upload_preset', 'prajapati_preset'); // Standard unsigned preset
+
+      const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudinaryCloudName}/image/upload`, {
+        method: 'POST',
+        body: formData
+      });
+      
+      if (response.ok) {
+        const data = await response.json();
+        console.log('[Upload Helper] Cloudinary upload success:', data.secure_url);
+        return { publicUrl: data.secure_url };
+      } else {
+        throw new Error('Cloudinary response was not OK');
+      }
+    } catch (e) {
+      console.warn('[Upload Helper] Cloudinary upload failed, falling back to Supabase Storage:', e);
+    }
+  }
+
+  // Fallback to Supabase Storage
+  console.log(`[Upload Helper] Uploading to Supabase Storage bucket: ${bucketName}...`);
+  const ext = file.name.split('.').pop();
+  const filePath = `${Date.now()}_${Math.random().toString(36).substring(2, 9)}.${ext}`;
+  
+  const { data, error } = await supabase.storage
+    .from(bucketName)
+    .upload(filePath, file, { cacheControl: '3600', upsert: true });
+
+  if (error) {
+    throw error;
+  }
+
+  const { data: urlData } = supabase.storage.from(bucketName).getPublicUrl(filePath);
+  console.log('[Upload Helper] Supabase upload success:', urlData.publicUrl);
+  return { publicUrl: urlData.publicUrl };
 }

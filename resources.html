@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resources & Blog | Prajapati Electrical</title>
+  <meta name="description" content="Electrical safety guides, news, blogs, and technical resources from Prajapati Electrical experts.">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/products.css">
+  <style>
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .blog-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+    }
+    .blog-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+    }
+    .blog-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background: var(--section-alt-bg);
+    }
+    .blog-content {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .blog-meta {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 10px;
+      display: flex;
+      gap: 15px;
+    }
+    .blog-meta span i {
+      margin-right: 4px;
+    }
+    .blog-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.25rem;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+    .blog-excerpt {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      line-height: 1.6;
+      flex: 1;
+    }
+    .blog-readmore {
+      font-weight: 600;
+      color: var(--text-primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.3s;
+    }
+    .blog-readmore:hover {
+      color: var(--accent);
+    }
+    
+    /* Downloads Section */
+    .downloads-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 30px;
+    }
+    .download-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      transition: all 0.3s;
+    }
+    .download-item:hover {
+      border-color: var(--accent);
+    }
+    .d-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .d-icon {
+      font-size: 2rem;
+      color: #ef4444; /* PDF red */
+    }
+    .d-text h4 {
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .d-text p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Shared Navigation -->
+  <div id="pe-nav"></div>
+
+  <main>
+    <!-- ========== PAGE HERO ========== -->
+    <section class="products-hero">
+      <div class="hero-bg-effects">
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
+      </div>
+      <div class="hero-content" style="padding-top: 20px; margin: 0 auto;">
+        <div class="hero-badge">
+          <i class="fas fa-book-open"></i>
+          <span>Knowledge Base</span>
+        </div>
+        <h1>Resources & <span class="text-gradient">Blog</span></h1>
+        <p class="hero-subtitle" style="margin-bottom: 0;">Electrical safety guides, company news, and technical documentation.</p>
+      </div>
+    </section>
+
+    <!-- ========== BLOG SECTION ========== -->
+    <section class="section" style="padding-bottom: 40px;">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge"><i class="fas fa-newspaper"></i> Latest News & Articles</div>
+          <h2 class="section-title">Electrical Insights</h2>
+        </div>
+
+        <div class="blog-grid" id="blog-grid">
+          <!-- Fallback Static Content -->
+          <article class="blog-card">
+            <img src="images/placeholder.jpg" alt="House Wiring Safety" class="blog-img">
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span><i class="fas fa-calendar"></i> May 25, 2026</span>
+                <span><i class="fas fa-tag"></i> Safety Guide</span>
+              </div>
+              <h3 class="blog-title">Top 5 House Wiring Safety Tips to Prevent Short Circuits</h3>
+              <p class="blog-excerpt">Learn how proper grounding and modular switchgear installation can protect your home appliances from voltage surges during monsoon.</p>
+              <a href="blog-detail.html?id=1" class="blog-readmore">Read Full Article <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </article>
+          
+          <article class="blog-card">
+            <img src="images/placeholder.jpg" alt="AC Maintenance" class="blog-img">
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span><i class="fas fa-calendar"></i> May 18, 2026</span>
+                <span><i class="fas fa-tag"></i> Maintenance</span>
+              </div>
+              <h3 class="blog-title">Pre-Summer AC Servicing: Why Gas Checking is Crucial</h3>
+              <p class="blog-excerpt">Before turning on your Air Conditioner this summer, make sure the compressor pressure and gas levels are calibrated for optimal cooling.</p>
+              <a href="blog-detail.html?id=2" class="blog-readmore">Read Full Article <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </article>
+
+          <article class="blog-card">
+            <img src="images/placeholder.jpg" alt="Wholesale Business" class="blog-img">
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span><i class="fas fa-calendar"></i> May 10, 2026</span>
+                <span><i class="fas fa-tag"></i> Business News</span>
+              </div>
+              <h3 class="blog-title">Prajapati Electrical Expands Wholesale Distribution Network in Siwan</h3>
+              <p class="blog-excerpt">We are proud to announce the opening of two new supply chain routes bridging Deoria and Siwan to serve our growing B2B dealer network.</p>
+              <a href="blog-detail.html?id=3" class="blog-readmore">Read Full Article <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== DOWNLOADS SECTION ========== -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge"><i class="fas fa-download"></i> Downloads Hub</div>
+          <h2 class="section-title">Technical Documentation</h2>
+        </div>
+
+        <div style="max-width: 800px; margin: 0 auto;">
+          <div class="downloads-list">
+            <div class="download-item">
+              <div class="d-info">
+                <i class="fas fa-file-pdf d-icon"></i>
+                <div class="d-text">
+                  <h4>Prajapati Wholesale Product Catalogue 2026</h4>
+                  <p>PDF Document • 4.2 MB</p>
+                </div>
+              </div>
+              <a href="#" class="btn btn-secondary" onclick="alert('Catalogue download will start shortly.')"><i class="fas fa-download"></i> Download</a>
+            </div>
+            
+            <div class="download-item">
+              <div class="d-info">
+                <i class="fas fa-file-pdf d-icon"></i>
+                <div class="d-text">
+                  <h4>Residential Wiring Safety Guideline Brochure</h4>
+                  <p>PDF Document • 1.8 MB</p>
+                </div>
+              </div>
+              <a href="#" class="btn btn-secondary" onclick="alert('Brochure download will start shortly.')"><i class="fas fa-download"></i> Download</a>
+            </div>
+
+            <div class="download-item">
+              <div class="d-info">
+                <i class="fas fa-file-pdf d-icon"></i>
+                <div class="d-text">
+                  <h4>AMC (Annual Maintenance Contract) Terms</h4>
+                  <p>PDF Document • 0.5 MB</p>
+                </div>
+              </div>
+              <a href="#" class="btn btn-secondary" onclick="alert('Terms download will start shortly.')"><i class="fas fa-download"></i> Download</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared Footer -->
+  <div id="pe-footer"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/shared-components.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Attempt to load blogs dynamically if present
+      try {
+        const { data, error } = await supabase
+          .from('blogs')
+          .select('id, title, content, image_url, category, created_at, is_published')
+          .eq('is_published', true)
+          .order('created_at', { ascending: false })
+          .limit(6);
+          
+        if (data && data.length > 0) {
+          const grid = document.getElementById('blog-grid');
+          grid.innerHTML = data.map(blog => {
+            const dateStr = new Date(blog.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+            // Extract excerpt from content
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = blog.content || '';
+            const excerpt = tempDiv.textContent.substring(0, 120) + '...';
+            
+            return `
+              <article class="blog-card">
+                <img src="${blog.image_url || 'images/placeholder.jpg'}" alt="${blog.title}" class="blog-img">
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <span><i class="fas fa-calendar"></i> ${dateStr}</span>
+                    <span><i class="fas fa-tag"></i> ${blog.category || 'News'}</span>
+                  </div>
+                  <h3 class="blog-title">${blog.title}</h3>
+                  <p class="blog-excerpt">${excerpt}</p>
+                  <a href="blog-detail.html?id=${blog.id}" class="blog-readmore">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                </div>
+              </article>
+            `;
+          }).join('');
+        }
+      } catch (e) {
+        console.log("No dynamic blogs found, showing static fallbacks.");
+      }
+    });
+  </script>
+</body>
+</html>

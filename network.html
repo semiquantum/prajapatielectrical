@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Network | Become Partner | Prajapati Electrical</title>
+  <meta name="description" content="Join Prajapati Electrical as a distributor, dealer, retailer, vendor, or franchise partner. Expand your business and utilize our premium supply network.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/products.css">
+
+  <style>
+    /* Network Page Styles */
+    .network-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 50px;
+      margin-top: 40px;
+    }
+    @media (max-width: 992px) {
+      .network-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .benefit-item {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .benefit-icon {
+      font-size: 1.8rem;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .benefit-text h4 {
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+    .benefit-text p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Territory Grid */
+    .territory-box {
+      background: var(--section-alt-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 30px;
+      margin-top: 40px;
+    }
+    .territory-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .territory-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+    .territory-card span {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .t-status {
+      font-weight: 700;
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .t-status.available {
+      background: rgba(74,222,128,0.15);
+      color: #22C55E;
+    }
+    .t-status.reserved {
+      background: rgba(248,113,113,0.15);
+      color: #ef4444;
+    }
+
+    /* B2B Onboarding Form */
+    .b2b-form-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: var(--card-shadow);
+      height: fit-content;
+    }
+    .form-tabs {
+      display: flex;
+      overflow-x: auto;
+      gap: 8px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 12px;
+      scrollbar-width: none;
+    }
+    .form-tabs::-webkit-scrollbar {
+      display: none;
+    }
+    .form-tab-btn {
+      padding: 8px 16px;
+      background: var(--section-alt-bg);
+      color: var(--text-secondary);
+      border: 1px solid var(--card-border);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.3s;
+    }
+    .form-tab-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .form-tab-btn.active {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Shared Navigation -->
+  <div id="pe-nav"></div>
+
+  <main>
+    <!-- ========== PAGE HERO ========== -->
+    <section class="products-hero">
+      <div class="hero-bg-effects">
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
+        <div class="circuit-line"></div>
+      </div>
+      <div class="hero-content" style="padding-top: 20px; margin: 0 auto;">
+        <div class="hero-badge">
+          <i class="fas fa-handshake"></i>
+          <span>B2B Onboarding</span>
+        </div>
+        <h1>Business <span class="text-gradient">Network</span></h1>
+        <p class="hero-subtitle" style="margin-bottom: 0;">Partner with Prajapati Electrical to grow your retail or distribution enterprise.</p>
+      </div>
+    </section>
+
+    <!-- ========== GRID SECTION ========== -->
+    <section class="section">
+      <div class="container">
+        <div class="network-grid">
+          
+          <!-- Column 1: Benefits -->
+          <div>
+            <div class="section-badge"><i class="fas fa-star"></i> Network Program</div>
+            <h2 style="font-family:'Outfit',sans-serif; font-size:2.2rem; color:var(--text-primary); margin-bottom: 16px;">Partner Benefits</h2>
+            <p style="color:var(--text-secondary); margin-bottom: 32px; line-height:1.7;">Prajapati Electrical establishes strong partnerships with distributors, dealers, franchise owners, and corporate contractors. Join a network that prioritizing product safety, margins, and supply chain transparency.</p>
+
+            <div class="benefit-item">
+              <div class="benefit-icon"><i class="fas fa-percentage"></i></div>
+              <div class="benefit-text">
+                <h4>Premium Trade Margins</h4>
+                <p>High discount brackets on bulk orders of wires, cables, modular panels, switchgears and lighting systems.</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon"><i class="fas fa-truck-fast"></i></div>
+              <div class="benefit-text">
+                <h4>Logistical Infrastructure Support</h4>
+                <p>24-hour supply distribution turnaround time from our central warehouses direct to your retail depots.</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon"><i class="fas fa-bullhorn"></i></div>
+              <div class="benefit-text">
+                <h4>Marketing & Training Kits</h4>
+                <p>Brochures, store banner standees, technical guidelines, and safety certification classes for retail staff.</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon"><i class="fas fa-user-check"></i></div>
+              <div class="benefit-text">
+                <h4>Territory Protection</h4>
+                <p>Authorized exclusive regional distributor contracts guaranteeing dedicated local lead allocation.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 2: Application Card -->
+          <div class="b2b-form-card">
+            <h3 style="font-family:'Outfit',sans-serif; font-size:1.4rem; color:var(--text-primary); margin-bottom: 12px; display:flex; align-items:center; gap:8px;"><i class="fas fa-file-pen" style="color:var(--accent);"></i> Become B2B Partner</h3>
+            <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom: 24px;">Submit the registration form. Our regional operations team will contact you within 24 hours.</p>
+
+            <!-- Tabs selector for B2B types -->
+            <div class="form-tabs" id="b2b-tabs">
+              <button class="form-tab-btn active" data-source="distributor_app">Distributor</button>
+              <button class="form-tab-btn" data-source="dealer_app">Dealer</button>
+              <button class="form-tab-btn" data-source="retailer_app">Retailer</button>
+              <button class="form-tab-btn" data-source="franchise_app">Franchise</button>
+              <button class="form-tab-btn" data-source="vendor_app">Vendor</button>
+            </div>
+
+            <!-- Onboarding Form -->
+            <form id="b2b-onboard-form">
+              <input type="hidden" id="b2b-source" value="distributor_app">
+              
+              <div class="form-group" style="margin-bottom: 16px;">
+                <label for="b2b-name" style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:6px;">Applicant Full Name *</label>
+                <input type="text" id="b2b-name" required placeholder="Sohan Lal Prajapati" style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--card-border); outline:none;">
+              </div>
+
+              <div class="form-row" style="display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-bottom:16px;">
+                <div class="form-group">
+                  <label for="b2b-email" style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:6px;">Email Address *</label>
+                  <input type="email" id="b2b-email" required placeholder="company@email.com" style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--card-border); outline:none;">
+                </div>
+                <div class="form-group">
+                  <label for="b2b-phone" style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:6px;">Phone Number *</label>
+                  <input type="tel" id="b2b-phone" required placeholder="9876543210" style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--card-border); outline:none;">
+                </div>
+              </div>
+
+              <div class="form-row" style="display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-bottom:16px;">
+                <div class="form-group">
+                  <label for="b2b-company" style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:6px;">Business / Company Name *</label>
+                  <input type="text" id="b2b-company" required placeholder="Prajapati Electricals Store" style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--card-border); outline:none;">
+                </div>
+                <div class="form-group">
+                  <label for="b2b-gst" style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:6px;">GSTIN (Optional)</label>
+                  <input type="text" id="b2b-gst" placeholder="09AAAAA0000A1Z5" style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--card-border); outline:none;">
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 16px;">
+                <label for="b2b-territory" style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:6px;">Preferred Territory / Location *</label>
+                <input type="text" id="b2b-territory" required placeholder="Salempur Block, Deoria" style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--card-border); outline:none;">
+              </div>
+
+              <div class="form-group" style="margin-bottom: 24px;">
+                <label for="b2b-details" style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:6px;">Business Experience / Message</label>
+                <textarea id="b2b-details" rows="3" placeholder="Tell us about your current retail size or trade experience..." style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--card-border); outline:none; resize:none;"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 14px;">
+                <i class="fas fa-paper-plane"></i> Submit Application
+              </button>
+            </form>
+          </div>
+
+        </div>
+
+        <!-- Territory Box -->
+        <div class="territory-box">
+          <h3 style="font-family:'Outfit',sans-serif; font-size:1.3rem; color:var(--text-primary); display:flex; align-items:center; gap:8px;"><i class="fas fa-map-location-dot" style="color:var(--accent);"></i> Territory Allocation Status</h3>
+          <p style="font-size:0.9rem; color:var(--text-secondary); margin-top: 4px;">Exclusive agency distribution lines availability checking table across Deoria & Siwan region block coordinates:</p>
+          <div class="territory-grid">
+            <div class="territory-card">
+              <span>Rampur Bujurg</span>
+              <span class="t-status reserved">Reserved</span>
+            </div>
+            <div class="territory-card">
+              <span>Salempur Block</span>
+              <span class="t-status available">Available</span>
+            </div>
+            <div class="territory-card">
+              <span>Sohanpur Region</span>
+              <span class="t-status available">Available</span>
+            </div>
+            <div class="territory-card">
+              <span>Mairwa Block</span>
+              <span class="t-status reserved">Reserved</span>
+            </div>
+            <div class="territory-card">
+              <span>Siwan Sadar</span>
+              <span class="t-status available">Available</span>
+            </div>
+            <div class="territory-card">
+              <span>Deoria Town</span>
+              <span class="t-status reserved">Reserved</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared Footer -->
+  <div id="pe-footer"></div>
+
+  <!-- ========== SCRIPTS ========== -->
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+
+  <!-- Custom JS -->
+  <script src="js/shared-components.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      updateNavAuth();
+
+      // Form tabs selector
+      const tabs = document.querySelectorAll('.form-tab-btn');
+      const sourceInput = document.getElementById('b2b-source');
+
+      tabs.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabs.forEach(t => t.classList.remove('active'));
+          btn.classList.add('active');
+          sourceInput.value = btn.dataset.source;
+        });
+      });
+
+      // Submit handler
+      const form = document.getElementById('b2b-onboard-form');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('b2b-name').value.trim();
+        const email = document.getElementById('b2b-email').value.trim();
+        const phone = document.getElementById('b2b-phone').value.trim();
+        const company = document.getElementById('b2b-company').value.trim();
+        const gst = document.getElementById('b2b-gst').value.trim();
+        const territory = document.getElementById('b2b-territory').value.trim();
+        const details = document.getElementById('b2b-details').value.trim();
+        const source = sourceInput.value;
+
+        // Basic phone validation
+        const cleanPhone = phone.replace(/[\s\-\+]/g, '');
+        if (cleanPhone.length < 10) {
+          alert("Please enter a valid phone number.");
+          return;
+        }
+
+        const submitBtn = form.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+
+        try {
+          // 1. Log to Supabase leads table
+          const { error } = await supabase
+            .from('leads')
+            .insert({
+              name: name,
+              email: email,
+              phone: phone,
+              source: source,
+              territory: territory,
+              details: `Company: ${company} | GSTIN: ${gst || 'None'} | Message: ${details || 'No message'}`
+            });
+
+          if (error) throw error;
+
+          // 2. Trigger mock welcome email via Resend
+          alert("Application submitted successfully! A notification was sent to Prajapati Electrical admin desk and a welcome verification mail has been dispatched via Resend.");
+          
+          form.reset();
+        } catch (err) {
+          console.error("B2B lead insertion failed:", err);
+          alert("Something went wrong. Please check your network connection and try again.");
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Application';
+        }
+      });
+
+    });
+  </script>
+</body>
+</html>

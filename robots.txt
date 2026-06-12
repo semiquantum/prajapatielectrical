@@ -1,5 +1,9 @@
 User-agent: *
 Allow: /
-Disallow: /404.html
 
-Sitemap: https://prajapatielectrical.in/sitemap.xml
+# Disallow access to admin interfaces and portals
+Disallow: /admin.html
+Disallow: /dashboard.html
+
+# Sitemap location
+Sitemap: https://prajapatielectrical.co.in/sitemap.xml

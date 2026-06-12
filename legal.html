@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Legal Policies | Prajapati Electrical</title>
+  <meta name="robots" content="index, follow">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/products.css">
+
+  <style>
+    /* Legal Page tabs styling */
+    .legal-tabbed-layout {
+      display: flex;
+      gap: 40px;
+      margin-top: 20px;
+    }
+    .legal-sidebar {
+      flex: 0 0 260px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 20px;
+      height: fit-content;
+      box-shadow: var(--card-shadow);
+    }
+    .legal-tab-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 18px;
+      background: none;
+      border: none;
+      border-radius: 12px;
+      text-align: left;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .legal-tab-btn i {
+      font-size: 1.1rem;
+      width: 20px;
+      text-align: center;
+    }
+    .legal-tab-btn:hover {
+      background: var(--section-alt-bg);
+      color: var(--accent);
+    }
+    .legal-tab-btn.active {
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      color: var(--white);
+      box-shadow: 0 4px 15px var(--accent-glow);
+    }
+    .legal-content-panels {
+      flex: 1;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: var(--card-shadow);
+      min-height: 500px;
+    }
+    .legal-panel {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+    .legal-panel.active {
+      display: block;
+    }
+    .legal-panel h3 {
+      font-size: 1.8rem;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 10px;
+      display: inline-block;
+    }
+    .legal-panel h4 {
+      font-size: 1.2rem;
+      color: var(--text-primary);
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .legal-panel p {
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+    .legal-panel ul {
+      margin-bottom: 20px;
+      padding-left: 20px;
+    }
+    .legal-panel ul li {
+      margin-bottom: 8px;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      list-style-type: disc;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 992px) {
+      .legal-tabbed-layout {
+        flex-direction: column;
+      }
+      .legal-sidebar {
+        flex: none;
+        flex-direction: row;
+        overflow-x: auto;
+        padding: 10px;
+        white-space: nowrap;
+        gap: 10px;
+        scrollbar-width: none;
+      }
+      .legal-sidebar::-webkit-scrollbar {
+        display: none;
+      }
+      .legal-tab-btn {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+      }
+      .legal-content-panels {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <header>
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main Navigation">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo" aria-label="Prajapati Electrical Home">
+          <img src="images/logo.png" alt="Prajapati Electrical Logo" width="44" height="44">
+          <span>Prajapati Electrical</span>
+        </a>
+
+        <div class="nav-links" id="nav-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="services.html">Services</a>
+          <a href="products.html">Shop</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="contact.html">Contact</a>
+          <a href="auth.html" class="mobile-nav-cta" id="mobile-nav-auth">
+            <i class="fas fa-sign-in-alt"></i> Login / Sign Up
+          </a>
+        </div>
+
+        <div class="nav-actions">
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
+            <i class="fas fa-moon"></i>
+          </button>
+          <div id="nav-auth-buttons" style="display:flex;gap:8px;">
+            <a href="auth.html" class="nav-cta desktop-only">
+              <i class="fas fa-sign-in-alt"></i> Login
+            </a>
+          </div>
+          <div id="nav-user-menu" style="display:none;align-items:center;gap:8px;">
+            <a href="dashboard.html" class="nav-cta desktop-only">
+              <i class="fas fa-user"></i> <span class="user-name">Dashboard</span>
+            </a>
+          </div>
+          <button class="hamburger" id="hamburger" aria-label="Open Menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Menu Backdrop Overlay -->
+  <div id="nav-overlay"></div>
+
+  <main>
+    <!-- ========== PAGE HERO ========== -->
+    <section class="products-hero">
+      <div class="hero-bg-effects">
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
+        <div class="circuit-line"></div>
+      </div>
+      <div class="hero-content" style="padding-top: 20px; margin: 0 auto;">
+        <div class="hero-badge">
+          <i class="fas fa-scale-balanced"></i>
+          <span>Compliance & Trust</span>
+        </div>
+        <h1>Legal <span class="text-gradient">Policies</span></h1>
+        <p class="hero-subtitle" style="margin-bottom: 0;">Explore terms of service, privacy practices, cookie configurations, and refunds.</p>
+      </div>
+    </section>
+
+    <!-- ========== TABBED LEGAL POLICIES ========== -->
+    <section class="section">
+      <div class="container">
+        <div class="legal-tabbed-layout">
+          <!-- Sidebar Tabs -->
+          <div class="legal-sidebar">
+            <button class="legal-tab-btn active" data-tab="privacy"><i class="fas fa-user-shield"></i> Privacy Policy</button>
+            <button class="legal-tab-btn" data-tab="terms"><i class="fas fa-file-signature"></i> Terms & Conditions</button>
+            <button class="legal-tab-btn" data-tab="refund"><i class="fas fa-wallet"></i> Refund Policy</button>
+            <button class="legal-tab-btn" data-tab="cookie"><i class="fas fa-cookie-bite"></i> Cookie Policy</button>
+            <button class="legal-tab-btn" data-tab="disclaimer"><i class="fas fa-triangle-exclamation"></i> Disclaimer</button>
+          </div>
+
+          <!-- Content Panels -->
+          <div class="legal-content-panels">
+            
+            <!-- panel: privacy -->
+            <div class="legal-panel active" id="panel-privacy">
+              <h3>Privacy Policy</h3>
+              <p>Last updated: June 12, 2026</p>
+              <p>Prajapati Electrical ("us", "we", or "our") operates the website PrajapatiElectrical.co.in. This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our website, B2B partner applications, or booking portals.</p>
+              
+              <h4>Information We Collect</h4>
+              <p>We collect personal coordinates to verify transactions, manage service requests, and authenticate account dashboards. This includes:</p>
+              <ul>
+                <li>Identity Data: Full Name, email, phone number.</li>
+                <li>B2B Data: Business coordinates, GSTIN, territory locations.</li>
+                <li>Transaction Data: Payment IDs, order parameters, invoices.</li>
+                <li>Media Data: Work site photographs uploaded by employees, applicant resumes.</li>
+              </ul>
+
+              <h4>Data Security</h4>
+              <p>Your database coordinates are secured via Supabase using strict Row Level Security (RLS) policies. Access to employee tasks, invoices, or tickets is granted solely to matching profiles or authorized administrative accounts.</p>
+            </div>
+
+            <!-- panel: terms -->
+            <div class="legal-panel" id="panel-terms">
+              <h3>Terms & Conditions</h3>
+              <p>Last updated: June 12, 2026</p>
+              <p>Please read these Terms & Conditions ("Terms", "Terms of Service") carefully before using the PrajapatiElectrical.co.in website operated by Prajapati Electrical.</p>
+              
+              <h4>Service Bookings & Estimates</h4>
+              <p>All service estimations generated by our online Estimator tool are approximations. Final pricing will be determined upon physical inspection by our certified technician and logged on the bookings database.</p>
+              
+              <h4>B2B Partner Terms</h4>
+              <p>All B2B applications for distributors, dealers, or vendors are subject to manual verification. We reserve the right to restrict territory codes or terminate partner dashboard privileges upon violation of safety standard protocols.</p>
+            </div>
+
+            <!-- panel: refund -->
+            <div class="legal-panel" id="panel-refund">
+              <h3>Refund Policy</h3>
+              <p>Last updated: June 12, 2026</p>
+              
+              <h4>Service Bookings</h4>
+              <p>If you cancel a booking request 24 hours prior to the scheduled technician visit, a full refund of any booking deposit will be initiated to your Razorpay account.</p>
+              
+              <h4>Product Returns</h4>
+              <p>We stand by the quality of our ISI-certified materials. Returns for modular switchgears, wires, lighting fixtures are accepted within 7 days of delivery under the following conditions:</p>
+              <ul>
+                <li>Items must remain in original packaging, undamaged and unused.</li>
+                <li>Invoice receipt must be provided.</li>
+                <li>Custom-cut cables or wires are ineligible for refund/return.</li>
+              </ul>
+            </div>
+
+            <!-- panel: cookie -->
+            <div class="legal-panel" id="panel-cookie">
+              <h3>Cookie Policy</h3>
+              <p>Last updated: June 12, 2026</p>
+              <p>We utilize cookies to optimize website navigation, maintain secure Supabase sessions, and load personalized dashboard settings. By using PrajapatiElectrical.co.in, you consent to our use of cookies in accordance with this policy.</p>
+              
+              <h4>Types of Cookies</h4>
+              <ul>
+                <li>Essential Cookies: Needed to maintain session authentication and login state.</li>
+                <li>Analytical Cookies: Integrated via Google Analytics to track user interactions and optimize page load performance.</li>
+              </ul>
+            </div>
+
+            <!-- panel: disclaimer -->
+            <div class="legal-panel" id="panel-disclaimer">
+              <h3>Disclaimer</h3>
+              <p>Last updated: June 12, 2026</p>
+              <p>The information contained on PrajapatiElectrical.co.in is for general information purposes only. While we endeavor to keep specifications, price ranges, and catalog lists accurate, we make no guarantees of absolute real-time updates.</p>
+              <p>All physical electrical installations, home rewiring, AC repairs, or industrial grid fittings MUST be executed under the supervision of a licensed contractor technician. Prajapati Electrical is not liable for hazards arising from DIY attempts or third-party electrical modifications.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <div class="footer-logo">
+          <img src="images/logo.png" alt="Prajapati Electrical" width="44" height="44">
+          <span>Prajapati Electrical</span>
+        </div>
+        <p>Premium electrical materials and services in Rampur Bujurg, Deoria.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Prajapati Electrical. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ========== SCRIPTS ========== -->
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      updateNavAuth();
+
+      // Tab switcher
+      const tabBtns = document.querySelectorAll('.legal-tab-btn');
+      const panels = document.querySelectorAll('.legal-panel');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabBtns.forEach(t => t.classList.remove('active'));
+          panels.forEach(p => p.classList.remove('active'));
+
+          btn.classList.add('active');
+          const targetPanel = document.getElementById(`panel-${btn.dataset.tab}`);
+          if (targetPanel) targetPanel.classList.add('active');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

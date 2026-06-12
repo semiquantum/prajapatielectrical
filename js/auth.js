@@ -4,11 +4,11 @@
 
 document.addEventListener('DOMContentLoaded', async () => {
 
-  // ── Check if already logged in ──
+  // ── Guard routing dispatcher ──
   const user = await getCurrentUser();
   if (user) {
     const profile = await getCurrentProfile();
-    if (profile?.role === 'admin') {
+    if (['super_admin', 'admin', 'owner', 'manager'].includes(profile?.role)) {
       window.location.href = 'admin.html';
     } else {
       window.location.href = 'dashboard.html';
@@ -32,6 +32,17 @@ document.addEventListener('DOMContentLoaded', async () => {
   const forgotLink = document.getElementById('forgot-password-link');
   const resetBackBtn = document.getElementById('reset-back-btn');
 
+  const otpView = document.getElementById('auth-otp-view');
+  const otpBackBtn = document.getElementById('otp-back-btn');
+  const otpForm = document.getElementById('otp-form');
+  const otpMessage = document.getElementById('otp-message');
+  const otpMessageText = document.getElementById('otp-message-text');
+  const resendBtn = document.getElementById('resend-otp-btn');
+  const resendTimer = document.getElementById('resend-timer');
+  const otpTargetEmail = document.getElementById('otp-target-email');
+
+  let currentSignupEmail = '';
+
   // ── Tab Switching ──
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
@@ -51,7 +62,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         loginForm.classList.remove('active');
         signupForm.classList.add('active');
         authHeading.textContent = 'Create Account';
-        authSubtitle.textContent = 'Sign up to book electrical services online';
+        authSubtitle.textContent = 'Sign up to access dashboards and partner portals';
       }
     });
   });
@@ -73,7 +84,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   });
 
-  // ── Show/Hide Message ──
+  // ── Message Banner control ──
   function showMessage(el, textEl, text, type = 'error') {
     textEl.textContent = text;
     el.className = `auth-message show ${type}`;
@@ -87,7 +98,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     el.classList.remove('show');
   }
 
-  // ── Set Button Loading ──
   function setLoading(btn, loading) {
     if (loading) {
       btn.classList.add('loading');
@@ -98,7 +108,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   }
 
-  // ── LOGIN ──
+  // ── LOGIN SUBMIT ──
   loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     hideMessage(authMessage);
@@ -115,7 +125,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     setLoading(btn, true);
 
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
+      const { error } = await supabase.auth.signInWithPassword({
         email,
         password
       });
@@ -126,26 +136,27 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
       }
 
-      // Check role and redirect
+      // Check role dispatch
       const profile = await getCurrentProfile();
-      if (profile?.role === 'admin') {
+      if (['super_admin', 'admin', 'owner', 'manager'].includes(profile?.role)) {
         window.location.href = 'admin.html';
       } else {
         window.location.href = 'dashboard.html';
       }
     } catch (err) {
-      showMessage(authMessage, authMessageText, 'An unexpected error occurred. Please try again.');
+      showMessage(authMessage, authMessageText, 'Connection latency or authentication failure. Retry.');
       setLoading(btn, false);
     }
   });
 
-  // ── SIGNUP ──
+  // ── SIGNUP SUBMIT ──
   signupForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     hideMessage(authMessage);
 
     const name = document.getElementById('signup-name').value.trim();
     const phone = document.getElementById('signup-phone').value.trim();
+    const role = document.getElementById('signup-role').value;
     const email = document.getElementById('signup-email').value.trim();
     const password = document.getElementById('signup-password').value;
     const btn = document.getElementById('signup-btn');
@@ -169,7 +180,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         options: {
           data: {
             full_name: name,
-            phone: phone
+            phone: phone,
+            role: role
           }
         }
       });
@@ -180,22 +192,94 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
       }
 
-      // If email confirmation is required
       if (data.user && !data.session) {
-        showMessage(authMessage, authMessageText,
-          'Account created! Please check your email to verify your account before logging in.',
-          'success'
-        );
+        currentSignupEmail = email;
+        otpTargetEmail.textContent = email;
+        mainView.style.display = 'none';
+        otpView.style.display = 'block';
         signupForm.reset();
         setLoading(btn, false);
       } else {
-        // Auto-confirmed (if email confirmation is disabled)
         window.location.href = 'dashboard.html';
       }
     } catch (err) {
-      showMessage(authMessage, authMessageText, 'An unexpected error occurred. Please try again.');
+      showMessage(authMessage, authMessageText, 'Sign up latency error.');
       setLoading(btn, false);
     }
+  });
+
+  // ── OTP VERIFICATION ──
+  otpForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    hideMessage(otpMessage);
+
+    const token = document.getElementById('otp-code').value.trim();
+    const btn = document.getElementById('otp-btn');
+
+    if (token.length !== 6) {
+      showMessage(otpMessage, otpMessageText, 'Please enter a valid 6-digit code.');
+      return;
+    }
+
+    setLoading(btn, true);
+
+    try {
+      const { data, error } = await supabase.auth.verifyOtp({
+        email: currentSignupEmail,
+        token: token,
+        type: 'signup'
+      });
+
+      if (error) {
+        showMessage(otpMessage, otpMessageText, error.message);
+        setLoading(btn, false);
+        return;
+      }
+
+      window.location.href = 'dashboard.html';
+    } catch (err) {
+      showMessage(otpMessage, otpMessageText, 'Verification connection error.');
+      setLoading(btn, false);
+    }
+  });
+
+  // ── RESEND OTP ──
+  resendBtn.addEventListener('click', async () => {
+    resendBtn.style.display = 'none';
+    resendTimer.style.display = 'inline';
+    
+    try {
+      const { error } = await supabase.auth.resend({
+        type: 'signup',
+        email: currentSignupEmail,
+      });
+
+      if (error) {
+        showMessage(otpMessage, otpMessageText, error.message);
+      } else {
+        showMessage(otpMessage, otpMessageText, 'OTP resent via Resend! Check your inbox.', 'success');
+      }
+    } catch (err) {
+      showMessage(otpMessage, otpMessageText, 'Failed to resend OTP.');
+    }
+    
+    let timeLeft = 60;
+    resendTimer.textContent = `(${timeLeft}s)`;
+    const timerId = setInterval(() => {
+      timeLeft--;
+      resendTimer.textContent = `(${timeLeft}s)`;
+      if (timeLeft <= 0) {
+        clearInterval(timerId);
+        resendTimer.style.display = 'none';
+        resendBtn.style.display = 'inline';
+      }
+    }, 1000);
+  });
+
+  otpBackBtn.addEventListener('click', () => {
+    otpView.style.display = 'none';
+    mainView.style.display = 'block';
+    hideMessage(otpMessage);
   });
 
   // ── FORGOT PASSWORD ──
@@ -219,7 +303,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const btn = document.getElementById('reset-btn');
 
     if (!email) {
-      showMessage(resetMessage, resetMessageText, 'Please enter your email address.');
+      showMessage(resetMessage, resetMessageText, 'Please enter email address.');
       return;
     }
 
@@ -234,28 +318,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         showMessage(resetMessage, resetMessageText, error.message);
       } else {
         showMessage(resetMessage, resetMessageText,
-          'Password reset link sent! Check your email inbox.',
+          'Password reset link logged and dispatched! Check inbox.',
           'success'
         );
         resetForm.reset();
       }
     } catch (err) {
-      showMessage(resetMessage, resetMessageText, 'An unexpected error occurred.');
+      showMessage(resetMessage, resetMessageText, 'Reset link dispatch error.');
     }
-
     setLoading(btn, false);
   });
 
-  // ── Handle URL params (e.g., redirect from booking) ──
-  const urlParams = new URLSearchParams(window.location.search);
-  const redirectMsg = urlParams.get('msg');
-  if (redirectMsg === 'login_required') {
-    showMessage(authMessage, authMessageText, 'Please login to book a service.', 'info');
-  }
-
-  // Check for tab param
-  const tabParam = urlParams.get('tab');
-  if (tabParam === 'signup') {
-    document.getElementById('tab-signup').click();
-  }
 });

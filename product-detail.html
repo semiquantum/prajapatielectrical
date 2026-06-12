@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Detail | Prajapati Electrical</title>
+  <meta name="description" content="Detailed view of Prajapati Electrical wholesale and retail products.">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/products.css">
+  <style>
+    .product-detail-hero {
+      padding: 140px 0 60px;
+      background: var(--bg-color);
+    }
+    .pdetail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: start;
+    }
+    @media (max-width: 992px) {
+      .pdetail-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .pdetail-image {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      box-shadow: var(--card-shadow);
+    }
+    .pdetail-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+    .pdetail-info h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.2rem;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+    .pdetail-brand {
+      display: inline-block;
+      padding: 4px 12px;
+      background: rgba(255, 107, 0, 0.1);
+      color: var(--accent);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .pdetail-price {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+    }
+    .pdetail-price .original {
+      text-decoration: line-through;
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      margin-left: 10px;
+      font-weight: 400;
+    }
+    .pdetail-desc {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+    .pdetail-features {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 30px;
+    }
+    .pdetail-features li {
+      margin-bottom: 10px;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .pdetail-features li i {
+      color: #22c55e;
+    }
+    .pdetail-actions {
+      display: flex;
+      gap: 16px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Shared Navigation -->
+  <div id="pe-nav"></div>
+
+  <main>
+    <section class="product-detail-hero">
+      <div class="container">
+        <!-- Breadcrumb -->
+        <div style="margin-bottom: 20px; font-size: 0.9rem; color: var(--text-secondary);">
+          <a href="index.html" style="color: var(--text-primary);">Home</a> / 
+          <a href="products.html" style="color: var(--text-primary);">Shop</a> / 
+          <span id="bc-title">Loading...</span>
+        </div>
+
+        <div class="pdetail-grid">
+          <!-- Image -->
+          <div class="pdetail-image">
+            <img src="images/placeholder.jpg" alt="Product Image" id="pd-img" style="min-height: 300px; object-fit: contain;">
+          </div>
+          <!-- Info -->
+          <div class="pdetail-info">
+            <div class="pdetail-brand" id="pd-brand">Brand</div>
+            <h1 id="pd-title">Product Name Loading...</h1>
+            <div class="pdetail-price">
+              <span id="pd-price">₹0.00</span>
+              <span class="original" id="pd-mrp">₹0.00</span>
+            </div>
+            
+            <p class="pdetail-desc" id="pd-desc">Product description will load here shortly.</p>
+            
+            <h4 style="font-family:'Outfit',sans-serif; margin-bottom: 12px; color:var(--text-primary);">Key Features:</h4>
+            <ul class="pdetail-features" id="pd-features">
+              <!-- Dynamically populated -->
+              <li><i class="fas fa-check-circle"></i> High Quality</li>
+              <li><i class="fas fa-check-circle"></i> Standard Warranty</li>
+            </ul>
+
+            <div style="background: var(--section-alt-bg); border: 1px solid var(--card-border); padding: 16px; border-radius: 12px; margin-bottom: 30px;">
+              <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0;">
+                <i class="fas fa-truck" style="color:var(--accent); margin-right: 8px;"></i> Wholesale Delivery Available in Deoria & Siwan
+              </p>
+            </div>
+
+            <div class="pdetail-actions">
+              <button class="btn btn-primary" style="flex:1; justify-content:center; padding: 14px;" onclick="window.location.href='https://wa.me/917250191427?text=I am interested in buying this product'">
+                <i class="fab fa-whatsapp"></i> Buy on WhatsApp
+              </button>
+              <button class="btn btn-secondary" style="flex:1; justify-content:center; padding: 14px;" onclick="window.location.href='network.html'">
+                <i class="fas fa-box"></i> Bulk Inquiry
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared Footer -->
+  <div id="pe-footer"></div>
+
+  <!-- Scripts -->
+  <script src="js/shared-components.js"></script>
+  <script src="js/main.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Mock data load based on URL params (for presentation purposes)
+      // In production, this would fetch from Supabase by ID
+      const urlParams = new URLSearchParams(window.location.search);
+      const id = urlParams.get('id');
+      
+      const title = urlParams.get('title') || 'Premium Electrical Component';
+      const price = urlParams.get('price') || '₹1,500';
+      const mrp = urlParams.get('mrp') || '₹2,000';
+      const brand = urlParams.get('brand') || 'Havells';
+      const image = urlParams.get('img') || 'images/placeholder.jpg';
+      
+      document.getElementById('bc-title').textContent = title;
+      document.getElementById('pd-title').textContent = title;
+      document.getElementById('pd-price').textContent = price;
+      document.getElementById('pd-mrp').textContent = mrp;
+      document.getElementById('pd-brand').textContent = brand;
+      document.getElementById('pd-img').src = image;
+      
+      // Update page title
+      document.title = `${title} | Prajapati Electrical Shop`;
+    });
+  </script>
+</body>
+</html>

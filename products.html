@@ -20,60 +20,422 @@
   <!-- Styles -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/products.css">
+
+  <style>
+    /* Downloads Section */
+    .download-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+      margin-top: 10px;
+    }
+    .download-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      transition: all 0.3s;
+      box-shadow: var(--card-shadow);
+    }
+    .download-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+    .download-icon {
+      font-size: 2.2rem;
+      color: var(--accent);
+    }
+    .download-info h4 {
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .download-info p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: var(--section-alt-bg);
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      transition: all 0.3s;
+    }
+    .download-card:hover .btn-download {
+      background: var(--accent);
+      color: white;
+    }
+
+    /* Comparison Panel */
+    .compare-panel {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(120%);
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 50px;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+      z-index: 999;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .compare-panel.active {
+      transform: translateX(-50%) translateY(0);
+    }
+    .compare-info {
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+    .compare-btn {
+      padding: 8px 20px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .compare-clear {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    /* Checkbox overlay on product card */
+    .compare-checkbox-label {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      z-index: 10;
+      transition: all 0.3s;
+      color: var(--text-secondary);
+    }
+    .compare-checkbox-label input {
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+    .compare-checkbox-label:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Modal Styling */
+    .p-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 22, 40, 0.8);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 16px;
+      animation: fadeIn 0.3s ease;
+    }
+    .p-modal-overlay.open {
+      display: flex;
+    }
+    .p-modal {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      width: 100%;
+      max-width: 800px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+      position: relative;
+      animation: slideUp 0.4s ease;
+    }
+    .p-modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--section-alt-bg);
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-primary);
+      transition: all 0.3s;
+      z-index: 10;
+    }
+    .p-modal-close:hover {
+      background: var(--accent);
+      color: white;
+    }
+    .p-modal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 32px;
+      padding: 40px;
+    }
+    @media (max-width: 768px) {
+      .p-modal-grid {
+        grid-template-columns: 1fr;
+        padding: 24px;
+      }
+    }
+    .p-modal-image-wrap {
+      background: var(--section-alt-bg);
+      border-radius: 16px;
+      height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+    }
+    .p-modal-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .p-modal-details {
+      display: flex;
+      flex-direction: column;
+    }
+    .p-modal-cat {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--accent);
+      letter-spacing: 1.5px;
+      margin-bottom: 6px;
+    }
+    .p-modal-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.8rem;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+    .p-modal-brand {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+    .p-modal-desc {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .p-modal-specs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 24px;
+    }
+    .p-modal-specs-table td {
+      padding: 10px 14px;
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--card-border);
+    }
+    .p-modal-specs-table td:first-child {
+      font-weight: 600;
+      color: var(--text-primary);
+      width: 130px;
+    }
+    .p-modal-specs-table td:last-child {
+      color: var(--text-secondary);
+    }
+    .p-modal-price-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .p-modal-price {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .p-modal-mrp {
+      font-size: 1.1rem;
+      color: var(--gray);
+      text-decoration: line-through;
+    }
+    .p-modal-discount {
+      background: rgba(74,222,128,0.15);
+      color: #4ade80;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+    }
+    .p-modal-actions {
+      display: flex;
+      gap: 16px;
+      margin-top: auto;
+    }
+    .btn-buy-now {
+      flex: 1;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 15px var(--accent-glow);
+    }
+    .btn-buy-now:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px var(--accent-glow);
+    }
+    .btn-wa-inquire {
+      padding: 14px 24px;
+      background: #25D366;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+    .btn-wa-inquire:hover {
+      background: #1ebe57;
+      transform: translateY(-2px);
+    }
+
+    /* Comparison Modal Styling */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+    .compare-table th, .compare-table td {
+      padding: 16px;
+      border: 1px solid var(--card-border);
+      font-size: 0.9rem;
+    }
+    .compare-table th {
+      background: var(--section-alt-bg);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .compare-table td img {
+      max-height: 80px;
+      border-radius: 8px;
+      margin: 0 auto;
+    }
+    .compare-title-col {
+      font-weight: 700;
+      color: var(--text-primary);
+      width: 140px;
+      background: var(--section-alt-bg);
+    }
+
+    /* Payment Simulator Card */
+    .pay-sim-modal {
+      background: var(--card-bg);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 400px;
+      padding: 30px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+      border: 1px solid var(--card-border);
+      text-align: center;
+      position: relative;
+    }
+    .pay-sim-header {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #0A2A66;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 12px;
+    }
+    .pay-sim-price {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+    .pay-sim-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .pay-sim-btn {
+      padding: 12px;
+      border: 1px solid var(--card-border);
+      background: var(--section-alt-bg);
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.3s;
+      color: var(--text-primary);
+    }
+    .pay-sim-btn:hover {
+      border-color: var(--accent);
+      background: rgba(255, 107, 0, 0.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+
+  <!-- Razorpay Standard Checkout SDK -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 <body>
 
-  <!-- ========== NAVBAR ========== -->
-  <header>
-    <nav class="navbar" id="navbar" role="navigation" aria-label="Main Navigation">
-      <div class="nav-container">
-        <a href="home.html" class="nav-logo" aria-label="Prajapati Electrical Home">
-          <img src="images/logo.png" alt="Prajapati Electrical Logo" width="44" height="44">
-          <span>Prajapati Electrical</span>
-        </a>
-
-        <div class="nav-links" id="nav-links">
-          <a href="home.html">Home</a>
-          <a href="about.html">About</a>
-          <a href="services.html">Services</a>
-          <a href="products.html" class="active">Shop</a>
-          <a href="gallery.html">Gallery</a>
-          <a href="contact.html">Contact</a>
-          <!-- Mobile-only Login/Dashboard link -->
-          <a href="auth.html" class="mobile-nav-cta" id="mobile-nav-auth">
-            <i class="fas fa-sign-in-alt"></i> Login / Sign Up
-          </a>
-        </div>
-
-        <div class="nav-actions">
-          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
-            <i class="fas fa-moon"></i>
-          </button>
-
-          <!-- Auth Buttons (visible when logged out) -->
-          <div id="nav-auth-buttons" style="display:flex;gap:8px;">
-            <a href="auth.html" class="nav-cta desktop-only">
-              <i class="fas fa-sign-in-alt"></i> Login
-            </a>
-          </div>
-
-          <!-- User Menu (visible when logged in) -->
-          <div id="nav-user-menu" style="display:none;align-items:center;gap:8px;">
-            <a href="dashboard.html" class="nav-cta desktop-only">
-              <i class="fas fa-user"></i> <span class="user-name">Dashboard</span>
-            </a>
-          </div>
-
-          <button class="hamburger" id="hamburger" aria-label="Open Menu">
-            <span></span><span></span><span></span>
-          </button>
-        </div>
-      </div>
-    </nav>
-  </header>
-
-  <!-- Mobile Menu Backdrop Overlay -->
-  <div id="nav-overlay"></div>
+  <!-- Shared Navigation -->
+  <div id="pe-nav"></div>
 
   <!-- ========== HERO ========== -->
   <section class="products-hero">
@@ -83,22 +445,47 @@
       <div class="hero-glow hero-glow-3"></div>
       <div class="circuit-line"></div>
       <div class="circuit-line"></div>
-      <div class="circuit-line"></div>
-      <div class="circuit-line"></div>
     </div>
     <div class="hero-content" style="padding-top: 20px; margin: 0 auto;">
       <div class="hero-badge">
         <i class="fas fa-bolt"></i>
-        <span>Our Catalog</span>
+        <span>Product Portal</span>
       </div>
       <h1>Our <span class="text-gradient">Products</span></h1>
-      <p class="hero-subtitle" style="margin-bottom: 0;">Quality electrical materials at wholesale and retail prices. Browse our complete catalog.</p>
+      <p class="hero-subtitle" style="margin-bottom: 0;">ISO-certified, ISI-approved materials from premium brands at wholesale B2B pricing.</p>
     </div>
   </section>
 
-  <!-- ========== PRODUCTS ========== -->
+  <!-- ========== PRODUCTS SECTION ========== -->
   <section class="products-section">
     <div class="products-container">
+      
+      <!-- Catalog Download Center -->
+      <div class="section-header" style="margin-bottom: 24px; text-align: left;">
+        <div class="section-badge"><i class="fas fa-file-pdf"></i> Download Center</div>
+        <h2 class="section-title" style="font-size: 1.8rem; margin-bottom: 8px;">Brochures & Catalogues</h2>
+        <p class="section-desc" style="margin: 0; max-width: 100%;">Download our comprehensive technical brochures, cables catalogues, and modular electrical price sheets.</p>
+      </div>
+
+      <div class="download-grid">
+        <div class="download-card">
+          <div class="download-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+          <div class="download-info">
+            <h4>Wires & Cables Price List</h4>
+            <p>PDF Catalogue • 4.2 MB • Updated June 2026</p>
+            <a href="https://havells.com/content/dam/havells/catalogue/w&c-june-26.pdf" class="btn-download" target="_blank"><i class="fas fa-cloud-download-alt"></i> Download Price List</a>
+          </div>
+        </div>
+        <div class="download-card">
+          <div class="download-icon"><i class="fas fa-lightbulb"></i></div>
+          <div class="download-info">
+            <h4>LED & Switchgears Brochure</h4>
+            <p>PDF Brochure • 3.8 MB • Updated May 2026</p>
+            <a href="https://havells.com/content/dam/havells/catalogue/led-may-26.pdf" class="btn-download" target="_blank"><i class="fas fa-cloud-download-alt"></i> Download Brochure</a>
+          </div>
+        </div>
+      </div>
+
       <!-- Category Chips -->
       <div class="cat-chips" id="cat-chips">
         <button class="cat-chip active" data-cat="">All Products</button>
@@ -108,7 +495,7 @@
       <div class="products-filter-bar">
         <div class="search-wrap">
           <i class="fas fa-search"></i>
-          <input type="text" class="products-search" id="products-search" placeholder="Search products by name, brand...">
+          <input type="text" class="products-search" id="products-search" placeholder="Search products by name, brand, specifications...">
         </div>
         <select class="products-cat-filter" id="products-cat-select">
           <option value="">All Categories</option>
@@ -126,7 +513,6 @@
         <div class="product-skeleton"><div class="skel-img"></div><div class="skel-body"><div class="skel-line w60"></div><div class="skel-line w40"></div><div class="skel-line w80"></div></div></div>
         <div class="product-skeleton"><div class="skel-img"></div><div class="skel-body"><div class="skel-line w60"></div><div class="skel-line w40"></div><div class="skel-line w80"></div></div></div>
         <div class="product-skeleton"><div class="skel-img"></div><div class="skel-body"><div class="skel-line w60"></div><div class="skel-line w40"></div><div class="skel-line w80"></div></div></div>
-        <div class="product-skeleton"><div class="skel-img"></div><div class="skel-body"><div class="skel-line w60"></div><div class="skel-line w40"></div><div class="skel-line w80"></div></div></div>
       </div>
 
       <!-- Empty State -->
@@ -138,61 +524,64 @@
     </div>
   </section>
 
-  <!-- ========== FOOTER ========== -->
-  <footer class="footer" role="contentinfo">
-    <div class="footer-grid">
-      <div class="footer-about">
-        <div class="footer-logo">
-          <img src="images/logo.png" alt="Prajapati Electrical" width="44" height="44">
-          <span>Prajapati Electrical</span>
-        </div>
-        <p>Your trusted partner for all electrical products and services in Rampur Bujurg and nearby areas.</p>
-      </div>
-      <div>
-        <h4>Quick Links</h4>
-        <ul class="footer-links">
-          <li><a href="home.html"><i class="fas fa-chevron-right"></i> Home</a></li>
-          <li><a href="about.html"><i class="fas fa-chevron-right"></i> About</a></li>
-          <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
-          <li><a href="products.html"><i class="fas fa-chevron-right"></i> Shop</a></li>
-          <li><a href="gallery.html"><i class="fas fa-chevron-right"></i> Gallery</a></li>
-          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact Us</h4>
-        <div class="footer-contact-item">
-          <i class="fas fa-phone"></i>
-          <a href="tel:+917250191427">+91 7250191427</a>
-        </div>
-        <div class="footer-contact-item">
-          <i class="fas fa-location-dot"></i>
-          <p>Rampur Bujurg, Deoria, UP</p>
-        </div>
+  <!-- ========== PRODUCT DETAILS MODAL ========== -->
+  <div class="p-modal-overlay" id="product-detail-overlay">
+    <div class="p-modal">
+      <button class="p-modal-close" id="product-modal-close"><i class="fas fa-times"></i></button>
+      <div class="p-modal-grid" id="product-modal-content">
+        <!-- Rendered dynamically in products.js -->
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; <span id="current-year">2026</span> Prajapati Electrical. All Rights Reserved.</p>
-      <p>Developed by <a href="https://www.semiquantum.live" target="_blank" rel="noopener">SemiQuantum Technologies</a></p>
-    </div>
-  </footer>
-
-  <!-- ========== FLOATING BUTTONS ========== -->
-  <div class="floating-btns">
-    <a href="https://wa.me/917250191427?text=Hello%20Prajapati%20Electrical!" class="float-btn float-btn-whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp">
-      <i class="fab fa-whatsapp"></i>
-    </a>
-    <a href="tel:+917250191427" class="float-btn float-btn-call" aria-label="Call Now">
-      <i class="fas fa-phone"></i>
-    </a>
-    <button class="float-btn float-btn-top" id="back-to-top" aria-label="Back to Top">
-      <i class="fas fa-arrow-up"></i>
-    </button>
   </div>
+
+  <!-- ========== COMPARISON MODAL ========== -->
+  <div class="p-modal-overlay" id="comparison-overlay">
+    <div class="p-modal" style="max-width: 950px;">
+      <button class="p-modal-close" id="compare-modal-close"><i class="fas fa-times"></i></button>
+      <div style="padding: 40px;">
+        <h3 style="font-family:'Outfit',sans-serif; font-size:1.6rem; color:var(--text-primary); margin-bottom: 24px; border-bottom: 2px solid var(--accent); padding-bottom: 8px;">Product Comparison</h3>
+        <div style="overflow-x: auto;">
+          <table class="compare-table" id="compare-table-element">
+            <!-- Rendered dynamically in products.js -->
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== FLOATING COMPARE PANEL ========== -->
+  <div class="compare-panel" id="compare-panel">
+    <span class="compare-info" id="compare-panel-info">0 Products Selected</span>
+    <button class="compare-btn" id="compare-panel-btn">Compare Now</button>
+    <button class="compare-clear" id="compare-panel-clear">Clear</button>
+  </div>
+
+  <!-- ========== RAZORPAY PAYMENT SIMULATOR MODAL ========== -->
+  <div class="p-modal-overlay" id="payment-simulator-overlay" style="z-index: 3000;">
+    <div class="pay-sim-modal">
+      <div class="pay-sim-header">
+        <i class="fas fa-shield-halved" style="color: #2b6cb0;"></i> Razorpay Secure checkout
+      </div>
+      <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 4px;">Prajapati Electrical Order</div>
+      <div class="pay-sim-price" id="pay-sim-price-display">₹0</div>
+      
+      <div class="pay-sim-methods">
+        <button class="pay-sim-btn" onclick="simPaymentSuccess()"><i class="fas fa-credit-card" style="color:var(--accent);"></i> Simulated Card Payment (Success)</button>
+        <button class="pay-sim-btn" onclick="simPaymentSuccess()"><i class="fa-brands fa-google-pay" style="color:#4285F4;"></i> Simulated UPI/GPay (Success)</button>
+        <button class="pay-sim-btn" onclick="simPaymentFail()" style="background: rgba(239, 68, 68, 0.05);"><i class="fas fa-exclamation-triangle" style="color:#ef4444;"></i> Simulate Payment Failure</button>
+      </div>
+      
+      <button class="p-modal-close" onclick="closePaySimulator()" style="top:10px; right:10px;"><i class="fas fa-times"></i></button>
+    </div>
+  </div>
+
+  <!-- Shared Footer -->
+  <div id="pe-footer"></div>
 
   <!-- Supabase JS SDK -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/supabase-config.js"></script>
+  <script src="js/shared-components.js"></script>
   <script src="js/products.js"></script>
   <script src="js/main.js"></script>
 </body>

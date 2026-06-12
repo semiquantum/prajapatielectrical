@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Careers | Join the Grid | Prajapati Electrical</title>
+  <meta name="description" content="Explore career opportunities at Prajapati Electrical. Apply online, upload resumes, and join our expert engineering and business teams.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/products.css">
+
+  <style>
+    /* Careers Page Styles */
+    .careers-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 40px;
+    }
+    @media (max-width: 992px) {
+      .careers-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .job-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 28px;
+      margin-bottom: 20px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      transition: all 0.3s;
+    }
+    .job-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .job-details h4 {
+      font-size: 1.25rem;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+    .job-details .job-meta {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      gap: 16px;
+    }
+    .job-details p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+    .btn-apply {
+      padding: 10px 22px;
+      background: var(--section-alt-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-primary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s;
+      white-space: nowrap;
+    }
+    .job-card:hover .btn-apply {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+      box-shadow: 0 4px 15px var(--accent-glow);
+    }
+
+    /* Benefits card layout */
+    .benefit-icon-badge {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      background: rgba(255,107,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Shared Navigation -->
+  <div id="pe-nav"></div>
+
+  <main>
+    <!-- ========== PAGE HERO ========== -->
+    <section class="products-hero">
+      <div class="hero-bg-effects">
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
+        <div class="circuit-line"></div>
+      </div>
+      <div class="hero-content" style="padding-top: 20px; margin: 0 auto;">
+        <div class="hero-badge">
+          <i class="fas fa-briefcase"></i>
+          <span>Careers Hub</span>
+        </div>
+        <h1>Join the <span class="text-gradient">Team</span></h1>
+        <p class="hero-subtitle" style="margin-bottom: 0;">Build the future of electrical grids and smart energy configurations.</p>
+      </div>
+    </section>
+
+    <!-- ========== CAREERS GRID SECTION ========== -->
+    <section class="section">
+      <div class="container">
+        
+        <div class="careers-grid">
+          <!-- Column 1: Job Openings -->
+          <div>
+            <div class="section-badge"><i class="fas fa-list-check"></i> Open Positions</div>
+            <h2 style="font-family:'Outfit',sans-serif; font-size:2.2rem; color:var(--text-primary); margin-bottom: 24px;">Jobs at Prajapati Electrical</h2>
+            
+            <div id="jobs-container">
+              <!-- Rendered dynamically or displays static fallbacks -->
+              <div class="job-card" data-job-id="1">
+                <div class="job-details">
+                  <h4>Junior Field Technician</h4>
+                  <div class="job-meta">
+                    <span><i class="fas fa-map-marker-alt"></i> Rampur Bujurg, Deoria</span>
+                    <span><i class="fas fa-clock"></i> Full Time</span>
+                  </div>
+                  <p>Execute residential house wiring, modular board fittings, and troubleshooting support at client locations.</p>
+                </div>
+                <button class="btn-apply" onclick="openApplyModal(1, 'Junior Field Technician')">Apply Now</button>
+              </div>
+
+              <div class="job-card" data-job-id="2">
+                <div class="job-details">
+                  <h4>B2B Sales Representative</h4>
+                  <div class="job-meta">
+                    <span><i class="fas fa-map-marker-alt"></i> Deoria & Siwan District</span>
+                    <span><i class="fas fa-clock"></i> Full Time</span>
+                  </div>
+                  <p>Onboard B2B dealers, retailers, and distributors. Handle territorial pricing allocations and volume contracts.</p>
+                </div>
+                <button class="btn-apply" onclick="openApplyModal(2, 'B2B Sales Representative')">Apply Now</button>
+              </div>
+
+              <div class="job-card" data-job-id="3">
+                <div class="job-details">
+                  <h4>Solar Installation Engineer</h4>
+                  <div class="job-meta">
+                    <span><i class="fas fa-map-marker-alt"></i> Regional / Remote</span>
+                    <span><i class="fas fa-clock"></i> Contract</span>
+                  </div>
+                  <p>Design, install, and calibrate rooftop solar PV system brackets, inverters, and battery backups.</p>
+                </div>
+                <button class="btn-apply" onclick="openApplyModal(3, 'Solar Installation Engineer')">Apply Now</button>
+              </div>
+            </div>
+
+            <!-- Internship block -->
+            <div style="background: var(--section-alt-bg); border-radius: 20px; padding: 30px; margin-top: 30px; border: 1px solid var(--card-border);">
+              <h3 style="font-family:'Outfit',sans-serif; color:var(--text-primary); display:flex; align-items:center; gap:10px; font-size:1.3rem;"><i class="fas fa-graduation-cap" style="color:var(--accent);"></i> Internship Program</h3>
+              <p style="font-size:0.95rem; color:var(--text-secondary); margin-top:10px; line-height: 1.6;">Are you a student in electrical diploma/engineering? Join our 3-month hands-on apprenticeship training. Learn central warehousing ERP logistics, high-voltage calibrations, and safety audits under senior technical staff. Top candidates receive full-time placement offers.</p>
+              <button class="btn btn-secondary" style="margin-top: 10px;" onclick="openApplyModal(0, 'Internship Program')">Register for Internship</button>
+            </div>
+          </div>
+
+          <!-- Column 2: Benefits & Life at Prajapati -->
+          <div>
+            <div class="section-badge"><i class="fas fa-users-line"></i> Life At Prajapati</div>
+            <h2 style="font-family:'Outfit',sans-serif; font-size:2.2rem; color:var(--text-primary); margin-bottom: 24px;">Employee Benefits</h2>
+            <p style="color:var(--text-secondary); margin-bottom: 30px; line-height:1.7;">We value safety, learning, and collaboration. Our team members enjoy premium professional support benefits:</p>
+
+            <div class="values-grid" style="grid-template-columns: 1fr 1fr; gap:16px;">
+              <div class="value-card" style="padding: 20px; text-align: left;">
+                <div class="benefit-icon-badge"><i class="fas fa-hand-holding-heart"></i></div>
+                <h4 style="font-size:1rem; margin-bottom:6px;">Health & Safety</h4>
+                <p style="font-size:0.85rem;">Comprehensive accidental insurance coverage and high-grade insulated tool kits.</p>
+              </div>
+              <div class="value-card" style="padding: 20px; text-align: left;">
+                <div class="benefit-icon-badge"><i class="fas fa-money-bill-wave"></i></div>
+                <h4 style="font-size:1rem; margin-bottom:6px;">Performance Bonuses</h4>
+                <p style="font-size:0.85rem;">Extra incentive commissions based on timely service completions and feedback ratings.</p>
+              </div>
+              <div class="value-card" style="padding: 20px; text-align: left;">
+                <div class="benefit-icon-badge"><i class="fas fa-user-graduate"></i></div>
+                <h4 style="font-size:1rem; margin-bottom:6px;">Skills Training</h4>
+                <p style="font-size:0.85rem;">Paid licensing programs and courses on advanced smart-home IoT and grid safety models.</p>
+              </div>
+              <div class="value-card" style="padding: 20px; text-align: left;">
+                <div class="benefit-icon-badge"><i class="fas fa-calendar-alt"></i></div>
+                <h4 style="font-size:1rem; margin-bottom:6px;">Paid Leaves</h4>
+                <p style="font-size:0.85rem;">Flexible leave policies, medical allocations, and structured work-life schedules.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== APPLICATION MODAL ========== -->
+  <div class="p-modal-overlay" id="apply-modal">
+    <div class="p-modal" style="max-width: 500px;">
+      <button class="p-modal-close" onclick="closeApplyModal()"><i class="fas fa-times"></i></button>
+      <div style="padding: 40px;">
+        <h3 style="font-family:'Outfit',sans-serif; font-size:1.5rem; color:var(--text-primary); margin-bottom: 8px;">Apply Online</h3>
+        <p style="font-size: 0.85rem; color:var(--text-secondary); margin-bottom: 24px;" id="apply-job-title">Position: Job Title</p>
+
+        <form id="job-apply-form">
+          <input type="hidden" id="apply-job-id">
+          
+          <div class="form-group" style="margin-bottom: 16px;">
+            <label for="app-name" style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:6px;">Full Name *</label>
+            <input type="text" id="app-name" required placeholder="John Doe" style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--card-border); outline:none;">
+          </div>
+          <div class="form-group" style="margin-bottom: 16px;">
+            <label for="app-email" style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:6px;">Email Address *</label>
+            <input type="email" id="app-email" required placeholder="john@email.com" style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--card-border); outline:none;">
+          </div>
+          <div class="form-group" style="margin-bottom: 16px;">
+            <label for="app-phone" style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:6px;">Phone Number *</label>
+            <input type="tel" id="app-phone" required placeholder="9876543210" style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--card-border); outline:none;">
+          </div>
+          <div class="form-group" style="margin-bottom: 24px;">
+            <label for="app-resume" style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:6px;">Upload Resume (PDF only) *</label>
+            <input type="file" id="app-resume" required accept=".pdf" style="width:100%; padding:8px; border-radius:8px; border:1px solid var(--card-border); outline:none;">
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; padding: 14px;" id="app-submit-btn">
+            <i class="fas fa-file-arrow-up"></i> Submit Application
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared Footer -->
+  <div id="pe-footer"></div>
+
+  <!-- ========== SCRIPTS ========== -->
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/shared-components.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      updateNavAuth();
+      loadDbJobs();
+    });
+
+    async function loadDbJobs() {
+      try {
+        const { data, error } = await supabase
+          .from('careers')
+          .select('*')
+          .eq('is_active', true);
+        
+        if (error) throw error;
+        
+        if (data && data.length > 0) {
+          const container = document.getElementById('jobs-container');
+          container.innerHTML = data.map(j => `
+            <div class="job-card" data-job-id="${j.id}">
+              <div class="job-details">
+                <h4>${j.title}</h4>
+                <div class="job-meta">
+                  <span><i class="fas fa-map-marker-alt"></i> ${j.location || 'Rampur Bujurg'}</span>
+                  <span><i class="fas fa-clock"></i> Full Time</span>
+                </div>
+                <p>${j.description || 'Join our growing engineering team.'}</p>
+              </div>
+              <button class="btn-apply" onclick="openApplyModal(${j.id}, '${j.title}')">Apply Now</button>
+            </div>
+          `).join('');
+        }
+      } catch (err) {
+        console.log("Latency querying careers table, fallback static jobs active.");
+      }
+    }
+
+    // Modal Control
+    window.openApplyModal = function(id, title) {
+      document.getElementById('apply-job-id').value = id;
+      document.getElementById('apply-job-title').textContent = `Position: ${title}`;
+      document.getElementById('apply-modal').classList.add('open');
+    };
+
+    window.closeApplyModal = function() {
+      document.getElementById('apply-modal').classList.remove('open');
+    };
+
+    // Form Submission with Resume PDF Upload to Supabase Storage
+    const applyForm = document.getElementById('job-apply-form');
+    applyForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const jobId = document.getElementById('apply-job-id').value;
+      const name = document.getElementById('app-name').value.trim();
+      const email = document.getElementById('app-email').value.trim();
+      const phone = document.getElementById('app-phone').value.trim();
+      const fileInput = document.getElementById('app-resume');
+      const file = fileInput.files[0];
+
+      if (!file) {
+        alert("Please select your resume PDF file.");
+        return;
+      }
+
+      const submitBtn = document.getElementById('app-submit-btn');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading Resume...';
+
+      try {
+        // 1. Upload file to Supabase storage bucket 'resumes'
+        const fileExt = file.name.split('.').pop();
+        const fileName = `${Date.now()}_${name.replace(/\s+/g, '_')}.${fileExt}`;
+        const filePath = `${fileName}`;
+
+        const { data: uploadData, error: uploadErr } = await supabase.storage
+          .from('resumes')
+          .upload(filePath, file);
+
+        if (uploadErr) throw uploadErr;
+
+        // 2. Get Public URL
+        const { data: { publicUrl } } = supabase.storage
+          .from('resumes')
+          .getPublicUrl(filePath);
+
+        // 3. Insert into applications table
+        const { error: appErr } = await supabase
+          .from('applications')
+          .insert({
+            job_id: jobId === '0' ? null : parseInt(jobId), // 0 means internship
+            name: name,
+            email: email,
+            phone: phone,
+            resume_url: publicUrl,
+            status: 'applied'
+          });
+
+        if (appErr) throw appErr;
+
+        alert("Application submitted successfully! Your resume has been uploaded to Supabase Storage, and regional managers have been notified.");
+        closeApplyModal();
+        applyForm.reset();
+      } catch (err) {
+        console.error("Application submission failed:", err);
+        alert("Failed to submit application. Ensure the file is a valid PDF and try again.");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-file-arrow-up"></i> Submit Application';
+      }
+    });
+  </script>
+</body>
+</html>

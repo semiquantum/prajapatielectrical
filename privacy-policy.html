@@ -14,18 +14,8 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar scrolled" role="navigation">
-    <div class="nav-container">
-      <a href="home.html" class="nav-logo">
-        <img src="images/logo.png" alt="Prajapati Electrical" width="44" height="44">
-        <span>Prajapati Electrical</span>
-      </a>
-      <div class="nav-actions">
-        <a href="home.html" class="nav-cta"><i class="fas fa-home"></i> Home</a>
-      </div>
-    </div>
-  </nav>
+  <!-- Shared Navigation -->
+  <div id="pe-nav"></div>
 
   <main class="legal-page">
     <div class="container">
@@ -85,12 +75,10 @@
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="footer" style="padding: 24px;">
-    <div class="footer-bottom" style="border-top:none; margin-top:0;">
-      <p>&copy; 2026 Prajapati Electrical. All Rights Reserved.</p>
-      <p>Developed by <a href="https://www.semiquantum.live" target="_blank" rel="noopener">SemiQuantum Technologies</a></p>
-    </div>
-  </footer>
-</body>
+  <!-- Shared Footer -->
+  <div id="pe-footer"></div>
+
+  <!-- Scripts -->
+  <script src="js/shared-components.js"></script>
+  <script src="js/main.js"></script>
 </html>

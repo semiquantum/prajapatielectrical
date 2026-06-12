@@ -5,6 +5,16 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // =====================
+  // 0. SHARED COMPONENTS INIT
+  // =====================
+  if (typeof initPage === 'function') {
+    // We can pass the active page name if we can determine it from URL or meta tag
+    const path = window.location.pathname;
+    let page = path.split('/').pop().replace('.html', '') || 'home';
+    initPage(page);
+  }
+
+  // =====================
   // 1. PRELOADER
   // =====================
   const preloader = document.getElementById('preloader');

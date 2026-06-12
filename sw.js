@@ -6,7 +6,7 @@ const CACHE_NAME = 'pe-cache-v2';
 const urlsToCache = [
   '/',
   '/index.html',
-  '/home.html',
+  '/index.html',
   '/css/style.css',
   '/js/main.js',
   '/js/animations.js',

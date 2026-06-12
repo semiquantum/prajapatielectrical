@@ -1,748 +1,751 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Prajapati Electrical - Official Website Launching on 12 June 2026. Premium electrical services, repairs, installation and wholesale supply.">
-<meta name="keywords" content="Prajapati Electrical, electrical services, electrical repairs, installation, wholesale supply, electrician">
-<meta property="og:title" content="Prajapati Electrical - Website Launching Soon">
-<meta property="og:description" content="Our official website is launching on 12 June 2026 at 10:00 PM IST. Stay tuned!">
-<meta property="og:type" content="website">
-<title>Prajapati Electrical - Website Launching Soon</title>
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <!-- Meta -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  :root {
-    --navy: #0A2A66;
-    --navy-dark: #061A44;
-    --navy-mid: #0D3580;
-    --orange: #FF8C00;
-    --orange-light: #FFA733;
-    --orange-glow: rgba(255,140,0,0.35);
-    --white: #ffffff;
-    --white-80: rgba(255,255,255,0.80);
-    --white-60: rgba(255,255,255,0.60);
-    --white-20: rgba(255,255,255,0.20);
-    --white-10: rgba(255,255,255,0.10);
-    --white-05: rgba(255,255,255,0.05);
-    --glass-bg: rgba(255,255,255,0.06);
-    --glass-border: rgba(255,255,255,0.15);
-  }
+  <!-- SEO Primary -->
+  <title>Prajapati Electrical | Best Electrician &amp; Electrical Repair Shop in Rampur Bujurg</title>
+  <meta name="description" content="Prajapati Electrical provides expert electrical repairing, house wiring, AC repair, fan repair, fridge repair, and wholesale electrical materials in Rampur Bujurg, Salempur, Sohanpur, Mairwa, Siwan, and nearby areas.">
+  <meta name="keywords" content="Best Electrician in Rampur Bujurg, Electrical Repair Shop in Rampur Bujurg, Electrician near Salempur, Best Electrical Shop in Siwan, House Wiring Service in Deoria, AC Repair near Mairwa, Cooler Repair in Sohanpur, Electrical Wholesale Shop in Rampur Bujurg, Electrical Repair near me, Electric Shop near Siwan, Fan Repair in Salempur, Fridge Repair in Deoria">
+  <meta name="author" content="Prajapati Electrical - Sohan Kumar">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://prajapatielectrical.in/">
 
-  html, body {
-    min-height: 100%;
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    background: var(--navy-dark);
-    color: var(--white);
-    overflow-x: hidden;
-  }
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Prajapati Electrical | Best Electrician & Electrical Repair Shop in Rampur Bujurg">
+  <meta property="og:description" content="Expert electrical repairing, house wiring, AC repair, fan repair, fridge repair, and wholesale electrical materials in Rampur Bujurg, Salempur, Mairwa, Siwan.">
+  <meta property="og:image" content="images/logo.png">
+  <meta property="og:url" content="https://prajapatielectrical.in/">
+  <meta property="og:locale" content="en_IN">
 
-  /* ── BACKGROUND ── */
-  .bg-wrap {
-    position: fixed; inset: 0; z-index: 0;
-    background: radial-gradient(ellipse 80% 60% at 50% 0%, #0D3580 0%, #061A44 55%, #020D28 100%);
-    overflow: hidden;
-  }
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Prajapati Electrical | Best Electrician in Rampur Bujurg">
+  <meta name="twitter:description" content="Expert electrical repairing, house wiring, and wholesale electrical materials in Rampur Bujurg and nearby areas.">
+  <meta name="twitter:image" content="images/logo.png">
 
-  /* Circuit SVG pattern */
-  .circuit-svg {
-    position: absolute; inset: 0; width: 100%; height: 100%;
-    opacity: 0.10;
-  }
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/favicon.png">
 
-  /* Particles */
-  .particles { position: absolute; inset: 0; }
-  .particle {
-    position: absolute;
-    border-radius: 50%;
-    background: var(--orange);
-    animation: float-up linear infinite;
-    opacity: 0;
-  }
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0A1628">
 
-  @keyframes float-up {
-    0%   { transform: translateY(100vh) scale(0); opacity: 0; }
-    10%  { opacity: 0.6; }
-    90%  { opacity: 0.3; }
-    100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
-  }
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  /* Lightning bolts BG */
-  .lightning-bg {
-    position: absolute; inset: 0; pointer-events: none; overflow: hidden;
-  }
-  .bolt-bg {
-    position: absolute;
-    font-size: clamp(60px, 10vw, 120px);
-    opacity: 0.04;
-    animation: bolt-pulse 4s ease-in-out infinite;
-    user-select: none;
-  }
-  .bolt-bg:nth-child(1) { top: 5%;  left: 2%;  animation-delay: 0s;   font-size: clamp(80px,12vw,140px); }
-  .bolt-bg:nth-child(2) { top: 20%; right: 3%; animation-delay: 1.3s; font-size: clamp(50px,8vw,100px); }
-  .bolt-bg:nth-child(3) { bottom: 15%; left: 5%; animation-delay: 2.7s; font-size: clamp(60px,9vw,110px); }
-  .bolt-bg:nth-child(4) { bottom: 5%;  right: 2%; animation-delay: 0.7s; font-size: clamp(70px,11vw,130px); }
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
 
-  @keyframes bolt-pulse {
-    0%,100% { opacity: 0.03; transform: scale(1) rotate(-15deg); }
-    50%      { opacity: 0.07; transform: scale(1.08) rotate(-15deg); }
-  }
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  /* ── MAIN LAYOUT ── */
-  .page {
-    position: relative; z-index: 1;
-    min-height: 100vh;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    padding: clamp(24px, 5vw, 60px) 16px;
-    gap: 0;
-  }
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
 
-  /* ── HEADER BADGE ── */
-  .rocket-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 40px;
-    padding: 8px 20px;
-    font-size: clamp(12px, 2.5vw, 15px);
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    color: var(--orange-light);
-    margin-bottom: clamp(16px, 3vw, 28px);
-    animation: fade-in-down 0.8s ease both;
-    text-transform: uppercase;
+  <!-- Local Business Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Prajapati Electrical",
+    "description": "Expert electrical repairing, house wiring, AC repair, fan repair, fridge repair, and wholesale electrical materials in Rampur Bujurg.",
+    "image": "images/logo.png",
+    "telephone": "+917250191427",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rampur Bujurg",
+      "addressLocality": "Deoria",
+      "addressRegion": "Uttar Pradesh",
+      "postalCode": "274404",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "26.2406",
+      "longitude": "84.1539"
+    },
+    "url": "https://prajapatielectrical.in/",
+    "openingHours": "Mo-Sa 08:00-20:00",
+    "priceRange": "₹",
+    "areaServed": ["Rampur Bujurg", "Salempur", "Sohanpur", "Mairwa", "Siwan", "Deoria"],
+    "founder": {
+      "@type": "Person",
+      "name": "Sohan Kumar"
+    },
+    "sameAs": []
   }
+  </script>
 
-  /* ── BUSINESS NAME ── */
-  .biz-name {
-    font-size: clamp(28px, 7vw, 72px);
-    font-weight: 900;
-    letter-spacing: clamp(2px, 1vw, 6px);
-    text-transform: uppercase;
-    text-align: center;
-    line-height: 1.05;
-    background: linear-gradient(135deg, #ffffff 30%, #FFA733 65%, #FF8C00 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: fade-in-up 0.9s ease 0.15s both;
-    margin-bottom: clamp(6px, 1.5vw, 12px);
-    filter: drop-shadow(0 2px 24px rgba(255,140,0,0.18));
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What services does Prajapati Electrical provide?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Prajapati Electrical provides iron repair, mixer repair, fan repair, AC repair, cooler repair, fridge repair, house wiring, electrical fitting, installation services, switch board repair, and motor repair."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where is Prajapati Electrical located?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Prajapati Electrical is located in Rampur Bujurg, Deoria, Uttar Pradesh. We serve customers in Salempur, Sohanpur, Mairwa, Siwan, and nearby areas."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Prajapati Electrical sell wholesale electrical materials?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we offer a wide range of electrical materials at wholesale and retail prices including wires, cables, switches, LED bulbs, fans, MCBs, and electrical accessories."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How to contact Prajapati Electrical?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can call us at +91 7250191427 or reach us on WhatsApp. Visit our shop in Rampur Bujurg, Deoria, UP."
+        }
+      }
+    ]
   }
-
-  .biz-sub {
-    font-size: clamp(14px, 3vw, 22px);
-    color: var(--white-80);
-    text-align: center;
-    font-weight: 400;
-    letter-spacing: 0.3px;
-    animation: fade-in-up 0.9s ease 0.3s both;
-    margin-bottom: clamp(24px, 5vw, 44px);
-  }
-
-  /* ── POWER LINE ── */
-  .power-line {
-    display: flex; align-items: center; gap: 10px;
-    font-size: clamp(13px, 2.5vw, 18px);
-    color: var(--orange-light);
-    font-weight: 600;
-    text-align: center;
-    animation: fade-in-up 0.9s ease 0.45s both;
-    margin-bottom: clamp(20px, 4vw, 36px);
-    letter-spacing: 0.2px;
-  }
-  .power-line .bolt-icon { animation: bolt-flash 1.4s ease-in-out infinite; }
-  @keyframes bolt-flash {
-    0%,100% { opacity: 1; transform: scale(1); }
-    50%      { opacity: 0.5; transform: scale(1.2); }
-  }
-
-  /* ── COUNTDOWN CARD ── */
-  .countdown-card {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 24px;
-    padding: clamp(24px, 5vw, 48px) clamp(20px, 6vw, 56px);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    animation: zoom-in 0.9s cubic-bezier(0.22,1,0.36,1) 0.5s both;
-    margin-bottom: clamp(20px, 4vw, 36px);
-    width: 100%; max-width: 760px;
-    box-shadow: 0 8px 48px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05) inset;
-  }
-
-  .timer-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: clamp(10px, 3vw, 24px);
-  }
-
-  .timer-unit {
-    display: flex; flex-direction: column; align-items: center;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.10);
-    border-radius: 16px;
-    padding: clamp(14px, 3vw, 28px) clamp(8px, 2vw, 16px);
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.2s;
-  }
-  .timer-unit:hover { transform: translateY(-3px); }
-  .timer-unit::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, transparent, var(--orange), transparent);
-    animation: scan 2.5s linear infinite;
-  }
-  @keyframes scan {
-    0%   { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-  }
-
-  .timer-num {
-    font-size: clamp(36px, 9vw, 80px);
-    font-weight: 800;
-    line-height: 1;
-    font-variant-numeric: tabular-nums;
-    color: var(--white);
-    text-shadow: 0 0 32px rgba(255,140,0,0.4);
-    letter-spacing: -1px;
-    transition: transform 0.15s cubic-bezier(0.34,1.56,0.64,1), color 0.15s;
-  }
-  .timer-num.tick {
-    transform: scale(1.08);
-    color: var(--orange-light);
-  }
-
-  .timer-label {
-    font-size: clamp(10px, 2vw, 14px);
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--white-60);
-    margin-top: 8px;
-  }
-
-  .timer-sep {
-    display: flex; align-items: center; justify-content: center;
-    font-size: clamp(28px, 6vw, 56px);
-    color: var(--orange);
-    font-weight: 700;
-    animation: blink 1s step-start infinite;
-    align-self: center;
-  }
-  @keyframes blink { 50% { opacity: 0; } }
-
-  /* ── LAUNCH DATE BELOW TIMER ── */
-  .launch-info {
-    text-align: center;
-    font-size: clamp(13px, 2.5vw, 18px);
-    color: var(--white-80);
-    font-style: italic;
-    animation: fade-in-up 0.9s ease 0.7s both;
-    margin-bottom: clamp(20px, 4vw, 36px);
-  }
-  .launch-info strong { color: var(--orange-light); font-style: normal; }
-
-  /* ── CTA BUTTON ── */
-  .cta-wrap {
-    display: flex; justify-content: center;
-    animation: fade-in-up 0.9s ease 0.85s both;
-    margin-bottom: clamp(24px, 5vw, 48px);
-  }
-
-  .cta-btn {
-    position: relative;
-    display: inline-flex; align-items: center; gap: 10px;
-    background: linear-gradient(135deg, #FF8C00, #FF6B00);
-    color: #fff;
-    font-size: clamp(14px, 2.5vw, 18px);
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    border: none; border-radius: 50px;
-    padding: clamp(14px, 3vw, 20px) clamp(28px, 6vw, 48px);
-    cursor: pointer;
-    text-decoration: none;
-    overflow: hidden;
-    transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.22s;
-    box-shadow: 0 4px 32px rgba(255,140,0,0.45), 0 0 0 0 rgba(255,140,0,0);
-    animation: glow-pulse 2.5s ease-in-out infinite;
-  }
-  .cta-btn:hover {
-    transform: scale(1.07) translateY(-2px);
-    box-shadow: 0 8px 48px rgba(255,140,0,0.65), 0 0 40px rgba(255,140,0,0.3);
-  }
-  .cta-btn:active { transform: scale(0.97); }
-  .cta-btn::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.18), transparent 60%);
-    border-radius: inherit;
-    pointer-events: none;
-  }
-  .cta-btn .btn-bolt {
-    display: inline-block;
-    animation: btn-bolt 0.7s ease-in-out infinite alternate;
-  }
-  @keyframes btn-bolt {
-    from { transform: rotate(-10deg) scale(1); }
-    to   { transform: rotate(10deg) scale(1.15); }
-  }
-  @keyframes glow-pulse {
-    0%,100% { box-shadow: 0 4px 32px rgba(255,140,0,0.45); }
-    50%      { box-shadow: 0 4px 48px rgba(255,140,0,0.70), 0 0 60px rgba(255,140,0,0.25); }
-  }
-
-  /* ── FOOTER ── */
-  .footer {
-    font-size: clamp(11px, 2vw, 14px);
-    color: var(--white-60);
-    text-align: center;
-    animation: fade-in-up 0.9s ease 1s both;
-    letter-spacing: 0.2px;
-  }
-
-  /* ── LIVE DOT ── */
-  .live-dot {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-size: 12px; font-weight: 600; text-transform: uppercase;
-    letter-spacing: 1.5px; color: #4ade80;
-    margin-bottom: clamp(12px, 2vw, 20px);
-    animation: fade-in-down 0.8s ease 0.05s both;
-  }
-  .live-dot::before {
-    content: '';
-    width: 8px; height: 8px; border-radius: 50%;
-    background: #4ade80;
-    box-shadow: 0 0 0 0 rgba(74,222,128,0.6);
-    animation: live-ping 1.5s ease-in-out infinite;
-  }
-  @keyframes live-ping {
-    0%   { box-shadow: 0 0 0 0 rgba(74,222,128,0.6); }
-    70%  { box-shadow: 0 0 0 8px rgba(74,222,128,0); }
-    100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); }
-  }
-
-  /* ── DIVIDER ── */
-  .divider {
-    width: 100%; max-width: 400px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--orange), transparent);
-    margin: clamp(16px, 3vw, 28px) 0;
-    opacity: 0.5;
-    animation: fade-in 1s ease 0.6s both;
-  }
-
-  /* ── LAUNCH COMPLETE STATE ── */
-  .launch-complete {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: clamp(16px, 3vw, 28px);
-    animation: zoom-in 0.9s cubic-bezier(0.22,1,0.36,1) both;
-  }
-  .launch-complete.active { display: flex; }
-
-  .live-text {
-    font-size: clamp(24px, 6vw, 52px);
-    font-weight: 900;
-    background: linear-gradient(135deg, #FFD700, #FF8C00);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: 2px;
-    animation: celebrate 1.5s ease-in-out infinite;
-  }
-  @keyframes celebrate {
-    0%,100% { filter: brightness(1); }
-    50%      { filter: brightness(1.3) drop-shadow(0 0 16px rgba(255,200,0,0.6)); }
-  }
-
-  .live-services {
-    font-size: clamp(13px, 2.5vw, 17px);
-    color: var(--white-60);
-    letter-spacing: 0.3px;
-  }
-  .live-services strong { color: var(--orange-light); }
-
-  .live-btns { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
-  .live-btn {
-    padding: 14px 36px;
-    border-radius: 50px;
-    font-size: 16px; font-weight: 700;
-    cursor: pointer; text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s;
-    display: inline-block;
-  }
-  .live-btn:hover { transform: translateY(-2px); }
-  .live-btn.primary {
-    background: linear-gradient(135deg, #FF8C00, #FF6B00);
-    color: #fff;
-    box-shadow: 0 4px 24px rgba(255,140,0,0.5);
-  }
-  .live-btn.secondary {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    color: var(--white);
-  }
-
-  /* ── MODAL ── */
-  .modal-overlay {
-    display: none; position: fixed; inset: 0; z-index: 100;
-    background: rgba(6,26,68,0.85); backdrop-filter: blur(8px);
-    align-items: center; justify-content: center; padding: 16px;
-  }
-  .modal-overlay.open { display: flex; }
-  .modal-box {
-    background: linear-gradient(135deg, #0D3580, #061A44);
-    border: 1px solid var(--glass-border);
-    border-radius: 20px; padding: 36px 32px;
-    max-width: 420px; width: 100%;
-    text-align: center;
-    animation: zoom-in 0.4s cubic-bezier(0.22,1,0.36,1) both;
-    box-shadow: 0 24px 64px rgba(0,0,0,0.6);
-  }
-  .modal-box h3 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
-  .modal-box p  { font-size: 14px; color: var(--white-60); margin-bottom: 24px; }
-  .modal-input {
-    width: 100%; padding: 14px 18px;
-    border-radius: 50px; border: 1px solid var(--glass-border);
-    background: var(--white-10); color: #fff;
-    font-size: 15px; margin-bottom: 14px; outline: none;
-    transition: border-color 0.2s;
-  }
-  .modal-input::placeholder { color: var(--white-60); }
-  .modal-input:focus { border-color: var(--orange); }
-  .modal-submit {
-    width: 100%; padding: 14px;
-    border-radius: 50px; border: none;
-    background: linear-gradient(135deg, #FF8C00, #FF6B00);
-    color: #fff; font-size: 16px; font-weight: 700;
-    cursor: pointer; transition: transform 0.2s;
-  }
-  .modal-submit:hover { transform: scale(1.03); }
-  .modal-close {
-    margin-top: 16px; background: none; border: none;
-    color: var(--white-60); font-size: 14px; cursor: pointer;
-    text-decoration: underline;
-  }
-  .modal-thanks { display: none; }
-  .modal-thanks.show { display: block; }
-  .modal-form.hide { display: none; }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fade-in-down {
-    from { opacity: 0; transform: translateY(-20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fade-in-up {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes zoom-in {
-    from { opacity: 0; transform: scale(0.88); }
-    to   { opacity: 1; transform: scale(1); }
-  }
-  @keyframes fade-in {
-    from { opacity: 0; } to { opacity: 0.5; }
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 500px) {
-    .timer-grid { gap: 8px; }
-    .timer-unit { border-radius: 12px; padding: 12px 4px; }
-    .timer-label { letter-spacing: 1px; }
-    .cta-btn { padding: 14px 28px; }
-  }
-</style>
+  </script>
 </head>
 <body>
 
-<!-- Background -->
-<div class="bg-wrap">
-  <!-- Circuit pattern SVG -->
-  <svg class="circuit-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" preserveAspectRatio="xMidYMid slice">
-    <g stroke="#4a90d9" stroke-width="1" fill="none" opacity="1">
-      <!-- Horizontal rails -->
-      <line x1="0" y1="80"  x2="900" y2="80"/>
-      <line x1="0" y1="180" x2="900" y2="180"/>
-      <line x1="0" y1="280" x2="900" y2="280"/>
-      <line x1="0" y1="380" x2="900" y2="380"/>
-      <line x1="0" y1="480" x2="900" y2="480"/>
-      <line x1="0" y1="560" x2="900" y2="560"/>
-      <!-- Vertical rails -->
-      <line x1="80"  y1="0" x2="80"  y2="600"/>
-      <line x1="200" y1="0" x2="200" y2="600"/>
-      <line x1="320" y1="0" x2="320" y2="600"/>
-      <line x1="440" y1="0" x2="440" y2="600"/>
-      <line x1="560" y1="0" x2="560" y2="600"/>
-      <line x1="680" y1="0" x2="680" y2="600"/>
-      <line x1="800" y1="0" x2="800" y2="600"/>
-      <!-- Nodes -->
-      <circle cx="80"  cy="80"  r="5" fill="#FF8C00" opacity="0.6"/>
-      <circle cx="200" cy="180" r="5" fill="#FF8C00" opacity="0.6"/>
-      <circle cx="320" cy="80"  r="5" fill="#FF8C00" opacity="0.6"/>
-      <circle cx="440" cy="280" r="5" fill="#FF8C00" opacity="0.6"/>
-      <circle cx="560" cy="180" r="5" fill="#FF8C00" opacity="0.6"/>
-      <circle cx="680" cy="380" r="5" fill="#FF8C00" opacity="0.6"/>
-      <circle cx="800" cy="80"  r="5" fill="#FF8C00" opacity="0.6"/>
-      <circle cx="80"  cy="380" r="5" fill="#FF8C00" opacity="0.6"/>
-      <circle cx="200" cy="480" r="5" fill="#FF8C00" opacity="0.6"/>
-      <circle cx="320" cy="380" r="5" fill="#FF8C00" opacity="0.6"/>
-      <circle cx="560" cy="480" r="5" fill="#FF8C00" opacity="0.6"/>
-      <circle cx="800" cy="280" r="5" fill="#FF8C00" opacity="0.6"/>
-      <!-- Resistor symbols -->
-      <rect x="120" y="74" width="40" height="12" rx="2"/>
-      <rect x="350" y="174" width="40" height="12" rx="2"/>
-      <rect x="470" y="274" width="40" height="12" rx="2"/>
-      <rect x="600" y="374" width="40" height="12" rx="2"/>
-      <rect x="230" y="474" width="40" height="12" rx="2"/>
-      <!-- Capacitor symbols -->
-      <line x1="390" y1="68" x2="390" y2="92"/>
-      <line x1="395" y1="68" x2="395" y2="92"/>
-      <line x1="510" y1="168" x2="510" y2="192"/>
-      <line x1="515" y1="168" x2="515" y2="192"/>
-      <line x1="130" y1="268" x2="130" y2="292"/>
-      <line x1="135" y1="268" x2="135" y2="292"/>
-      <!-- Diagonal connectors -->
-      <line x1="80" y1="80"  x2="200" y2="180"/>
-      <line x1="200" y1="80" x2="320" y2="180"/>
-      <line x1="440" y1="180" x2="560" y2="280"/>
-      <line x1="680" y1="280" x2="800" y2="380"/>
-      <line x1="80" y1="280" x2="200" y2="380"/>
-      <line x1="320" y1="480" x2="440" y2="380"/>
-    </g>
-  </svg>
-
-  <!-- Animated lightning BG -->
-  <div class="lightning-bg">
-    <div class="bolt-bg">⚡</div>
-    <div class="bolt-bg">⚡</div>
-    <div class="bolt-bg">⚡</div>
-    <div class="bolt-bg">⚡</div>
+  <!-- ========== PRELOADER ========== -->
+  <div id="preloader">
+    <img src="images/logo.png" alt="Prajapati Electrical" class="loader-logo">
+    <div class="loader-bar-container">
+      <div class="loader-bar"></div>
+    </div>
   </div>
 
-  <!-- Particles -->
-  <div class="particles" id="particles"></div>
-</div>
+  <!-- Shared Navigation -->
+  <div id="pe-nav"></div>
 
-<!-- PAGE CONTENT -->
-<main class="page">
+  <main>
+    <!-- ========== HERO SECTION ========== -->
+    <section class="hero" id="hero">
+      <div class="hero-bg-effects">
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
+        <div class="hero-glow hero-glow-3"></div>
+        <div class="circuit-line"></div>
+        <div class="circuit-line"></div>
+        <div class="circuit-line"></div>
+        <div class="circuit-line"></div>
+      </div>
 
-  <!-- Live dot -->
-  <div class="live-dot">Live Countdown</div>
-
-  <!-- Rocket heading badge -->
-  <div class="rocket-badge">🚀 Website Launch Countdown</div>
-
-  <!-- Business Name -->
-  <h1 class="biz-name">Prajapati Electrical</h1>
-
-  <!-- Sub heading -->
-  <p class="biz-sub">Our Official Website is Launching Soon</p>
-
-  <!-- Power line -->
-  <div class="power-line">
-    <span class="bolt-icon">⚡</span>
-    Powering the Future, One Connection at a Time
-    <span class="bolt-icon">⚡</span>
-  </div>
-
-  <!-- ── COUNTDOWN SECTION ── -->
-  <div id="countdown-section" style="width:100%;max-width:760px;display:flex;flex-direction:column;align-items:center;">
-    <div class="countdown-card">
-      <div class="timer-grid" id="timer-grid">
-        <div class="timer-unit">
-          <div class="timer-num" id="days">00</div>
-          <div class="timer-label">Days</div>
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-bolt"></i>
+          <span>Trusted Electrical Services Since Years</span>
         </div>
-        <div class="timer-unit">
-          <div class="timer-num" id="hours">00</div>
-          <div class="timer-label">Hours</div>
+
+        <h1>
+          Best <span class="highlight">Electrical Repair</span> &amp; Wholesale Shop in <span class="highlight">Rampur Bujurg</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          All Types of Electrical Repairing, House Wiring &amp; Wholesale Electrical Materials Available. Serving Rampur Bujurg, Salempur, Sohanpur, Mairwa, Siwan &amp; nearby areas.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="tel:+917250191427" class="btn btn-primary" id="hero-call-btn">
+            <i class="fas fa-phone"></i> Call Now
+          </a>
+          <a href="https://wa.me/917250191427?text=Hello%20Prajapati%20Electrical!%20I%20need%20electrical%20service." class="btn btn-whatsapp" target="_blank" rel="noopener" id="hero-wa-btn">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+          </a>
+          <a href="https://www.google.com/maps/search/Rampur+Bujurg+Deoria+Uttar+Pradesh" class="btn btn-secondary" target="_blank" rel="noopener" id="hero-dir-btn">
+            <i class="fas fa-map-marker-alt"></i> Get Direction
+          </a>
         </div>
-        <div class="timer-unit">
-          <div class="timer-num" id="minutes">00</div>
-          <div class="timer-label">Minutes</div>
-        </div>
-        <div class="timer-unit">
-          <div class="timer-num" id="seconds">00</div>
-          <div class="timer-label">Seconds</div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="stat-number" data-count="10" data-suffix="+">0</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="hero-stat">
+            <div class="stat-number" data-count="5000" data-suffix="+">0</div>
+            <div class="stat-label">Happy Customers</div>
+          </div>
+          <div class="hero-stat">
+            <div class="stat-number" data-count="11" data-suffix="">0</div>
+            <div class="stat-label">Expert Services</div>
+          </div>
+          <div class="hero-stat">
+            <div class="stat-number" data-count="7" data-suffix="">0</div>
+            <div class="stat-label">Areas Served</div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Launch info below timer -->
-    <p class="launch-info">
-      "Prajapati Electrical Website Launches On <strong>12 June 2026</strong>"
-    </p>
+    <!-- ========== ABOUT SECTION ========== -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-image-wrap anim-fade-left">
+            <div class="about-image">
+              <img src="images/about.png" alt="Prajapati Electrical - Trusted Electrical Service in Rampur Bujurg" width="600" height="400" loading="lazy">
+            </div>
+            <div class="about-experience-badge">
+              <span class="exp-number">10+</span>
+              <span class="exp-label">Years Experience</span>
+            </div>
+          </div>
 
-    <!-- CTA -->
-    <div class="cta-wrap">
-      <button class="cta-btn" onclick="openModal()">
-        <span class="btn-bolt">⚡</span>
-        Notify Me On Launch
-      </button>
-    </div>
+          <div class="about-text anim-fade-right">
+            <div class="section-badge">
+              <i class="fas fa-info-circle"></i> About Us
+            </div>
+            <h2>About <span class="text-gradient">Prajapati Electrical</span></h2>
+            <p>
+              Prajapati Electrical is a trusted and reliable electrical repair and wholesale shop located in <strong>Rampur Bujurg, Deoria, Uttar Pradesh</strong>. Founded by <strong>Sohan Kumar</strong>, we have been serving customers with dedication and quality workmanship for over a decade.
+            </p>
+            <p>
+              We specialize in all types of electrical repairing including AC repair, fan repair, fridge repair, house wiring, and provide wholesale electrical materials at the most affordable prices.
+            </p>
+            <a href="about.html" class="btn btn-secondary" style="margin-top: 16px; display: inline-flex; align-items: center; gap: 8px;">
+              Read More About Us <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SERVICES SECTION ========== -->
+    <section class="section section-alt" id="services">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">
+            <i class="fas fa-cogs"></i> Our Services
+          </div>
+          <h2 class="section-title">Expert Electrical Repair Services</h2>
+          <p class="section-desc">From small appliance repairs to complete house wiring — we handle all types of electrical work with precision and care.</p>
+        </div>
+
+        <div class="services-grid">
+          <!-- AC Repair -->
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-snowflake"></i></div>
+            <h3>AC Repair</h3>
+            <p>Split AC and window AC repair, gas charging, servicing and installation by trained technicians.</p>
+            <a href="dashboard.html?tab=book&service=4" class="service-book-link"><i class="fas fa-calendar-plus"></i> Book Service</a>
+          </div>
+          <!-- Fan Repair -->
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-fan"></i></div>
+            <h3>Fan Repair</h3>
+            <p>Ceiling fan, table fan, and exhaust fan repair. Capacitor change, rewinding & installation services.</p>
+            <a href="dashboard.html?tab=book&service=3" class="service-book-link"><i class="fas fa-calendar-plus"></i> Book Service</a>
+          </div>
+          <!-- House Wiring -->
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-house-signal"></i></div>
+            <h3>House Wiring</h3>
+            <p>Complete house wiring and rewiring services. New construction and renovation electrical work done professionally.</p>
+            <a href="dashboard.html?tab=book&service=7" class="service-book-link"><i class="fas fa-calendar-plus"></i> Book Service</a>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 40px;">
+          <a href="services.html" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">
+            View All 11 Services <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== WHOLESALE SECTION ========== -->
+    <section class="section" id="wholesale">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">
+            <i class="fas fa-store"></i> Wholesale Products
+          </div>
+          <h2 class="section-title">Wholesale &amp; Retail Electrical Materials</h2>
+          <p class="section-desc">Get the best quality electrical products at wholesale prices. We stock all major brands and a complete range of electrical items.</p>
+        </div>
+
+        <div class="wholesale-grid">
+          <!-- Wires & Cables -->
+          <div class="product-card">
+            <div class="product-icon-wrap">
+              <i class="fas fa-ethernet"></i>
+            </div>
+            <div class="product-card-body">
+              <h3>Wires &amp; Cables</h3>
+              <p>House wiring cables, flexible wires, armoured cables from top brands at wholesale rates.</p>
+              <span class="product-badge">Wholesale Available</span>
+            </div>
+          </div>
+          <!-- Switches -->
+          <div class="product-card">
+            <div class="product-icon-wrap">
+              <i class="fas fa-toggle-on"></i>
+            </div>
+            <div class="product-card-body">
+              <h3>Switches &amp; Sockets</h3>
+              <p>Modular switches, MCB switches, sockets, regulators from all leading brands.</p>
+              <span class="product-badge">All Brands</span>
+            </div>
+          </div>
+          <!-- LED Bulbs -->
+          <div class="product-card">
+            <div class="product-icon-wrap">
+              <i class="fas fa-lightbulb"></i>
+            </div>
+            <div class="product-card-body">
+              <h3>LED Bulbs &amp; Lights</h3>
+              <p>LED bulbs, tube lights, panel lights, strip lights, flood lights at best prices.</p>
+              <span class="product-badge">Best Prices</span>
+            </div>
+          </div>
+          <!-- Fans -->
+          <div class="product-card">
+            <div class="product-icon-wrap">
+              <i class="fas fa-fan"></i>
+            </div>
+            <div class="product-card-body">
+              <h3>Fans</h3>
+              <p>Ceiling fans, table fans, pedestal fans, exhaust fans from top manufacturers.</p>
+              <span class="product-badge">All Types</span>
+            </div>
+          </div>
+          <!-- MCB -->
+          <div class="product-card">
+            <div class="product-icon-wrap">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <div class="product-card-body">
+              <h3>MCB &amp; Electrical Items</h3>
+              <p>MCBs, distribution boards, change-over switches, meter boxes and panel accessories.</p>
+              <span class="product-badge">ISI Certified</span>
+            </div>
+          </div>
+          <!-- Accessories -->
+          <div class="product-card">
+            <div class="product-icon-wrap">
+              <i class="fas fa-plug-circle-bolt"></i>
+            </div>
+            <div class="product-card-body">
+              <h3>Electrical Accessories</h3>
+              <p>Extension cords, plugs, holders, conduit pipes, junction boxes and all fittings.</p>
+              <span class="product-badge">Complete Range</span>
+            </div>
+          </div>
+          <!-- Home Products -->
+          <div class="product-card">
+            <div class="product-icon-wrap">
+              <i class="fas fa-house-chimney"></i>
+            </div>
+            <div class="product-card-body">
+              <h3>Home Electrical Products</h3>
+              <p>Geysers, inverters, stabilizers, doorbells, and all home electrical essentials.</p>
+              <span class="product-badge">Home Essentials</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="wholesale-hindi anim-fade-up">
+          <p>⚡ हमारे यहाँ सभी प्रकार के इलेक्ट्रिक सामान होलसेल और रिटेल में उपलब्ध हैं। ⚡</p>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+          <a href="products.html" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">
+            Browse Product Catalog <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== WHY CHOOSE US ========== -->
+    <section class="section section-dark" id="why-us">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge" style="color: var(--accent-light);">
+            <i class="fas fa-star"></i> Why Choose Us
+          </div>
+          <h2 class="section-title">Why Choose Prajapati Electrical?</h2>
+          <p class="section-desc">We are committed to providing the best electrical services and products with complete customer satisfaction.</p>
+        </div>
+
+        <div class="why-grid">
+          <div class="why-card">
+            <div class="why-icon"><i class="fas fa-shield-halved"></i></div>
+            <div>
+              <h3>Trusted Service</h3>
+              <p>Over a decade of trusted service in Rampur Bujurg and surrounding areas. Your safety is our priority.</p>
+            </div>
+          </div>
+          <div class="why-card">
+            <div class="why-icon"><i class="fas fa-indian-rupee-sign"></i></div>
+            <div>
+              <h3>Affordable Price</h3>
+              <p>Best prices for both repair services and wholesale electrical materials. No hidden charges.</p>
+            </div>
+          </div>
+          <div class="why-card">
+            <div class="why-icon"><i class="fas fa-clock"></i></div>
+            <div>
+              <h3>Fast Repairing</h3>
+              <p>Quick turnaround time. Most repairs completed same-day. Emergency services available.</p>
+            </div>
+          </div>
+          <div class="why-card">
+            <div class="why-icon"><i class="fas fa-user-gear"></i></div>
+            <div>
+              <h3>Skilled Electricians</h3>
+              <p>Experienced and certified electricians who deliver professional quality work every time.</p>
+            </div>
+          </div>
+          <div class="why-card">
+            <div class="why-icon"><i class="fas fa-award"></i></div>
+            <div>
+              <h3>Quality Products</h3>
+              <p>Only ISI certified and branded electrical products. We never compromise on quality.</p>
+            </div>
+          </div>
+          <div class="why-card">
+            <div class="why-icon"><i class="fas fa-heart"></i></div>
+            <div>
+              <h3>Customer Satisfaction</h3>
+              <p>5000+ happy customers. Your satisfaction is our biggest reward and motivation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== AREAS WE SERVE ========== -->
+    <section class="section section-alt" id="areas">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">
+            <i class="fas fa-map-location-dot"></i> Areas We Serve
+          </div>
+          <h2 class="section-title">Service Available in Your Area</h2>
+          <p class="section-desc">We provide electrical repair and wholesale services across multiple locations in Deoria and Siwan districts.</p>
+        </div>
+
+        <div class="areas-grid">
+          <div class="area-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>Rampur Bujurg</h3>
+            <p>Main Shop Location</p>
+          </div>
+          <div class="area-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>Salempur</h3>
+            <p>Service Available</p>
+          </div>
+          <div class="area-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>Sohanpur</h3>
+            <p>Service Available</p>
+          </div>
+          <div class="area-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>Mairwa</h3>
+            <p>Service Available</p>
+          </div>
+          <div class="area-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>Siwan</h3>
+            <p>Service Available</p>
+          </div>
+          <div class="area-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>Deoria</h3>
+            <p>Service Available</p>
+          </div>
+          <div class="area-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>Nearby Villages</h3>
+            <p>Within 25 km Radius</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TESTIMONIALS ========== -->
+    <section class="section" id="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">
+            <i class="fas fa-comments"></i> Testimonials
+          </div>
+          <h2 class="section-title">What Our Customers Say</h2>
+          <p class="section-desc">Real reviews from our valued customers across Rampur Bujurg, Salempur, Siwan and nearby areas.</p>
+        </div>
+
+        <div class="testimonial-slider">
+          <div class="testimonial-track">
+            <!-- Review 1 -->
+            <div class="testimonial-card">
+              <div class="testimonial-inner">
+                <div class="testimonial-stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"बहुत अच्छा काम करते हैं। हमारे पूरे घर की वायरिंग प्रजापति इलेक्ट्रिकल ने की है। बहुत साफ और प्रोफेशनल काम। Very professional house wiring service. Highly recommended!"</p>
+                <div class="testimonial-author">Rajesh Kumar</div>
+                <div class="testimonial-location">Rampur Bujurg</div>
+              </div>
+            </div>
+            <!-- Review 2 -->
+            <div class="testimonial-card">
+              <div class="testimonial-inner">
+                <div class="testimonial-stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"AC रिपेयर के लिए सबसे अच्छी दुकान। सोहन भाई ने हमारा AC एक ही दिन में ठीक कर दिया। रेट भी बहुत सही है। Best AC repair service near Mairwa!"</p>
+                <div class="testimonial-author">Amit Singh</div>
+                <div class="testimonial-location">Mairwa</div>
+              </div>
+            </div>
+            <!-- Review 3 -->
+            <div class="testimonial-card">
+              <div class="testimonial-inner">
+                <div class="testimonial-stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="testimonial-text">"होलसेल में सबसे सस्ता सामान मिलता है यहाँ। LED बल्ब, वायर, स्विच सब कुछ एक जगह। दुकान बहुत अच्छी है। Best wholesale prices for electrical items in the area."</p>
+                <div class="testimonial-author">Sunita Devi</div>
+                <div class="testimonial-location">Salempur</div>
+              </div>
+            </div>
+            <!-- Review 4 -->
+            <div class="testimonial-card">
+              <div class="testimonial-inner">
+                <div class="testimonial-stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"फ्रिज ठीक कराने में बहुत expert हैं। पहले कई जगह ले गया लेकिन कोई ठीक नहीं कर पाया। प्रजापति इलेक्ट्रिकल ने एक दिन में ठीक कर दिया। Excellent fridge repair service!"</p>
+                <div class="testimonial-author">Mohammad Irfan</div>
+                <div class="testimonial-location">Siwan</div>
+              </div>
+            </div>
+            <!-- Review 5 -->
+            <div class="testimonial-card">
+              <div class="testimonial-inner">
+                <div class="testimonial-stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"सोहनपुर से हूँ, पंखा रिपेयर कराने गया था। बहुत जल्दी और कम पैसे में ठीक हो गया। भाई बहुत अच्छे हैं। Fast fan repair at a very reasonable price. Truly satisfied!"</p>
+                <div class="testimonial-author">Vikram Yadav</div>
+                <div class="testimonial-location">Sohanpur</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-controls">
+            <button class="testimonial-btn" id="test-prev" aria-label="Previous Review"><i class="fas fa-chevron-left"></i></button>
+            <button class="testimonial-btn" id="test-next" aria-label="Next Review"><i class="fas fa-chevron-right"></i></button>
+          </div>
+
+          <div class="testimonial-dots">
+            <span class="testimonial-dot active" data-index="0"></span>
+            <span class="testimonial-dot" data-index="1"></span>
+            <span class="testimonial-dot" data-index="2"></span>
+            <span class="testimonial-dot" data-index="3"></span>
+            <span class="testimonial-dot" data-index="4"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== GALLERY ========== -->
+    <section class="section section-alt" id="gallery">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">
+            <i class="fas fa-images"></i> Gallery
+          </div>
+          <h2 class="section-title">Our Work Gallery</h2>
+          <p class="section-desc">Take a look at our professional electrical repair work, wiring projects, and wholesale product range.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="images/gallery/electrical-work.png" alt="Electrical switchboard repair work by Prajapati Electrical" loading="lazy" width="400" height="300">
+            <div class="gallery-overlay"><span>Electrical Switchboard Work</span></div>
+          </div>
+          <div class="gallery-item">
+            <img src="images/gallery/ac-repair.png" alt="AC repair service in Rampur Bujurg" loading="lazy" width="400" height="300">
+            <div class="gallery-overlay"><span>AC Repair Service</span></div>
+          </div>
+          <div class="gallery-item">
+            <img src="images/gallery/wholesale-shop.png" alt="Electrical wholesale shop in Rampur Bujurg" loading="lazy" width="400" height="300">
+            <div class="gallery-overlay"><span>Wholesale Shop Interior</span></div>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 30px;">
+          <a href="gallery.html" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px;">
+            View Full Gallery <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CONTACT SECTION ========== -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">
+            <i class="fas fa-envelope"></i> Contact Us
+          </div>
+          <h2 class="section-title">Get in Touch with Us</h2>
+          <p class="section-desc">Have a question or need electrical service? Contact us today — we're here to help!</p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Contact Info -->
+          <div class="contact-info-cards">
+            <div class="contact-info-card anim-fade-left">
+              <div class="contact-info-icon"><i class="fas fa-phone"></i></div>
+              <div>
+                <h4>Call Us</h4>
+                <a href="tel:+917250191427">+91 7250191427</a>
+              </div>
+            </div>
+            <div class="contact-info-card anim-fade-left">
+              <div class="contact-info-icon"><i class="fab fa-whatsapp"></i></div>
+              <div>
+                <h4>WhatsApp</h4>
+                <a href="https://wa.me/917250191427" target="_blank" rel="noopener">+91 7250191427</a>
+              </div>
+            </div>
+            <div class="contact-info-card anim-fade-left">
+              <div class="contact-info-icon"><i class="fas fa-location-dot"></i></div>
+              <div>
+                <h4>Visit Us</h4>
+                <p>Rampur Bujurg, Deoria, Uttar Pradesh</p>
+              </div>
+            </div>
+            <div class="contact-info-card anim-fade-left">
+              <div class="contact-info-icon"><i class="fas fa-clock"></i></div>
+              <div>
+                <h4>Business Hours</h4>
+                <p>Mon - Sat: 8:00 AM - 8:00 PM<br>Sunday: 9:00 AM - 2:00 PM</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="contact-form-wrap anim-fade-right">
+            <h3><i class="fas fa-paper-plane text-accent"></i> Send Us a Message</h3>
+            <form id="contact-form">
+              <div id="form-content">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="form-name">Your Name *</label>
+                    <input type="text" id="form-name" placeholder="आपका नाम / Your Name" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="form-phone">Phone Number *</label>
+                    <input type="tel" id="form-phone" placeholder="मोबाइल नंबर / Phone" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="form-service">Select Service *</label>
+                  <select id="form-service" required>
+                    <option value="">-- सेवा चुनें / Select Service --</option>
+                    <option value="Iron Repair">Iron Repair</option>
+                    <option value="Mixer Repair">Mixer Repair</option>
+                    <option value="Fan Repair">Fan Repair</option>
+                    <option value="AC Repair">AC Repair</option>
+                    <option value="Cooler Repair">Cooler Repair</option>
+                    <option value="Fridge Repair">Fridge Repair</option>
+                    <option value="House Wiring">House Wiring</option>
+                    <option value="Electrical Fitting">Electrical Fitting</option>
+                    <option value="Installation">Installation Services</option>
+                    <option value="Switch Board Repair">Switch Board Repair</option>
+                    <option value="Motor Repair">Motor Repair</option>
+                    <option value="Wholesale Products">Wholesale Products</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="form-message">Message</label>
+                  <textarea id="form-message" placeholder="अपनी समस्या बताएं / Describe your issue..." rows="4"></textarea>
+                </div>
+                <button type="submit" class="btn-submit" id="submit-btn">
+                  <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+              </div>
+
+              <div class="form-success" id="form-success">
+                <i class="fas fa-check-circle"></i>
+                <h3>Message Sent Successfully!</h3>
+                <p>Thank you! We'll contact you shortly. You can also reach us directly:</p>
+                <div style="margin-top:20px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+                  <a href="tel:+917250191427" class="btn btn-primary" style="font-size:0.9rem;"><i class="fas fa-phone"></i> Call Now</a>
+                  <a href="https://wa.me/917250191427" class="btn btn-whatsapp" target="_blank" rel="noopener" id="wa-form-link" style="font-size:0.9rem;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Google Maps -->
+        <div class="map-wrap anim-fade-up">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28595.21!2d84.15!3d26.24!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3993072xxxxxxxxx%3A0xxxxxxxxxxxxxxxxx!2sRampur%20Bujurg%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000"
+            width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Prajapati Electrical Location - Rampur Bujurg, Deoria">
+          </iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared Footer -->
+  <div id="pe-footer"></div>
+
+  <!-- ========== LIGHTBOX ========== -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close"><i class="fas fa-times"></i></button>
+    <img src="" alt="Gallery Preview" id="lightbox-img">
   </div>
 
-  <!-- ── LAUNCH COMPLETE ── -->
-  <div class="launch-complete" id="launch-complete">
-    <div class="live-text">🎉 WEBSITE IS NOW LIVE 🎉</div>
-    <h2 style="font-size:clamp(20px,5vw,36px);font-weight:700;color:#fff;">Welcome to Prajapati Electrical</h2>
-    <p class="live-services">
-      <strong>Electrical Services</strong> &bull; <strong>Repairs</strong> &bull; <strong>Installation</strong> &bull; <strong>Wholesale Supply</strong>
-    </p>
-    <div class="live-btns">
-      <a href="home.html" class="live-btn primary">🌐 Visit Website</a>
-      <a href="contact.html" class="live-btn secondary">📞 Contact Us</a>
-    </div>
-  </div>
+  <!-- ========== SCRIPTS ========== -->
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
 
-  <div class="divider"></div>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 
-  <footer class="footer">
-    &copy; 2026 Prajapati Electrical &bull; All Rights Reserved &bull; Powering Your World ⚡
-  </footer>
-</main>
+  <!-- Custom JS -->
+  <script src="js/shared-components.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/form.js" defer></script>
 
-<!-- ── NOTIFY MODAL ── -->
-<div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-  <div class="modal-box">
-    <div class="modal-form" id="modal-form">
-      <div style="font-size:40px;margin-bottom:12px;">⚡</div>
-      <h3 id="modal-title">Get Launch Notification</h3>
-      <p>Be the first to know when Prajapati Electrical goes live! Enter your details below.</p>
-      <input class="modal-input" type="text"  id="modal-name"  placeholder="Your Name"  autocomplete="name">
-      <input class="modal-input" type="email" id="modal-email" placeholder="Email Address" autocomplete="email">
-      <input class="modal-input" type="tel"   id="modal-phone" placeholder="Phone Number (optional)" autocomplete="tel">
-      <button class="modal-submit" onclick="submitNotify()">⚡ Notify Me!</button>
-      <br>
-      <button class="modal-close" onclick="closeModal()">No thanks, maybe later</button>
-    </div>
-    <div class="modal-thanks" id="modal-thanks">
-      <div style="font-size:56px;margin-bottom:16px;">🎉</div>
-      <h3 style="margin-bottom:12px;">You're on the list!</h3>
-      <p style="color:var(--white-80);font-size:15px;">We'll notify you the moment Prajapati Electrical launches. Thank you for your interest!</p>
-      <button class="modal-submit" style="margin-top:20px;" onclick="closeModal()">Close</button>
-    </div>
-  </div>
-</div>
-
-<script>
-// ── PARTICLES ──
-(function() {
-  const wrap = document.getElementById('particles');
-  for (let i = 0; i < 22; i++) {
-    const p = document.createElement('div');
-    p.className = 'particle';
-    const size = Math.random() * 4 + 2;
-    p.style.cssText = `
-      width:${size}px;height:${size}px;
-      left:${Math.random()*100}%;
-      animation-duration:${Math.random()*12+8}s;
-      animation-delay:${Math.random()*10}s;
-      opacity:0;
-    `;
-    wrap.appendChild(p);
-  }
-})();
-
-// ── COUNTDOWN ──
-const LAUNCH = new Date('2026-06-12T16:30:00Z'); // 10:00 PM IST = 16:30 UTC
-
-function pad(n) { return String(n).padStart(2,'0'); }
-
-function tickNum(el, newVal) {
-  const cur = el.textContent;
-  const nv  = pad(newVal);
-  if (cur !== nv) {
-    el.textContent = nv;
-    el.classList.remove('tick');
-    void el.offsetWidth;
-    el.classList.add('tick');
-    setTimeout(() => el.classList.remove('tick'), 250);
-  }
-}
-
-function updateTimer() {
-  const now  = Date.now();
-  const diff = LAUNCH - now;
-
-  if (diff <= 0) {
-    document.getElementById('countdown-section').style.display = 'none';
-    document.getElementById('launch-complete').classList.add('active');
-    return;
-  }
-
-  const d = Math.floor(diff / 86400000);
-  const h = Math.floor((diff % 86400000) / 3600000);
-  const m = Math.floor((diff % 3600000)  / 60000);
-  const s = Math.floor((diff % 60000)    / 1000);
-
-  tickNum(document.getElementById('days'),    d);
-  tickNum(document.getElementById('hours'),   h);
-  tickNum(document.getElementById('minutes'), m);
-  tickNum(document.getElementById('seconds'), s);
-}
-
-updateTimer();
-setInterval(updateTimer, 1000);
-
-// ── MODAL ──
-function openModal() {
-  document.getElementById('modal').classList.add('open');
-}
-function closeModal() {
-  document.getElementById('modal').classList.remove('open');
-}
-document.getElementById('modal').addEventListener('click', function(e) {
-  if (e.target === this) closeModal();
-});
-function submitNotify() {
-  const name  = document.getElementById('modal-name').value.trim();
-  const email = document.getElementById('modal-email').value.trim();
-  const phone = document.getElementById('modal-phone').value.trim();
-  if (!name || !email) { alert('Please enter your name and email.'); return; }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email address.'); return; }
-
-  const submitBtn = document.querySelector('#modal-form .modal-submit');
-  const originalText = submitBtn.textContent;
-  submitBtn.textContent = '⚡ Sending...';
-  submitBtn.disabled = true;
-
-  fetch("https://formsubmit.co/ajax/prajapatielectrical01@gmail.com", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/json"
-    },
-    body: JSON.stringify({
-      name: name,
-      email: email,
-      phone: phone || "Not provided",
-      _cc: "vkpn2006@gmail.com",
-      _subject: "New Website Launch Notification Subscriber!",
-      _captcha: "false"
-    })
-  })
-  .then(response => {
-    if (response.ok) {
-      document.getElementById('modal-form').classList.add('hide');
-      document.getElementById('modal-thanks').classList.add('show');
-    } else {
-      alert('Something went wrong. Please try again.');
-    }
-  })
-  .catch(error => {
-    console.error(error);
-    alert('Something went wrong. Please try again.');
-  })
-  .finally(() => {
-    submitBtn.textContent = originalText;
-    submitBtn.disabled = false;
-  });
-}
-</script>
+  <!-- Auth Nav Update -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      updateNavAuth();
+    });
+  </script>
 </body>
 </html>

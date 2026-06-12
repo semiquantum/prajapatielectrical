@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article | Prajapati Electrical Blog</title>
+  <meta name="description" content="Read full article on Prajapati Electrical Knowledge Base.">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .blog-detail-hero {
+      padding: 140px 0 60px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: var(--white);
+      text-align: center;
+    }
+    .blog-header-img {
+      width: 100%;
+      max-width: 900px;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin: 0 auto 40px;
+      display: block;
+      box-shadow: var(--card-shadow);
+      background: var(--section-alt-bg);
+    }
+    .blog-detail-content {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      padding-bottom: 80px;
+    }
+    .blog-detail-content h2, .blog-detail-content h3 {
+      color: var(--text-primary);
+      font-family: 'Outfit', sans-serif;
+      margin-top: 40px;
+      margin-bottom: 16px;
+    }
+    .blog-detail-content img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin: 30px 0;
+    }
+    .blog-detail-content p {
+      margin-bottom: 24px;
+    }
+    .blog-meta-banner {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Shared Navigation -->
+  <div id="pe-nav"></div>
+
+  <main>
+    <section class="blog-detail-hero">
+      <div class="container">
+        <!-- Breadcrumb -->
+        <div style="margin-bottom: 20px; font-size: 0.9rem; color: rgba(255,255,255,0.7);">
+          <a href="index.html" style="color: var(--white);">Home</a> / 
+          <a href="resources.html" style="color: var(--white);">Resources</a> / 
+          <span>Article</span>
+        </div>
+
+        <div class="blog-meta-banner" id="bd-meta">
+          <span><i class="fas fa-calendar"></i> <span id="bd-date">Loading...</span></span>
+          <span><i class="fas fa-tag"></i> <span id="bd-category">Loading...</span></span>
+        </div>
+        
+        <h1 style="font-family:'Outfit',sans-serif; font-size:2.8rem; color:var(--white); max-width:800px; margin:0 auto 40px;" id="bd-title">
+          Loading Article...
+        </h1>
+
+        <img src="images/placeholder.jpg" alt="Blog Header" class="blog-header-img" id="bd-img">
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="container">
+        <div class="blog-detail-content" id="bd-content">
+          <p>Please wait while we load the article content from our secure database...</p>
+          <div style="text-align:center; padding: 40px;">
+            <i class="fas fa-spinner fa-spin" style="font-size:2rem; color:var(--accent);"></i>
+          </div>
+        </div>
+        
+        <div style="max-width:800px; margin: 40px auto; padding-top:40px; border-top:1px solid var(--card-border); display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <h4 style="color:var(--text-primary); margin-bottom:8px;">Share this article:</h4>
+            <div style="display:flex; gap:12px;">
+              <a href="#" class="btn btn-secondary" style="padding:8px 16px; border-radius:50px;"><i class="fab fa-whatsapp"></i></a>
+              <a href="#" class="btn btn-secondary" style="padding:8px 16px; border-radius:50px;"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="btn btn-secondary" style="padding:8px 16px; border-radius:50px;"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+          <div>
+            <a href="resources.html" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared Footer -->
+  <div id="pe-footer"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/shared-components.js"></script>
+  <script src="js/main.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const id = urlParams.get('id');
+      
+      const titleEl = document.getElementById('bd-title');
+      const imgEl = document.getElementById('bd-img');
+      const dateEl = document.getElementById('bd-date');
+      const catEl = document.getElementById('bd-category');
+      const contentEl = document.getElementById('bd-content');
+      
+      if (!id) {
+        titleEl.textContent = "Article Not Found";
+        contentEl.innerHTML = "<p>No article ID specified. Please return to the resources page.</p>";
+        return;
+      }
+
+      try {
+        const { data, error } = await supabase
+          .from('blogs')
+          .select('*')
+          .eq('id', id)
+          .single();
+          
+        if (error) throw error;
+        
+        if (data) {
+          document.title = `${data.title} | Prajapati Electrical`;
+          titleEl.textContent = data.title;
+          imgEl.src = data.image_url || 'images/placeholder.jpg';
+          catEl.textContent = data.category || 'Uncategorized';
+          dateEl.textContent = new Date(data.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+          
+          contentEl.innerHTML = data.content || '<p>No content available for this article.</p>';
+        }
+      } catch (err) {
+        console.error("Error fetching blog:", err);
+        // Load fallback static content for demo purposes
+        if (id === '1') {
+          titleEl.textContent = "Top 5 House Wiring Safety Tips to Prevent Short Circuits";
+          catEl.textContent = "Safety Guide";
+          dateEl.textContent = "May 25, 2026";
+          contentEl.innerHTML = `
+            <p>House wiring is the nervous system of your home. When compromised, it can lead to devastating consequences such as appliance damage, electrical fires, and fatal shocks. In Rampur Bujurg and surrounding areas, fluctuating voltages and heavy monsoons make proper electrical insulation an absolute necessity.</p>
+            <h2>1. Use the Right Wire Gauge</h2>
+            <p>Different appliances pull different amounts of current. A 1.5 sq mm wire is fine for lighting, but using it for an AC or geyser is a recipe for disaster. Always use at least 2.5 sq mm to 4.0 sq mm copper wiring for heavy load points.</p>
+            <h2>2. Install Quality MCBs and RCCBs</h2>
+            <p>Miniature Circuit Breakers (MCBs) protect against overload and short circuits. Residual Current Circuit Breakers (RCCBs) protect humans against electric shocks by cutting power instantly when leakage is detected. Every modern distribution board must have an RCCB installed.</p>
+            <h2>3. Proper Grounding/Earthing</h2>
+            <p>Earthing safely dissipates excess current into the ground. A copper plate or pipe grounding pit should be created near the main meter panel. Ensure the earth wire (usually green) is connected to every 3-pin socket in your house.</p>
+            <h2>4. Say No to Exposed Joints</h2>
+            <p>Twisting wires together and wrapping them in low-quality tape is dangerous. Always use proper connector blocks or heavy-duty insulation tape (like 3M or branded ISI tapes). Better yet, ensure all joints are enclosed within junction boxes.</p>
+            <h2>5. Regular Maintenance Checks</h2>
+            <p>Electrical wear and tear happens invisibly inside the walls. Have a certified electrician from Prajapati Electrical perform a thermal scan and load test on your main panel once every two years to catch loose connections before they spark.</p>
+            <p><strong>Need a wiring safety audit?</strong> Book a service from your customer dashboard today!</p>
+          `;
+        } else {
+          titleEl.textContent = "Article Not Found";
+          contentEl.innerHTML = "<p>The requested article could not be loaded or does not exist.</p>";
+        }
+      }
+    });
+  </script>
+</body>
+</html>

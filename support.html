@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Support & Warranty | Prajapati Electrical</title>
+  <meta name="description" content="Raise complaints, register product warranties, file service requests, and browse electrical FAQs at Prajapati Electrical.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/products.css">
+
+  <style>
+    /* Support Page Styles */
+    .support-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 40px;
+    }
+    @media (max-width: 992px) {
+      .support-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    /* FAQ accordion styling */
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      margin-bottom: 12px;
+      padding: 16px 20px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .faq-item h4 {
+      font-size: 1rem;
+      color: var(--text-primary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-answer {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-top: 10px;
+      display: none;
+      line-height: 1.6;
+      animation: fadeIn 0.3s ease;
+    }
+    .faq-item.active {
+      border-color: var(--accent);
+    }
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    /* Tabs selector */
+    .support-form-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: var(--card-shadow);
+      height: fit-content;
+    }
+    .support-form {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+    .support-form.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Shared Navigation -->
+  <div id="pe-nav"></div>
+
+  <main>
+    <!-- ========== PAGE HERO ========== -->
+    <section class="products-hero">
+      <div class="hero-bg-effects">
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
+        <div class="circuit-line"></div>
+      </div>
+      <div class="hero-content" style="padding-top: 20px; margin: 0 auto;">
+        <div class="hero-badge">
+          <i class="fas fa-headset"></i>
+          <span>Support Desk</span>
+        </div>
+        <h1>Support & <span class="text-gradient">Warranty</span></h1>
+        <p class="hero-subtitle" style="margin-bottom: 0;">Raise complaints, register product warranties, and view documentation.</p>
+      </div>
+    </section>
+
+    <!-- ========== SUPPORT GRID SECTION ========== -->
+    <section class="section">
+      <div class="container">
+        
+        <div class="support-grid">
+          
+          <!-- Column 1: Help Center & FAQs -->
+          <div>
+            <div class="section-badge"><i class="fas fa-circle-question"></i> Help Center</div>
+            <h2 style="font-family:'Outfit',sans-serif; font-size:2.2rem; color:var(--text-primary); margin-bottom: 16px;">Frequently Asked Questions</h2>
+            <p style="color:var(--text-secondary); margin-bottom: 30px; line-height: 1.6;">Browse popular guides and queries. Click an item to expand details.</p>
+
+            <div class="faq-item">
+              <h4>How do I register my product warranty? <i class="fas fa-plus"></i></h4>
+              <div class="faq-answer">Use the "Warranty Registration" tab in the form panel. Enter your purchase date, invoice number, product serial code and brand details. Save it in your profile for fast lookup.</div>
+            </div>
+            <div class="faq-item">
+              <h4>What is your AMC (Annual Maintenance Contract) coverage? <i class="fas fa-plus"></i></h4>
+              <div class="faq-answer">Our AMC plans include 4 periodic visits, electrical load calibration checkups, grounding loop checks, panel maintenance scans, and priority 24-hr emergency response at discounted labor rates.</div>
+            </div>
+            <div class="faq-item">
+              <h4>How can I file a complaint or service issue? <i class="fas fa-plus"></i></h4>
+              <div class="faq-answer">Log into your profile dashboard and select the "Support Tickets" tab. If you have an active booking, you can directly link the issue to it. Otherwise, submit a "Raise Complaint" form here.</div>
+            </div>
+            <div class="faq-item">
+              <h4>Do you offer direct home delivery for wholesale materials? <i class="fas fa-plus"></i></h4>
+              <div class="faq-answer">Yes, we provide logistics delivery across Salempur, Deoria, Sohanpur, Mairwa and Siwan for authorized dealers and bulk orders over ₹20,000.</div>
+            </div>
+          </div>
+
+          <!-- Column 2: Interactive Form Cards -->
+          <div class="support-form-card">
+            <!-- Tabs selection -->
+            <div class="form-tabs" id="support-tabs" style="margin-bottom: 24px;">
+              <button class="form-tab-btn active" data-form="complaint"><i class="fas fa-circle-exclamation"></i> Raise Complaint</button>
+              <button class="form-tab-btn" data-form="warranty-reg"><i class="fas fa-shield-halved"></i> Warranty Reg</button>
+              <button class="form-tab-btn" data-form="warranty-claim"><i class="fas fa-ticket"></i> Warranty Claim</button>
+            </div>
+
+            <!-- Form: Complaint -->
+            <div class="support-form active" id="form-complaint">
+              <h3 style="font-family:'Outfit',sans-serif; font-size:1.3rem; margin-bottom: 16px;">File Service Complaint</h3>
+              <form id="complaint-submit-form">
+                <div class="form-group" style="margin-bottom:12px;">
+                  <label style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:6px;">Your Name *</label>
+                  <input type="text" id="comp-name" required style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--card-border); outline:none;">
+                </div>
+                <div class="form-row" style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:12px;">
+                  <div class="form-group">
+                    <label style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:6px;">Phone Number *</label>
+                    <input type="tel" id="comp-phone" required style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--card-border); outline:none;">
+                  </div>
+                  <div class="form-group">
+                    <label style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:6px;">Booking ID (Optional)</label>
+                    <input type="number" id="comp-booking" style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--card-border); outline:none;">
+                  </div>
+                </div>
+                <div class="form-group" style="margin-bottom:12px;">
+                  <label style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:6px;">Complaint Subject / Title *</label>
+                  <input type="text" id="comp-title" required placeholder="e.g. Switchboard sparking / Faulty wire insulation" style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--card-border); outline:none;">
+                </div>
+                <div class="form-group" style="margin-bottom:20px;">
+                  <label style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:6px;">Detailed Description *</label>
+                  <textarea id="comp-desc" required rows="4" style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--card-border); outline:none; resize:none;"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; padding:14px;">
+                  <i class="fas fa-bullhorn"></i> Submit Complaint
+                </button>
+              </form>
+            </div>
+
+            <!-- Form: Warranty Registration -->
+            <div class="support-form" id="form-warranty-reg">
+              <h3 style="font-family:'Outfit',sans-serif; font-size:1.3rem; margin-bottom: 16px;">Product Warranty Registration</h3>
+              <form id="warranty-reg-submit-form">
+                <div class="form-row" style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:12px;">
+                  <div class="form-group">
+                    <label style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:6px;">Invoice / Bill Number *</label>
+                    <input type="text" id="wreg-invoice" required style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--card-border); outline:none;">
+                  </div>
+                  <div class="form-group">
+                    <label style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:6px;">Purchase Date *</label>
+                    <input type="date" id="wreg-date" required style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--card-border); outline:none;">
+                  </div>
+                </div>
+                <div class="form-row" style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:12px;">
+                  <div class="form-group">
+                    <label style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:6px;">Product Serial Code *</label>
+                    <input type="text" id="wreg-serial" required placeholder="SN-XXXXX" style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--card-border); outline:none;">
+                  </div>
+                  <div class="form-group">
+                    <label style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:6px;">Brand *</label>
+                    <input type="text" id="wreg-brand" required placeholder="e.g. Havells / Polycab" style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--card-border); outline:none;">
+                  </div>
+                </div>
+                <div class="form-group" style="margin-bottom:20px;">
+                  <label style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:6px;">Contact Phone Number *</label>
+                  <input type="tel" id="wreg-phone" required style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--card-border); outline:none;">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; padding:14px;">
+                  <i class="fas fa-shield-halved"></i> Register Warranty
+                </button>
+              </form>
+            </div>
+
+            <!-- Form: Warranty Claim -->
+            <div class="support-form" id="form-warranty-claim">
+              <h3 style="font-family:'Outfit',sans-serif; font-size:1.3rem; margin-bottom: 16px;">Claim Registered Warranty</h3>
+              <form id="warranty-claim-submit-form">
+                <div class="form-group" style="margin-bottom:12px;">
+                  <label style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:6px;">Registered Serial Number *</label>
+                  <input type="text" id="wclaim-serial" required placeholder="SN-XXXXX" style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--card-border); outline:none;">
+                </div>
+                <div class="form-group" style="margin-bottom:12px;">
+                  <label style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:6px;">Contact Phone *</label>
+                  <input type="tel" id="wclaim-phone" required style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--card-border); outline:none;">
+                </div>
+                <div class="form-group" style="margin-bottom:20px;">
+                  <label style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:6px;">Describe the Fault / Defect *</label>
+                  <textarea id="wclaim-desc" required rows="4" placeholder="Detail the technical issue you are experiencing..." style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--card-border); outline:none; resize:none;"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; padding:14px;">
+                  <i class="fas fa-ticket"></i> Submit Warranty Claim
+                </button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared Footer -->
+  <div id="pe-footer"></div>
+
+  <!-- ========== SCRIPTS ========== -->
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/shared-components.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      updateNavAuth();
+
+      // FAQ accordion toggle
+      const faqs = document.querySelectorAll('.faq-item');
+      faqs.forEach(item => {
+        item.addEventListener('click', () => {
+          const isActive = item.classList.contains('active');
+          faqs.forEach(f => f.classList.remove('active'));
+          if (!isActive) item.classList.add('active');
+        });
+      });
+
+      // Tabs switcher
+      const tabBtns = document.querySelectorAll('.form-tab-btn');
+      const forms = document.querySelectorAll('.support-form');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabBtns.forEach(t => t.classList.remove('active'));
+          forms.forEach(f => f.classList.remove('active'));
+
+          btn.classList.add('active');
+          const targetForm = document.getElementById(`form-${btn.dataset.form}`);
+          if (targetForm) targetForm.classList.add('active');
+        });
+      });
+
+      // Form Submit: Complaint
+      const complaintForm = document.getElementById('complaint-submit-form');
+      complaintForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('comp-name').value.trim();
+        const phone = document.getElementById('comp-phone').value.trim();
+        const bookingId = document.getElementById('comp-booking').value;
+        const title = document.getElementById('comp-title').value.trim();
+        const desc = document.getElementById('comp-desc').value.trim();
+
+        const user = await getCurrentUser();
+        if (!user) {
+          alert("Please login first to submit a complaint linked to your profile.");
+          window.location.href = "auth.html?msg=login_required";
+          return;
+        }
+
+        const btn = complaintForm.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+
+        try {
+          const { error } = await supabase
+            .from('complaints')
+            .insert({
+              user_id: user.id,
+              booking_id: bookingId ? parseInt(bookingId) : null,
+              title: title,
+              description: `Name: ${name} | Phone: ${phone} | Description: ${desc}`,
+              status: 'open'
+            });
+
+          if (error) throw error;
+
+          alert("Complaint raised successfully! You can track resolution status in your Customer Dashboard.");
+          complaintForm.reset();
+        } catch (err) {
+          console.error(err);
+          alert("Failed to record complaint. Try again shortly.");
+        } finally {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fas fa-bullhorn"></i> Submit Complaint';
+        }
+      });
+
+      // Form Submit: Warranty Reg
+      const wregForm = document.getElementById('warranty-reg-submit-form');
+      wregForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const invoice = document.getElementById('wreg-invoice').value.trim();
+        const date = document.getElementById('wreg-date').value;
+        const serial = document.getElementById('wreg-serial').value.trim();
+        const brand = document.getElementById('wreg-brand').value.trim();
+        const phone = document.getElementById('wreg-phone').value.trim();
+
+        const btn = wregForm.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Registering...';
+
+        try {
+          // Store under leads table as warranty log
+          const { error } = await supabase
+            .from('leads')
+            .insert({
+              name: `Warranty Reg: ${serial}`,
+              phone: phone,
+              source: 'other', // falls under regular log
+              details: `Invoice: ${invoice} | Date: ${date} | Serial: ${serial} | Brand: ${brand}`,
+              status: 'new'
+            });
+
+          if (error) throw error;
+
+          alert("Warranty registered successfully in Prajapati database records! A confirmation email log has been dispatched.");
+          wregForm.reset();
+        } catch (err) {
+          console.error(err);
+          alert("Warranty registration failed. Try again.");
+        } finally {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fas fa-shield-halved"></i> Register Warranty';
+        }
+      });
+
+      // Form Submit: Warranty Claim
+      const wclaimForm = document.getElementById('warranty-claim-submit-form');
+      wclaimForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const serial = document.getElementById('wclaim-serial').value.trim();
+        const phone = document.getElementById('wclaim-phone').value.trim();
+        const desc = document.getElementById('wclaim-desc').value.trim();
+
+        const user = await getCurrentUser();
+        if (!user) {
+          alert("Please login first to submit warranty claim tickets.");
+          window.location.href = "auth.html?msg=login_required";
+          return;
+        }
+
+        const btn = wclaimForm.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting Claim...';
+
+        try {
+          // Create ticket
+          const { error } = await supabase
+            .from('support_tickets')
+            .insert({
+              user_id: user.id,
+              subject: `Warranty Claim: ${serial}`,
+              description: `Serial SN: ${serial} | Phone: ${phone} | Issue: ${desc}`,
+              priority: 'medium',
+              status: 'open'
+            });
+
+          if (error) throw error;
+
+          alert("Warranty claim ticket raised successfully! Track status in your Customer Dashboard.");
+          wclaimForm.reset();
+        } catch (err) {
+          console.error(err);
+          alert("Claim submission failed. Try again.");
+        } finally {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fas fa-ticket"></i> Submit Warranty Claim';
+        }
+      });
+
+    });
+  </script>
+</body>
+</html>

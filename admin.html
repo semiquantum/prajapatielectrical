@@ -19,6 +19,31 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/admin.css">
+  <style>
+    /* Admin specific style overrides */
+    .admin-sidebar-nav {
+      overflow-y: auto;
+      max-height: calc(100vh - 160px);
+      scrollbar-width: none;
+    }
+    .admin-sidebar-nav::-webkit-scrollbar {
+      display: none;
+    }
+    .status-select-inline {
+      padding: 6px 12px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: white;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      outline: none;
+      cursor: pointer;
+    }
+    .status-select-inline option {
+      background: #1E293B;
+      color: white;
+    }
+  </style>
 </head>
 <body class="admin-body">
 
@@ -42,11 +67,16 @@
         <div class="admin-nav-label">Management</div>
         <button class="admin-nav-item" data-panel="bookings"><i class="fas fa-calendar-check"></i> Bookings</button>
         <button class="admin-nav-item" data-panel="services"><i class="fas fa-cogs"></i> Services</button>
-        <button class="admin-nav-item" data-panel="users"><i class="fas fa-users"></i> Users</button>
+        <button class="admin-nav-item" data-panel="users"><i class="fas fa-users"></i> User Roles</button>
+        <button class="admin-nav-item" data-panel="leads"><i class="fas fa-filter-list"></i> Lead Pipeline</button>
+        <button class="admin-nav-item" data-panel="careers"><i class="fas fa-briefcase"></i> Careers Board</button>
+        <button class="admin-nav-item" data-panel="support"><i class="fas fa-ticket"></i> Support Queue</button>
+        <button class="admin-nav-item" data-panel="finance"><i class="fas fa-indian-rupee-sign"></i> Transactions</button>
+        <button class="admin-nav-item" data-panel="settings"><i class="fas fa-sliders"></i> Systems Settings</button>
       </nav>
 
       <div class="admin-sidebar-footer">
-        <a href="home.html" class="admin-nav-item"><i class="fas fa-globe"></i> View Website</a>
+        <a href="index.html" class="admin-nav-item"><i class="fas fa-globe"></i> View Website</a>
         <button class="admin-nav-item" id="admin-logout" style="color:#f87171;"><i class="fas fa-sign-out-alt"></i> Logout</button>
       </div>
     </aside>
@@ -67,7 +97,7 @@
         </div>
       </div>
 
-      <!-- Content -->
+      <!-- Content Panels -->
       <div class="admin-content">
 
         <!-- ═══ DASHBOARD PANEL ═══ -->
@@ -106,7 +136,7 @@
           <!-- Recent Bookings -->
           <div class="admin-card">
             <div class="admin-card-header">
-              <h3><i class="fas fa-clock"></i> Recent Bookings</h3>
+              <h3><i class="fas fa-clock"></i> Recent Booking Assignments</h3>
             </div>
             <div class="admin-table-wrap">
               <table class="admin-table" id="recent-bookings-table">
@@ -178,7 +208,7 @@
         <div class="admin-panel" id="panel-bookings">
           <div class="admin-card">
             <div class="admin-card-header">
-              <h3><i class="fas fa-calendar-check"></i> All Bookings</h3>
+              <h3><i class="fas fa-calendar-check"></i> Bookings &amp; Staff Dispatch</h3>
             </div>
             <div class="admin-table-wrap">
               <table class="admin-table">
@@ -186,12 +216,12 @@
                   <tr>
                     <th>Customer</th>
                     <th>Phone</th>
-                    <th>Service</th>
+                    <th>Service Type</th>
                     <th>Preferred Date</th>
                     <th>Description</th>
+                    <th>Dispatch Staff</th>
                     <th>Status</th>
-                    <th>Notes</th>
-                    <th>Actions</th>
+                    <th>Admin Notes</th>
                   </tr>
                 </thead>
                 <tbody id="bookings-table-body"></tbody>
@@ -223,11 +253,11 @@
           </div>
         </div>
 
-        <!-- ═══ USERS PANEL ═══ -->
+        <!-- ═══ USERS & ROLE ASSIGNMENT PANEL ═══ -->
         <div class="admin-panel" id="panel-users">
           <div class="admin-card">
             <div class="admin-card-header">
-              <h3><i class="fas fa-users"></i> Registered Users</h3>
+              <h3><i class="fas fa-users-gear"></i> Registered User Roles</h3>
             </div>
             <div class="admin-table-wrap">
               <table class="admin-table">
@@ -235,13 +265,158 @@
                   <tr>
                     <th>Name</th>
                     <th>Phone</th>
-                    <th>Role</th>
+                    <th>Role Assignment</th>
                     <th>Joined</th>
                   </tr>
                 </thead>
                 <tbody id="users-table-body"></tbody>
               </table>
             </div>
+          </div>
+        </div>
+
+        <!-- ═══ LEADS MANAGEMENT PANEL ═══ -->
+        <div class="admin-panel" id="panel-leads">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3><i class="fas fa-filter-list"></i> Lead Pipeline</h3>
+            </div>
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Lead Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Source</th>
+                    <th>Territory</th>
+                    <th>Details</th>
+                    <th>Assigned To</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="leads-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ CAREERS BOARD & APPLICANTS PANEL ═══ -->
+        <div class="admin-panel" id="panel-careers">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3><i class="fas fa-briefcase"></i> Job Openings</h3>
+              <button class="btn-add" onclick="openJobModal()"><i class="fas fa-plus"></i> Post Job</button>
+            </div>
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Job Title</th>
+                    <th>Location</th>
+                    <th>Status</th>
+                    <th>Date Posted</th>
+                  </tr>
+                </thead>
+                <tbody id="jobs-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="admin-card" style="margin-top:30px;">
+            <div class="admin-card-header">
+              <h3><i class="fas fa-file-invoice"></i> Candidates &amp; Resumes</h3>
+            </div>
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Applicant Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Resume (Storage)</th>
+                    <th>Application Status</th>
+                  </tr>
+                </thead>
+                <tbody id="applicants-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ SUPPORT TICKETS QUEUE PANEL ═══ -->
+        <div class="admin-panel" id="panel-support">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3><i class="fas fa-ticket"></i> Support Tickets queue</h3>
+            </div>
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Subject</th>
+                    <th>Description</th>
+                    <th>Priority</th>
+                    <th>Dispatch tech</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="tickets-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ TRANSACTIONS PANEL ═══ -->
+        <div class="admin-panel" id="panel-finance">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3><i class="fas fa-receipt"></i> Razorpay Transactions Log</h3>
+            </div>
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Transaction ID</th>
+                    <th>Amount</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                    <th>Gateway</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody id="finance-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ SYSTEMS SETTINGS PANEL ═══ -->
+        <div class="admin-panel" id="panel-settings">
+          <div class="admin-card">
+            <h3><i class="fas fa-gears"></i> Platform Configuration API Keys (Mocks)</h3>
+            <form class="profile-form" id="admin-settings-form">
+              <div class="form-group">
+                <label>Razorpay Merchant ID</label>
+                <input type="text" id="setting-rzp-mid" value="rzp_test_418Dsm" placeholder="MID">
+              </div>
+              <div class="form-group">
+                <label>Resend SMTP API Key</label>
+                <input type="password" id="setting-resend-key" value="re_RF8xePnN_8fA7E1Gz8e3yS1" placeholder="Key">
+              </div>
+              <div class="form-group">
+                <label>Cloudinary Cloud Name</label>
+                <input type="text" id="setting-cloudinary-name" value="prajapati-elect-cloudinary" placeholder="Cloud Name">
+              </div>
+              <div class="form-group">
+                <label>Google Analytics tag (GA4)</label>
+                <input type="text" id="setting-ga4-tag" value="G-LXMPELECT" placeholder="G-XXXXXX">
+              </div>
+              <div class="form-group full-width">
+                <button type="submit" class="btn-save">Save Systems Configurations</button>
+              </div>
+            </form>
           </div>
         </div>
 
@@ -335,6 +510,31 @@
         <div class="modal-actions">
           <button type="button" class="modal-btn-cancel" onclick="closeCategoryModal()">Cancel</button>
           <button type="submit" class="modal-btn-save" id="category-save-btn">Save Category</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ═══ JOB MODAL ═══ -->
+  <div class="admin-modal-overlay" id="job-modal">
+    <div class="admin-modal">
+      <h3><i class="fas fa-briefcase"></i> <span>Post Job Opening</span></h3>
+      <form id="job-form">
+        <div class="form-group">
+          <label for="job-title-inp">Job Title *</label>
+          <input type="text" id="job-title-inp" required placeholder="e.g. Senior Electrician / B2B Executive">
+        </div>
+        <div class="form-group">
+          <label for="job-location-inp">Location</label>
+          <input type="text" id="job-location-inp" value="Rampur Bujurg, Deoria">
+        </div>
+        <div class="form-group">
+          <label for="job-desc-inp">Detailed Job Description</label>
+          <textarea id="job-desc-inp" rows="3" placeholder="Job responsibilities..."></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="modal-btn-cancel" onclick="document.getElementById('job-modal').classList.remove('open')">Cancel</button>
+          <button type="submit" class="modal-btn-save">Publish Opening</button>
         </div>
       </form>
     </div>
