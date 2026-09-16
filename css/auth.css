@@ -232,11 +232,12 @@
 
 .form-group .input-icon-wrap input {
   padding-left: 44px;
+  padding-right: 44px;
 }
 
 .form-group .password-toggle {
   position: absolute;
-  right: 16px;
+  right: 18px;
   top: 50%;
   transform: translateY(-50%);
   background: none;
