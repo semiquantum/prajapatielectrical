@@ -187,6 +187,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     const password = document.getElementById('signup-password').value;
     const btn = document.getElementById('signup-btn');
 
+    if (role !== 'customer') {
+      if (role === 'employee') {
+        window.location.href = 'careers.html';
+      } else {
+        window.location.href = 'network.html';
+      }
+      return;
+    }
+
     if (!name || !email || !password) {
       showMessage(authMessage, authMessageText, 'Please fill in all required fields.');
       return;
@@ -229,7 +238,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         window.location.href = 'dashboard.html';
       }
     } catch (err) {
-      showMessage(authMessage, authMessageText, 'Sign up latency error.');
+      console.error(err);
+      showMessage(authMessage, authMessageText, err.message || 'Sign up latency error.');
       setLoading(btn, false);
     }
   });

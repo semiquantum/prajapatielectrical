@@ -782,9 +782,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     container.innerHTML = alerts.map(a => `
       <div class="attend-box" style="margin-bottom:12px; border-left: 4px solid var(--accent);">
         <div>
-          <strong style="color:white; font-size:0.95rem;">${a.title}</strong>
-          <p style="font-size:0.85rem; color:rgba(255,255,255,0.6); margin-top:4px;">${a.message}</p>
-          <span style="font-size:0.75rem; color:rgba(255,255,255,0.4); display:block; margin-top:6px;">${formatDateTime(a.created_at)}</span>
+          <strong style="color:var(--text-primary); font-size:0.95rem;">${a.title}</strong>
+          <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:4px;">${a.message}</p>
+          <span style="font-size:0.75rem; color:var(--text-secondary); display:block; margin-top:6px;">${formatDateTime(a.created_at)}</span>
         </div>
       </div>
     `).join('');
