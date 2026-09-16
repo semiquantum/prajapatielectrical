@@ -5,15 +5,19 @@
 document.addEventListener('DOMContentLoaded', async () => {
 
   // ── Guard routing dispatcher ──
-  const user = await getCurrentUser();
-  if (user) {
-    const profile = await getCurrentProfile();
-    if (['super_admin', 'admin', 'owner', 'manager'].includes(profile?.role)) {
-      window.location.href = 'admin.html';
-    } else {
-      window.location.href = 'dashboard.html';
+  try {
+    const user = await getCurrentUser();
+    if (user) {
+      const profile = await getCurrentProfile();
+      if (['super_admin', 'admin', 'owner', 'manager'].includes(profile?.role)) {
+        window.location.href = 'admin.html';
+      } else {
+        window.location.href = 'dashboard.html';
+      }
+      return;
     }
-    return;
+  } catch (err) {
+    console.warn("Auth routing skipped due to error:", err);
   }
 
   // ── DOM Elements ──

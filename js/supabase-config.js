@@ -28,8 +28,17 @@ const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 // ── Auth Helper Functions ──
 
 async function getCurrentUser() {
-  const { data: { user } } = await supabase.auth.getUser();
-  return user;
+  try {
+    const { data, error } = await supabase.auth.getUser();
+    if (error) {
+      console.warn('getCurrentUser error:', error.message);
+      return null;
+    }
+    return data?.user || null;
+  } catch (err) {
+    console.error('getCurrentUser exception:', err);
+    return null;
+  }
 }
 
 async function getCurrentProfile() {
