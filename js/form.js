@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Phone validation (Indian numbers)
     const phoneRegex = /^[6-9]\d{9}$/;
-    const cleanPhone = phone.replace(/[\s\-\+91]/g, '');
+    const cleanPhone = phone.replace(/\D/g, '').slice(-10);
     if (!phoneRegex.test(cleanPhone)) {
       showToast('कृपया सही मोबाइल नंबर दर्ज करें / Please enter a valid phone number', 'error');
       return;

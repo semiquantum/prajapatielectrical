@@ -348,8 +348,8 @@
         const source = sourceInput.value;
 
         // Basic phone validation
-        const cleanPhone = phone.replace(/[\s\-\+]/g, '');
-        if (cleanPhone.length < 10) {
+        const cleanPhone = phone.replace(/\D/g, '').slice(-10);
+        if (cleanPhone.length !== 10) {
           alert("Please enter a valid phone number.");
           return;
         }
