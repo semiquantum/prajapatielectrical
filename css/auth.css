@@ -221,7 +221,7 @@
   position: relative;
 }
 
-.form-group .input-icon-wrap i {
+.form-group .input-icon-wrap > i {
   position: absolute;
   left: 16px;
   top: 50%;
