@@ -23,7 +23,7 @@ const SUPABASE_URL = window.ENV?.SUPABASE_URL || 'https://rdsimusskjnayzsgyfgc.s
 const SUPABASE_ANON_KEY = window.ENV?.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJkc2ltdXNza2puYXl6c2d5ZmdjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA4MDMzMjEsImV4cCI6MjA5NjM3OTMyMX0.FLnlMIhh39t3Vjs0l6X3Z1CyKfTDVgbTfS9xfAkKc98';
 
 // Initialize Supabase client
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+window.supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // ── Auth Helper Functions ──
 
