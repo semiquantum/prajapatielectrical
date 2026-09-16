@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   // ══════════════════════════════════════
   
   if (profile.role === 'customer') {
-    await loadServicesSelect();
+    // loadServicesSelect(); // Removed as per user request to use text input instead of dropdown
     await loadBookings();
     await loadCustomerOrders();
     await loadSupportTickets();
@@ -253,24 +253,25 @@ document.addEventListener('DOMContentLoaded', async () => {
     const btn = document.getElementById('submit-booking-btn');
     btn.disabled = true;
 
-    const serviceId = document.getElementById('booking-service').value;
+    const serviceName = document.getElementById('booking-service').value.trim();
     const date = document.getElementById('booking-date').value;
     const time = document.getElementById('booking-time').value;
     const phone = document.getElementById('booking-phone').value.trim();
     const address = document.getElementById('booking-address').value.trim();
     const desc = document.getElementById('booking-desc').value.trim();
 
+    const finalDesc = `Requested Service: ${serviceName}\n\nDetails: ${desc}`;
+
     try {
       const { error } = await supabase
         .from('bookings')
         .insert({
           user_id: user.id,
-          service_id: parseInt(serviceId),
           preferred_date: date || null,
           preferred_time: time || '',
           phone: phone,
           address: address,
-          description: desc
+          description: finalDesc
         });
 
       if (error) throw error;
