@@ -504,9 +504,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         <td>${s.price_range || '-'}</td>
         <td><span class="status-badge ${s.is_active ? 'badge-success' : 'badge-danger'}">${s.is_active ? 'Active' : 'Inactive'}</span></td>
         <td>
-          <button class="btn-edit" onclick="toggleService(${s.id}, ${!s.is_active})">
-            <i class="fas ${s.is_active ? 'fa-eye-slash' : 'fa-eye'}"></i> ${s.is_active ? 'Disable' : 'Enable'}
-          </button>
+          <div class="table-actions" style="justify-content: flex-start;">
+            <button class="btn-edit" onclick="editService(${s.id})" title="Edit"><i class="fas fa-pen"></i></button>
+            <button class="btn-delete" onclick="deleteService(${s.id}, '${s.name.replace(/'/g, "\\'")}')" title="Delete"><i class="fas fa-trash"></i></button>
+            <button class="btn-edit" onclick="toggleService(${s.id}, ${!s.is_active})" title="${s.is_active ? 'Disable' : 'Enable'}">
+              <i class="fas ${s.is_active ? 'fa-eye-slash' : 'fa-eye'}"></i>
+            </button>
+          </div>
         </td>
       </tr>
     `).join('');
@@ -519,6 +523,75 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (error) { showToast('Failed to update.', 'error'); }
     else { showToast(`Service ${active ? 'enabled' : 'disabled'}.`); await loadServices(); await loadStats(); }
   };
+
+  window.openServiceModal = function(title = 'Add Service') {
+    document.getElementById('service-modal-title').textContent = title;
+    document.getElementById('service-modal').classList.add('open');
+  };
+
+  window.closeServiceModal = function() {
+    document.getElementById('service-modal').classList.remove('open');
+    document.getElementById('service-form').reset();
+    document.getElementById('service-edit-id').value = '';
+  };
+
+  document.getElementById('btn-add-service').addEventListener('click', () => {
+    openServiceModal('Add Service');
+  });
+
+  window.editService = async function(id) {
+    const { data: srv, error } = await adminClient.from('services').select('*').eq('id', id).single();
+    if (error || !srv) { showToast('Failed to load service.', 'error'); return; }
+
+    document.getElementById('service-edit-id').value = srv.id;
+    document.getElementById('service-name').value = srv.name;
+    document.getElementById('service-desc').value = srv.description || '';
+    document.getElementById('service-price').value = srv.price_range || '';
+    document.getElementById('service-icon').value = srv.icon || 'fas fa-bolt';
+    document.getElementById('service-sort').value = srv.sort_order || 0;
+    document.getElementById('service-active').checked = srv.is_active;
+    
+    openServiceModal('Edit Service');
+  };
+
+  window.deleteService = async function(id, name) {
+    if (!confirm(`Delete service "${name}"?`)) return;
+    const { error } = await adminClient.from('services').delete().eq('id', id);
+    if (error) { showToast('Failed to delete.', 'error'); }
+    else { showToast('Service deleted.'); await loadServices(); await loadStats(); }
+  };
+
+  document.getElementById('service-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('service-save-btn');
+    btn.disabled = true;
+    
+    const editId = document.getElementById('service-edit-id').value;
+    const srvData = {
+      name: document.getElementById('service-name').value.trim(),
+      description: document.getElementById('service-desc').value.trim(),
+      price_range: document.getElementById('service-price').value.trim(),
+      icon: document.getElementById('service-icon').value.trim() || 'fas fa-bolt',
+      sort_order: parseInt(document.getElementById('service-sort').value) || 0,
+      is_active: document.getElementById('service-active').checked
+    };
+
+    let error;
+    if (editId) {
+      ({ error } = await adminClient.from('services').update(srvData).eq('id', editId));
+    } else {
+      ({ error } = await adminClient.from('services').insert(srvData));
+    }
+
+    if (error) { showToast('Failed to save: ' + error.message, 'error'); }
+    else {
+      showToast(editId ? 'Service updated!' : 'Service added!');
+      closeServiceModal();
+      await loadServices();
+      await loadStats();
+    }
+    btn.disabled = false;
+  });
 
   // ══════════════════════════════════════
   // USERS LIST & ROLE MANAGEMENT

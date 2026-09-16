@@ -52,7 +52,18 @@ async function getCurrentProfile() {
     .single();
 
   if (error) {
-    console.error('Error fetching profile:', error);
+    console.warn('Profile not found or db error:', error.message);
+    
+    // Fallback: If infinite recursion (42P17) or missing profile, mock profile from JWT metadata to avoid crash
+    if (error.code === '42P17' || error.code === 'PGRST116') {
+      console.warn('Bypassing profile fetch error via JWT metadata...');
+      return {
+        id: user.id,
+        role: user.user_metadata?.role || 'customer',
+        full_name: user.user_metadata?.full_name || user.email.split('@')[0],
+        phone: user.user_metadata?.phone || ''
+      };
+    }
     return null;
   }
   return data;

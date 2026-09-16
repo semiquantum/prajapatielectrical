@@ -9,7 +9,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     const user = await getCurrentUser();
     if (user) {
       const profile = await getCurrentProfile();
-      if (['super_admin', 'admin', 'owner', 'manager'].includes(profile?.role)) {
+      if (!profile) {
+        await supabase.auth.signOut();
+        return;
+      }
+      if (['super_admin', 'admin', 'owner', 'manager'].includes(profile.role)) {
         window.location.href = 'admin.html';
       } else {
         window.location.href = 'dashboard.html';
@@ -35,15 +39,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   const resetMessageText = document.getElementById('reset-message-text');
   const forgotLink = document.getElementById('forgot-password-link');
   const resetBackBtn = document.getElementById('reset-back-btn');
-
-  const otpView = document.getElementById('auth-otp-view');
-  const otpBackBtn = document.getElementById('otp-back-btn');
-  const otpForm = document.getElementById('otp-form');
-  const otpMessage = document.getElementById('otp-message');
-  const otpMessageText = document.getElementById('otp-message-text');
-  const resendBtn = document.getElementById('resend-otp-btn');
-  const resendTimer = document.getElementById('resend-timer');
-  const otpTargetEmail = document.getElementById('otp-target-email');
 
   let currentSignupEmail = '';
 
@@ -228,10 +223,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
 
       if (data.user && !data.session) {
-        currentSignupEmail = email;
-        otpTargetEmail.textContent = email;
-        mainView.style.display = 'none';
-        otpView.style.display = 'block';
+        showMessage(authMessage, authMessageText, 'Success! Please check your email for a confirmation link.', 'success');
         signupForm.reset();
         setLoading(btn, false);
       } else {
@@ -244,79 +236,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 
-  // ── OTP VERIFICATION ──
-  otpForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    hideMessage(otpMessage);
 
-    const token = document.getElementById('otp-code').value.trim();
-    const btn = document.getElementById('otp-btn');
-
-    if (token.length !== 6) {
-      showMessage(otpMessage, otpMessageText, 'Please enter a valid 6-digit code.');
-      return;
-    }
-
-    setLoading(btn, true);
-
-    try {
-      const { data, error } = await supabase.auth.verifyOtp({
-        email: currentSignupEmail,
-        token: token,
-        type: 'signup'
-      });
-
-      if (error) {
-        showMessage(otpMessage, otpMessageText, error.message);
-        setLoading(btn, false);
-        return;
-      }
-
-      window.location.href = 'dashboard.html';
-    } catch (err) {
-      showMessage(otpMessage, otpMessageText, 'Verification connection error.');
-      setLoading(btn, false);
-    }
-  });
-
-  // ── RESEND OTP ──
-  resendBtn.addEventListener('click', async () => {
-    resendBtn.style.display = 'none';
-    resendTimer.style.display = 'inline';
-    
-    try {
-      const { error } = await supabase.auth.resend({
-        type: 'signup',
-        email: currentSignupEmail,
-      });
-
-      if (error) {
-        showMessage(otpMessage, otpMessageText, error.message);
-      } else {
-        showMessage(otpMessage, otpMessageText, 'OTP resent via Resend! Check your inbox.', 'success');
-      }
-    } catch (err) {
-      showMessage(otpMessage, otpMessageText, 'Failed to resend OTP.');
-    }
-    
-    let timeLeft = 60;
-    resendTimer.textContent = `(${timeLeft}s)`;
-    const timerId = setInterval(() => {
-      timeLeft--;
-      resendTimer.textContent = `(${timeLeft}s)`;
-      if (timeLeft <= 0) {
-        clearInterval(timerId);
-        resendTimer.style.display = 'none';
-        resendBtn.style.display = 'inline';
-      }
-    }, 1000);
-  });
-
-  otpBackBtn.addEventListener('click', () => {
-    otpView.style.display = 'none';
-    mainView.style.display = 'block';
-    hideMessage(otpMessage);
-  });
 
   // ── FORGOT PASSWORD ──
   forgotLink.addEventListener('click', (e) => {

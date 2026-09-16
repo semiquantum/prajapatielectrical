@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   // ── Load Profile ──
   const profile = await getCurrentProfile();
   if (!profile) {
+    await supabase.auth.signOut();
     window.location.href = 'auth.html';
     return;
   }

@@ -204,36 +204,7 @@
         </form>
       </div>
 
-      <!-- OTP Verification View -->
-      <div class="auth-otp-view" id="auth-otp-view" style="display: none;">
-        <button type="button" class="auth-reset-back" id="otp-back-btn">
-          <i class="fas fa-arrow-left"></i> Back
-        </button>
-        <h2>Verify Email</h2>
-        <p>We've sent a 6-digit code to <span id="otp-target-email" style="font-weight:600;color:var(--text-primary);">your email</span>.</p>
 
-        <div class="auth-message" id="otp-message">
-          <i class="fas fa-info-circle"></i>
-          <span id="otp-message-text"></span>
-        </div>
-
-        <form id="otp-form">
-          <div class="form-group" style="text-align:center;">
-            <label for="otp-code">Enter Verification Code</label>
-            <input type="text" id="otp-code" placeholder="------" required maxlength="6" style="text-align:center; font-size:2rem; letter-spacing:10px; width:100%; padding:10px; background:#FFFFFF; border:1px solid #CBD5E1; color:#0F172A; border-radius:12px; font-family:'Outfit',sans-serif; outline:none;">
-          </div>
-
-          <button type="submit" class="auth-submit" id="otp-btn">
-            <span class="btn-text"><i class="fas fa-check-circle"></i> Verify Account</span>
-            <span class="spinner"></span>
-          </button>
-        </form>
-        
-        <div style="text-align:center; margin-top: 20px; font-size: 0.9rem;">
-          <button type="button" id="resend-otp-btn" style="background:none; border:none; color:var(--accent); cursor:pointer; font-weight:600;">Resend Code</button>
-          <span id="resend-timer" style="color:var(--text-secondary); display:none;">(60s)</span>
-        </div>
-      </div>
     </div> <!-- Ends auth-card -->
 
     <!-- Footer -->

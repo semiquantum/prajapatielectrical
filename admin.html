@@ -235,6 +235,7 @@
           <div class="admin-card">
             <div class="admin-card-header">
               <h3><i class="fas fa-cogs"></i> Services</h3>
+              <button class="btn-add" id="btn-add-service"><i class="fas fa-plus"></i> Add Service</button>
             </div>
             <div class="admin-table-wrap">
               <table class="admin-table">
@@ -510,6 +511,48 @@
         <div class="modal-actions">
           <button type="button" class="modal-btn-cancel" onclick="closeCategoryModal()">Cancel</button>
           <button type="submit" class="modal-btn-save" id="category-save-btn">Save Category</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ═══ SERVICE MODAL ═══ -->
+  <div class="admin-modal-overlay" id="service-modal">
+    <div class="admin-modal">
+      <h3><i class="fas fa-cogs"></i> <span id="service-modal-title">Add Service</span></h3>
+      <form id="service-form">
+        <input type="hidden" id="service-edit-id">
+        <div class="form-group">
+          <label for="service-name">Service Name *</label>
+          <input type="text" id="service-name" required placeholder="e.g. AC Installation">
+        </div>
+        <div class="form-group">
+          <label for="service-desc">Description</label>
+          <textarea id="service-desc" placeholder="Service description..."></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="service-price">Price Range</label>
+            <input type="text" id="service-price" placeholder="e.g. ₹500 - ₹2000">
+          </div>
+          <div class="form-group">
+            <label for="service-icon">Icon Class</label>
+            <input type="text" id="service-icon" placeholder="fas fa-bolt">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="service-sort">Sort Order</label>
+            <input type="number" id="service-sort" min="0" value="0">
+          </div>
+          <div class="form-check" style="margin-top:28px;">
+            <input type="checkbox" id="service-active" checked>
+            <label for="service-active">Active</label>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="modal-btn-cancel" onclick="closeServiceModal()">Cancel</button>
+          <button type="submit" class="modal-btn-save" id="service-save-btn">Save Service</button>
         </div>
       </form>
     </div>
