@@ -2,9 +2,9 @@
    PRAJAPATI ELECTRICAL — Admin Panel Logic
    ============================================ */
 
-// Service role client for admin operations
-const SUPABASE_SERVICE_KEY = window.ENV?.SUPABASE_SERVICE_ROLE_KEY || window.ENV?.SUPABASE_SERVICE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJkc2ltdXNza2puYXl6c2d5ZmdjIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4MDgwMzMyMSwiZXhwIjoyMDk2Mzc5MzIxfQ.tdwKruLJuJU7W-QYRao0v4yvT-MY395D3Kjv2tW7FI8';
-const adminClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY);
+// Redefined to use standard authenticated client instead of leaking service_role key client-side.
+// Row Level Security (RLS) policies permit authenticated administrators to perform these actions securely.
+const adminClient = supabase;
 
 document.addEventListener('DOMContentLoaded', async () => {
 

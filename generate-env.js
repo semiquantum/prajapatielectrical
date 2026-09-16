@@ -15,6 +15,8 @@ if (fs.existsSync(envPath)) {
     const parts = trimmed.split('=');
     if (parts.length >= 2) {
       const key = parts[0].trim();
+      // Exclude private administrative secrets from public client context
+      if (['SUPABASE_SERVICE_ROLE_KEY', 'RESEND_API', 'CLOUDINARY_API_SECRET'].includes(key)) return;
       const val = parts.slice(1).join('=').trim();
       // Remove surrounding quotes if any
       envVars[key] = val.replace(/^['"]|['"]$/g, '');

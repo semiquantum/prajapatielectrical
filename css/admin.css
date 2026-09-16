@@ -6,7 +6,7 @@
 .admin-body {
   font-family: 'Inter', sans-serif;
   background: #0B1120;
-  color: #F1F5F9;
+  color: #0F172A;
   min-height: 100vh;
   margin: 0;
   padding: 0;
@@ -60,7 +60,7 @@
   font-family: 'Outfit', sans-serif;
   font-weight: 700;
   font-size: 1rem;
-  color: #fff;
+  color: #0F172A;
 }
 
 .admin-sidebar-header .brand-sub {
@@ -82,7 +82,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  color: rgba(255,255,255,0.3);
+  color: #94A3B8;
   padding: 12px 12px 8px;
 }
 
@@ -92,7 +92,7 @@
   gap: 12px;
   padding: 12px 16px;
   border-radius: 12px;
-  color: rgba(255,255,255,0.6);
+  color: #475569;
   font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
@@ -106,8 +106,8 @@
 }
 
 .admin-nav-item:hover {
-  background: rgba(255,255,255,0.06);
-  color: rgba(255,255,255,0.9);
+  background: #FFFFFF;
+  color: #0F172A;
 }
 
 .admin-nav-item.active {
@@ -153,7 +153,7 @@
   font-family: 'Outfit', sans-serif;
   font-size: 1.2rem;
   font-weight: 700;
-  color: #fff;
+  color: #0F172A;
 }
 
 .admin-topbar-right {
@@ -164,10 +164,10 @@
 
 .admin-topbar-btn {
   padding: 8px 16px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
   border-radius: 10px;
-  color: rgba(255,255,255,0.7);
+  color: #475569;
   font-size: 0.85rem;
   font-weight: 500;
   cursor: pointer;
@@ -179,15 +179,15 @@
 }
 
 .admin-topbar-btn:hover {
-  background: rgba(255,255,255,0.1);
-  color: #fff;
+  background: #E2E8F0;
+  color: #0F172A;
 }
 
 .mobile-menu-btn {
   display: none;
   background: none;
   border: none;
-  color: rgba(255,255,255,0.7);
+  color: #475569;
   font-size: 1.3rem;
   cursor: pointer;
   padding: 4px;
@@ -222,8 +222,8 @@
 }
 
 .stat-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
   border-radius: 16px;
   padding: 24px;
   display: flex;
@@ -233,7 +233,7 @@
 }
 
 .stat-card:hover {
-  border-color: rgba(255,255,255,0.15);
+  border-color: #CBD5E1;
   transform: translateY(-2px);
 }
 
@@ -257,19 +257,19 @@
   font-family: 'Outfit', sans-serif;
   font-size: 1.8rem;
   font-weight: 800;
-  color: #fff;
+  color: #0F172A;
 }
 
 .stat-info .stat-label {
   font-size: 0.8rem;
-  color: rgba(255,255,255,0.5);
+  color: #64748B;
   font-weight: 500;
 }
 
 /* ── Admin Card ── */
 .admin-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
   border-radius: 20px;
   padding: 24px;
   margin-bottom: 24px;
@@ -288,7 +288,7 @@
   font-family: 'Outfit', sans-serif;
   font-size: 1.15rem;
   font-weight: 700;
-  color: #fff;
+  color: #0F172A;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -300,7 +300,7 @@
 .btn-add {
   padding: 10px 20px;
   background: linear-gradient(135deg, #FF6B00, #FF8C38);
-  color: #fff;
+  color: #0F172A;
   border: none;
   border-radius: 12px;
   font-size: 0.85rem;
@@ -378,7 +378,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: rgba(255,255,255,0.4);
+  color: #64748B;
   border-bottom: 1px solid rgba(255,255,255,0.08);
   white-space: nowrap;
 }
@@ -399,18 +399,18 @@
   height: 48px;
   border-radius: 10px;
   object-fit: cover;
-  background: rgba(255,255,255,0.04);
+  background: #FFFFFF;
 }
 
 .admin-table .product-thumb-placeholder {
   width: 48px;
   height: 48px;
   border-radius: 10px;
-  background: rgba(255,255,255,0.04);
+  background: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255,255,255,0.15);
+  color: #CBD5E1;
   font-size: 1rem;
 }
 
@@ -438,8 +438,8 @@
 }
 
 .admin-modal {
-  background: #1E293B;
-  border: 1px solid rgba(255,255,255,0.1);
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
   border-radius: 20px;
   padding: 32px;
   width: 100%;
@@ -454,7 +454,7 @@
   font-family: 'Outfit', sans-serif;
   font-size: 1.3rem;
   font-weight: 700;
-  color: #fff;
+  color: #0F172A;
   margin-bottom: 24px;
   display: flex;
   align-items: center;
@@ -471,7 +471,7 @@
   display: block;
   font-size: 0.85rem;
   font-weight: 600;
-  color: rgba(255,255,255,0.6);
+  color: #475569;
   margin-bottom: 6px;
 }
 
@@ -480,10 +480,10 @@
 .admin-modal textarea {
   width: 100%;
   padding: 12px 16px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
   border-radius: 12px;
-  color: #fff;
+  color: #0F172A;
   font-size: 0.95rem;
   font-family: 'Inter', sans-serif;
   outline: none;
@@ -505,8 +505,8 @@
 }
 
 .admin-modal select option {
-  background: #1E293B;
-  color: #fff;
+  background: #FFFFFF;
+  color: #0F172A;
 }
 
 .admin-modal textarea {
@@ -553,9 +553,9 @@
 
 .modal-btn-cancel {
   padding: 12px 24px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
-  color: rgba(255,255,255,0.6);
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  color: #475569;
   border-radius: 12px;
   font-size: 0.9rem;
   font-weight: 600;
@@ -565,14 +565,14 @@
 }
 
 .modal-btn-cancel:hover {
-  background: rgba(255,255,255,0.1);
-  color: #fff;
+  background: #E2E8F0;
+  color: #0F172A;
 }
 
 .modal-btn-save {
   padding: 12px 24px;
   background: linear-gradient(135deg, #FF6B00, #FF8C38);
-  color: #fff;
+  color: #0F172A;
   border: none;
   border-radius: 12px;
   font-size: 0.9rem;
@@ -625,24 +625,24 @@
 .status-select {
   padding: 6px 10px;
   font-size: 0.8rem;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
   border-radius: 8px;
-  color: #fff;
+  color: #0F172A;
   font-family: 'Inter', sans-serif;
   outline: none;
   cursor: pointer;
 }
 
 .status-select option {
-  background: #1E293B;
+  background: #FFFFFF;
 }
 
 /* ── Empty State ── */
 .admin-empty {
   text-align: center;
   padding: 50px 20px;
-  color: rgba(255,255,255,0.3);
+  color: #94A3B8;
 }
 
 .admin-empty i {
@@ -700,6 +700,7 @@
 
   .admin-sidebar.open {
     transform: translateX(0);
+    box-shadow: 10px 0 30px rgba(0,0,0,0.5);
   }
 
   .admin-main {
@@ -728,21 +729,156 @@
     padding: 16px;
   }
 
+  .admin-topbar {
+    padding: 0 16px;
+    height: 56px;
+  }
+
+  .admin-topbar h2 {
+    font-size: 1rem;
+  }
+
+  .admin-topbar-btn {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
   .stats-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .stat-card {
+    padding: 18px;
+    border-radius: 14px;
+  }
+
+  .stat-info .stat-num {
+    font-size: 1.4rem;
+  }
+
+  .stat-info .stat-label {
+    font-size: 0.75rem;
+  }
+
+  .admin-card {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .admin-card-header h3 {
+    font-size: 1rem;
   }
 
   .admin-modal {
     padding: 24px 20px;
+    border-radius: 16px;
+  }
+
+  .admin-modal h3 {
+    font-size: 1.15rem;
   }
 
   .admin-modal .form-row {
     grid-template-columns: 1fr;
   }
+
+  .modal-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .modal-btn-cancel,
+  .modal-btn-save {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .admin-table th,
+  .admin-table td {
+    padding: 10px 12px;
+    font-size: 0.82rem;
+  }
+
+  .table-actions {
+    gap: 6px;
+  }
+
+  .btn-edit,
+  .btn-delete {
+    padding: 5px 10px;
+    font-size: 0.75rem;
+  }
+
+  .admin-toast {
+    bottom: 16px;
+    right: 16px;
+    left: 16px;
+    font-size: 0.82rem;
+    padding: 12px 18px;
+  }
 }
 
 @media (max-width: 480px) {
+  .admin-content {
+    padding: 12px;
+  }
+
   .stats-grid {
     grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .stat-card {
+    padding: 16px;
+  }
+
+  .stat-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+  }
+
+  .stat-info .stat-num {
+    font-size: 1.3rem;
+  }
+
+  .admin-card {
+    padding: 14px;
+    border-radius: 14px;
+    margin-bottom: 16px;
+  }
+
+  .admin-card-header {
+    margin-bottom: 14px;
+  }
+
+  .admin-modal {
+    padding: 20px 16px;
+  }
+
+  .admin-modal h3 {
+    font-size: 1.05rem;
+    margin-bottom: 18px;
+  }
+
+  .admin-modal-overlay {
+    padding: 10px;
+  }
+
+  .btn-add {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+
+  .admin-empty {
+    padding: 36px 16px;
+  }
+
+  .admin-empty i {
+    font-size: 2rem;
   }
 }
+

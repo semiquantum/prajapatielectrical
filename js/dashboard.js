@@ -3,6 +3,7 @@
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', async () => {
+  let allProducts = []; // Outer scope variable to hold products for B2B forms
 
   // ── Auth Guard ──
   const user = await getCurrentUser();
@@ -562,6 +563,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       .from('products')
       .select('*')
       .eq('in_stock', true);
+
+    allProducts = products || [];
 
     const select = document.getElementById('bulk-product');
     if (select) {

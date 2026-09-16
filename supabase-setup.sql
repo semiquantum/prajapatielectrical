@@ -23,6 +23,17 @@ CREATE TABLE IF NOT EXISTS public.profiles (
 
 ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
 
+-- Helper checks (Defined early to prevent policy and constraint dependency order errors)
+CREATE OR REPLACE FUNCTION public.is_admin_or_staff(user_id UUID)
+RETURNS BOOLEAN AS $$
+BEGIN
+  RETURN EXISTS (
+    SELECT 1 FROM public.profiles
+    WHERE id = user_id AND role IN ('super_admin', 'admin', 'owner', 'manager')
+  );
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
+
 -- Profiles RLS
 CREATE POLICY "Users can view own profile"
   ON public.profiles FOR SELECT
@@ -30,12 +41,7 @@ CREATE POLICY "Users can view own profile"
 
 CREATE POLICY "Admin/Manager/Owner can view all profiles"
   ON public.profiles FOR SELECT
-  USING (
-    EXISTS (
-      SELECT 1 FROM public.profiles 
-      WHERE id = auth.uid() AND role IN ('super_admin', 'admin', 'owner', 'manager')
-    )
-  );
+  USING (public.is_admin_or_staff(auth.uid()));
 
 CREATE POLICY "Users can update own profile"
   ON public.profiles FOR UPDATE
@@ -55,11 +61,11 @@ BEGIN
     NEW.id,
     COALESCE(NEW.raw_user_meta_data->>'full_name', ''),
     COALESCE(NEW.raw_user_meta_data->>'phone', ''),
-    COALESCE(NEW.raw_user_meta_data->>'role', 'customer')
+    'customer' -- Force customer role on standard signup to prevent privilege escalation
   );
   RETURN NEW;
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
 
 DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users;
 CREATE TRIGGER on_auth_user_created
@@ -495,16 +501,7 @@ ALTER TABLE public.email_logs ENABLE ROW LEVEL SECURITY;
 
 -- ── 7. ROW LEVEL SECURITY (RLS) POLICIES FOR ALL ROLES ──
 
--- Helper checks
-CREATE OR REPLACE FUNCTION public.is_admin_or_staff(user_id UUID)
-RETURNS BOOLEAN AS $$
-BEGIN
-  RETURN EXISTS (
-    SELECT 1 FROM public.profiles
-    WHERE id = user_id AND role IN ('super_admin', 'admin', 'owner', 'manager')
-  );
-END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+-- Helper checks (Defined at the top of script to avoid dependency order conflicts)
 
 -- public reading policies
 CREATE POLICY "Anyone can read categories" ON public.categories FOR SELECT USING (true);
@@ -528,19 +525,19 @@ CREATE POLICY "Admin can manage all employees" ON public.employees FOR ALL USING
 
 -- partners (distributor, dealer, retailer, vendor, franchise)
 CREATE POLICY "Users can manage own distributor profile" ON public.distributors FOR ALL USING (auth.uid() = id);
-CREATE POLICY "Admin can view all distributor profiles" ON public.distributors FOR SELECT USING (public.is_admin_or_staff(auth.uid()));
+CREATE POLICY "Admin can manage all distributor profiles" ON public.distributors FOR ALL USING (public.is_admin_or_staff(auth.uid()));
 
 CREATE POLICY "Users can manage own dealer profile" ON public.dealers FOR ALL USING (auth.uid() = id);
-CREATE POLICY "Admin can view all dealer profiles" ON public.dealers FOR SELECT USING (public.is_admin_or_staff(auth.uid()));
+CREATE POLICY "Admin can manage all dealer profiles" ON public.dealers FOR ALL USING (public.is_admin_or_staff(auth.uid()));
 
 CREATE POLICY "Users can manage own retailer profile" ON public.retailers FOR ALL USING (auth.uid() = id);
-CREATE POLICY "Admin can view all retailer profiles" ON public.retailers FOR SELECT USING (public.is_admin_or_staff(auth.uid()));
+CREATE POLICY "Admin can manage all retailer profiles" ON public.retailers FOR ALL USING (public.is_admin_or_staff(auth.uid()));
 
 CREATE POLICY "Users can manage own franchise profile" ON public.franchise_partners FOR ALL USING (auth.uid() = id);
-CREATE POLICY "Admin can view all franchise profiles" ON public.franchise_partners FOR SELECT USING (public.is_admin_or_staff(auth.uid()));
+CREATE POLICY "Admin can manage all franchise profiles" ON public.franchise_partners FOR ALL USING (public.is_admin_or_staff(auth.uid()));
 
 CREATE POLICY "Users can manage own vendor profile" ON public.vendors FOR ALL USING (auth.uid() = id);
-CREATE POLICY "Admin can view all vendor profiles" ON public.vendors FOR SELECT USING (public.is_admin_or_staff(auth.uid()));
+CREATE POLICY "Admin can manage all vendor profiles" ON public.vendors FOR ALL USING (public.is_admin_or_staff(auth.uid()));
 
 -- bookings policies
 CREATE POLICY "Users can view own bookings" ON public.bookings FOR SELECT USING (auth.uid() = user_id);
@@ -590,21 +587,31 @@ CREATE POLICY "Users can view own payments" ON public.payments FOR SELECT USING 
   EXISTS (SELECT 1 FROM public.orders WHERE orders.id = payments.order_id AND orders.user_id = auth.uid()) OR
   EXISTS (SELECT 1 FROM public.bookings WHERE bookings.id = payments.booking_id AND bookings.user_id = auth.uid())
 );
+CREATE POLICY "Users can insert own payments" ON public.payments FOR INSERT WITH CHECK (
+  EXISTS (SELECT 1 FROM public.orders WHERE orders.id = order_id AND orders.user_id = auth.uid()) OR
+  EXISTS (SELECT 1 FROM public.bookings WHERE bookings.id = booking_id AND bookings.user_id = auth.uid())
+);
 CREATE POLICY "Admin can manage all payments" ON public.payments FOR ALL USING (public.is_admin_or_staff(auth.uid()));
 
 CREATE POLICY "Users can view own invoices" ON public.invoices FOR SELECT USING (
   EXISTS (SELECT 1 FROM public.orders WHERE orders.id = invoices.order_id AND orders.user_id = auth.uid()) OR
   EXISTS (SELECT 1 FROM public.bookings WHERE bookings.id = invoices.booking_id AND bookings.user_id = auth.uid())
 );
+CREATE POLICY "Users can insert own invoices" ON public.invoices FOR INSERT WITH CHECK (
+  EXISTS (SELECT 1 FROM public.orders WHERE orders.id = order_id AND orders.user_id = auth.uid()) OR
+  EXISTS (SELECT 1 FROM public.bookings WHERE bookings.id = booking_id AND bookings.user_id = auth.uid())
+);
 CREATE POLICY "Admin can manage all invoices" ON public.invoices FOR ALL USING (public.is_admin_or_staff(auth.uid()));
 
 -- notifications
 CREATE POLICY "Users can view own notifications" ON public.notifications FOR SELECT USING (auth.uid() = user_id);
 CREATE POLICY "Users can update own notifications" ON public.notifications FOR UPDATE USING (auth.uid() = user_id) WITH CHECK (auth.uid() = user_id);
+CREATE POLICY "Users can insert own notifications" ON public.notifications FOR INSERT WITH CHECK (auth.uid() = user_id);
 CREATE POLICY "Admin can manage all notifications" ON public.notifications FOR ALL USING (public.is_admin_or_staff(auth.uid()));
 
 -- audit logs
 CREATE POLICY "Admin can view audit logs" ON public.audit_logs FOR SELECT USING (public.is_admin_or_staff(auth.uid()));
+CREATE POLICY "Users can insert audit logs" ON public.audit_logs FOR INSERT WITH CHECK (true);
 
 -- CMS & Resources
 CREATE POLICY "Anyone can view published blogs" ON public.blogs FOR SELECT USING (is_published = true OR public.is_admin_or_staff(auth.uid()));
@@ -697,3 +704,12 @@ INSERT INTO public.categories (name, icon, description, sort_order) VALUES
   ('Electrical Accessories', 'fas fa-plug-circle-bolt', 'Extension cords, plugs, holders, conduit pipes', 6),
   ('Home Appliances', 'fas fa-house-chimney', 'Geysers, inverters, stabilizers, doorbells', 7)
 ON CONFLICT (name) DO NOTHING;
+
+-- ── 11. PERFORMANCE INDEXES ──
+CREATE INDEX IF NOT EXISTS idx_products_category ON public.products(category_id);
+CREATE INDEX IF NOT EXISTS idx_products_featured ON public.products(featured);
+CREATE INDEX IF NOT EXISTS idx_orders_user ON public.orders(user_id);
+CREATE INDEX IF NOT EXISTS idx_order_items_order ON public.order_items(order_id);
+CREATE INDEX IF NOT EXISTS idx_bookings_assigned_employee ON public.bookings(assigned_employee_id);
+CREATE INDEX IF NOT EXISTS idx_bookings_user ON public.bookings(user_id);
+CREATE INDEX IF NOT EXISTS idx_support_tickets_user ON public.support_tickets(user_id);

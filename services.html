@@ -132,6 +132,52 @@
     .breakdown-row strong {
       color: var(--text-primary);
     }
+    @media (max-width: 768px) {
+      .calculator-section {
+        padding: 24px 18px;
+        border-radius: 18px;
+        margin-top: 40px;
+      }
+      .calc-result-card {
+        padding: 24px 18px;
+      }
+      .calc-price {
+        font-size: 2.2rem;
+        margin-bottom: 14px;
+      }
+      .calc-est-label {
+        font-size: 0.8rem;
+      }
+      .breakdown-row {
+        font-size: 0.88rem;
+      }
+      .calc-breakdown {
+        padding: 16px 0;
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+    }
+    @media (max-width: 480px) {
+      .calculator-section {
+        padding: 18px 14px;
+        border-radius: 14px;
+        margin-top: 32px;
+      }
+      .calc-result-card {
+        padding: 20px 14px;
+        border-radius: 14px;
+      }
+      .calc-price {
+        font-size: 1.8rem;
+      }
+      .calc-group label {
+        font-size: 0.88rem;
+      }
+      .calc-select, .calc-input {
+        padding: 12px 14px;
+        font-size: 0.88rem;
+      }
+    }
   </style>
 </head>
 <body>

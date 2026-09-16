@@ -5,8 +5,8 @@
 /* ── Base ── */
 .dash-body {
   font-family: 'Inter', sans-serif;
-  background: #0F172A;
-  color: #F1F5F9;
+  background: #F8FAFC;
+  color: #0F172A;
   min-height: 100vh;
   margin: 0;
   padding: 0;
@@ -24,13 +24,13 @@
   display: flex;
   height: 100vh;
   overflow: hidden;
-  background: #0F172A;
+  background: #F8FAFC;
 }
 
 .dash-sidebar {
   width: 280px;
-  background: rgba(15, 23, 42, 0.95);
-  border-right: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.95);
+  border-right: 1px solid #E2E8F0;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
@@ -44,7 +44,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 24px;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid #E2E8F0;
 }
 
 .dash-nav-brand {
@@ -52,7 +52,7 @@
   align-items: center;
   gap: 12px;
   text-decoration: none;
-  color: #fff;
+  color: #0F172A;
 }
 
 .dash-nav-brand img {
@@ -71,7 +71,7 @@
   display: none;
   background: none;
   border: none;
-  color: #fff;
+  color: #0F172A;
   font-size: 1.2rem;
   cursor: pointer;
 }
@@ -81,7 +81,7 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid #E2E8F0;
 }
 
 .dash-user-avatar {
@@ -94,7 +94,7 @@
   justify-content: center;
   font-weight: 700;
   font-size: 1.2rem;
-  color: #fff;
+  color: #FFFFFF;
 }
 
 .dash-user-info-text {
@@ -106,7 +106,7 @@
 .dash-user-name {
   font-weight: 600;
   font-size: 1rem;
-  color: rgba(255,255,255,0.9);
+  color: #0F172A;
 }
 
 .b2b-badge {
@@ -134,7 +134,7 @@
   width: 4px;
 }
 .dash-sidebar-nav::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.1);
+  background: #E2E8F0;
   border-radius: 4px;
 }
 
@@ -143,7 +143,7 @@
   background: transparent;
   border: none;
   border-radius: 12px;
-  color: rgba(255,255,255,0.6);
+  color: #475569;
   font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
@@ -163,8 +163,8 @@
 }
 
 .dash-tab:hover {
-  color: rgba(255,255,255,0.9);
-  background: rgba(255,255,255,0.05);
+  color: #0F172A;
+  background: #F1F5F9;
 }
 
 .dash-tab.active {
@@ -177,7 +177,7 @@
 .dash-tab .tab-badge {
   margin-left: auto;
   background: #FF8C38;
-  color: #fff;
+  color: #FFFFFF;
   padding: 2px 8px;
   border-radius: 10px;
   font-size: 0.75rem;
@@ -186,16 +186,16 @@
 
 .dash-sidebar-footer {
   padding: 20px;
-  border-top: 1px solid rgba(255,255,255,0.05);
+  border-top: 1px solid #E2E8F0;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
 .dash-nav-btn {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  color: rgba(255,255,255,0.7);
+  background: #F1F5F9;
+  border: 1px solid #E2E8F0;
+  color: #475569;
   padding: 12px 16px;
   border-radius: 10px;
   font-size: 0.9rem;
@@ -212,8 +212,8 @@
 }
 
 .dash-nav-btn:hover {
-  background: rgba(255,255,255,0.1);
-  color: #fff;
+  background: #E2E8F0;
+  color: #0F172A;
 }
 
 .dash-nav-btn.logout {
@@ -240,15 +240,15 @@
   padding: 0 40px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  background: rgba(15, 23, 42, 0.95);
+  border-bottom: 1px solid #E2E8F0;
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
 }
 
 .dash-top-header h2 {
   font-family: 'Outfit', sans-serif;
   font-size: 1.4rem;
-  color: #fff;
+  color: #0F172A;
   margin: 0;
 }
 
@@ -256,7 +256,7 @@
   display: none;
   background: none;
   border: none;
-  color: #fff;
+  color: #0F172A;
   font-size: 1.2rem;
   cursor: pointer;
   margin-right: 20px;
@@ -273,7 +273,7 @@
 }
 
 .dash-welcome-sub p {
-  color: rgba(255,255,255,0.5);
+  color: #64748B;
   font-size: 1rem;
 }
 
@@ -296,8 +296,8 @@
 
 /* ── Cards ── */
 .dash-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
   border-radius: 20px;
   padding: 28px;
   margin-bottom: 24px;
@@ -308,7 +308,7 @@
   font-family: 'Outfit', sans-serif;
   font-size: 1.2rem;
   font-weight: 700;
-  color: #fff;
+  color: #0F172A;
   margin-bottom: 20px;
   display: flex;
   align-items: center;
@@ -339,17 +339,17 @@
 .profile-form label {
   font-size: 0.85rem;
   font-weight: 600;
-  color: rgba(255,255,255,0.6);
+  color: #475569;
   letter-spacing: 0.3px;
 }
 
 .profile-form input,
 .profile-form textarea {
   padding: 12px 16px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
   border-radius: 12px;
-  color: #fff;
+  color: #0F172A;
   font-size: 0.95rem;
   font-family: 'Inter', sans-serif;
   outline: none;
@@ -364,7 +364,7 @@
 
 .profile-form input::placeholder,
 .profile-form textarea::placeholder {
-  color: rgba(255,255,255,0.25);
+  color: #94A3B8;
 }
 
 .profile-form textarea {
@@ -380,7 +380,7 @@
 .btn-save {
   padding: 12px 28px;
   background: linear-gradient(135deg, #FF6B00, #FF8C38);
-  color: #fff;
+  color: #FFFFFF;
   font-size: 0.9rem;
   font-weight: 700;
   font-family: 'Inter', sans-serif;
@@ -425,17 +425,17 @@
 .booking-form label {
   font-size: 0.85rem;
   font-weight: 600;
-  color: rgba(255,255,255,0.6);
+  color: #475569;
 }
 
 .booking-form input,
 .booking-form select,
 .booking-form textarea {
   padding: 12px 16px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
   border-radius: 12px;
-  color: #fff;
+  color: #0F172A;
   font-size: 0.95rem;
   font-family: 'Inter', sans-serif;
   outline: none;
@@ -451,8 +451,8 @@
 }
 
 .booking-form select option {
-  background: #1E293B;
-  color: #fff;
+  background: #FFFFFF;
+  color: #0F172A;
 }
 
 .booking-form input:focus,
@@ -475,8 +475,8 @@
 }
 
 .booking-item {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
   border-radius: 16px;
   padding: 20px 24px;
   display: flex;
@@ -487,19 +487,19 @@
 }
 
 .booking-item:hover {
-  border-color: rgba(255,255,255,0.15);
+  border-color: #CBD5E1;
 }
 
 .booking-info h4 {
   font-size: 1rem;
   font-weight: 700;
-  color: #fff;
+  color: #0F172A;
   margin-bottom: 4px;
 }
 
 .booking-info p {
   font-size: 0.85rem;
-  color: rgba(255,255,255,0.5);
+  color: #64748B;
   line-height: 1.5;
 }
 
@@ -512,7 +512,7 @@
 
 .booking-date {
   font-size: 0.8rem;
-  color: rgba(255,255,255,0.4);
+  color: #64748B;
   text-align: right;
 }
 
@@ -561,20 +561,20 @@
 .empty-state {
   text-align: center;
   padding: 60px 20px;
-  color: rgba(255,255,255,0.4);
+  color: #64748B;
 }
 
 .empty-state i {
   font-size: 3rem;
   margin-bottom: 16px;
   display: block;
-  color: rgba(255,255,255,0.15);
+  color: #CBD5E1;
 }
 
 .empty-state h4 {
   font-size: 1.1rem;
   font-weight: 600;
-  color: rgba(255,255,255,0.6);
+  color: #475569;
   margin-bottom: 8px;
 }
 
@@ -590,15 +590,15 @@
 }
 
 .dash-product-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
   border-radius: 16px;
   overflow: hidden;
   transition: all 0.3s;
 }
 
 .dash-product-card:hover {
-  border-color: rgba(255,255,255,0.15);
+  border-color: #CBD5E1;
   transform: translateY(-4px);
 }
 
@@ -606,7 +606,7 @@
   width: 100%;
   height: 180px;
   object-fit: cover;
-  background: rgba(255,255,255,0.04);
+  background: #FFFFFF;
 }
 
 .dash-product-body {
@@ -616,13 +616,13 @@
 .dash-product-body h4 {
   font-size: 0.95rem;
   font-weight: 700;
-  color: #fff;
+  color: #0F172A;
   margin-bottom: 4px;
 }
 
 .dash-product-body .product-brand {
   font-size: 0.8rem;
-  color: rgba(255,255,255,0.4);
+  color: #64748B;
   margin-bottom: 8px;
 }
 
@@ -635,7 +635,7 @@
 
 .dash-product-body .product-mrp {
   font-size: 0.8rem;
-  color: rgba(255,255,255,0.35);
+  color: #94A3B8;
   text-decoration: line-through;
   margin-left: 8px;
 }
@@ -660,7 +660,7 @@
   margin-top: 12px;
   padding: 8px 16px;
   background: #25D366;
-  color: #fff;
+  color: #FFFFFF;
   border-radius: 10px;
   font-size: 0.8rem;
   font-weight: 600;
@@ -684,10 +684,10 @@
 .filter-bar input,
 .filter-bar select {
   padding: 10px 16px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
   border-radius: 12px;
-  color: #fff;
+  color: #0F172A;
   font-size: 0.9rem;
   font-family: 'Inter', sans-serif;
   outline: none;
@@ -700,7 +700,7 @@
 }
 
 .filter-bar input::placeholder {
-  color: rgba(255,255,255,0.3);
+  color: #94A3B8;
 }
 
 .filter-bar select {
@@ -712,7 +712,7 @@
 }
 
 .filter-bar select option {
-  background: #1E293B;
+  background: #FFFFFF;
 }
 
 /* ── Toast ── */
@@ -755,7 +755,7 @@
 
 /* ── Loading Skeleton ── */
 .skeleton {
-  background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 75%);
+  background: linear-gradient(90deg, #F1F5F9 25%, #E2E8F0 50%, #F1F5F9 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
   border-radius: 8px;
@@ -791,6 +791,7 @@
     left: 0;
     bottom: 0;
     transform: translateX(-100%);
+    z-index: 200;
   }
 
   .dash-sidebar.open {
@@ -807,11 +808,16 @@
   }
 
   .dash-top-header {
-    padding: 0 24px;
+    padding: 0 20px;
+    height: 64px;
+  }
+
+  .dash-top-header h2 {
+    font-size: 1.15rem;
   }
   
   .dash-main {
-    padding: 24px;
+    padding: 20px;
   }
 
   .profile-form,
@@ -831,10 +837,33 @@
 
   .dash-card {
     padding: 20px;
+    border-radius: 16px;
+  }
+
+  .dash-card h3 {
+    font-size: 1.05rem;
+  }
+
+  .dash-products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
   }
 }
 
 @media (max-width: 480px) {
+  .dash-main {
+    padding: 14px;
+  }
+
+  .dash-top-header {
+    padding: 0 14px;
+    height: 56px;
+  }
+
+  .dash-top-header h2 {
+    font-size: 1rem;
+  }
+
   .dash-nav-btn span {
     display: none;
   }
@@ -847,4 +876,107 @@
   .filter-bar select {
     width: 100%;
   }
+
+  .dash-card {
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .dash-card h3 {
+    font-size: 1rem;
+    gap: 8px;
+  }
+
+  .booking-item {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .booking-info h4 {
+    font-size: 0.92rem;
+  }
+
+  .booking-info p {
+    font-size: 0.8rem;
+  }
+
+  .status-badge {
+    font-size: 0.7rem;
+    padding: 5px 10px;
+  }
+
+  .btn-save {
+    width: 100%;
+    justify-content: center;
+    padding: 14px;
+  }
+
+  .btn-cancel-booking {
+    font-size: 0.75rem;
+    padding: 5px 12px;
+  }
+
+  .dash-products-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .dash-product-img {
+    height: 160px;
+  }
+
+  .dash-product-body {
+    padding: 14px;
+  }
+
+  .dash-product-body h4 {
+    font-size: 0.9rem;
+  }
+
+  .dash-welcome-sub p {
+    font-size: 0.88rem;
+  }
+
+  /* Sidebar mobile improvements */
+  .dash-sidebar {
+    width: 260px;
+  }
+
+  .dash-sidebar-header {
+    height: 64px;
+    padding: 0 16px;
+  }
+
+  .dash-nav-brand span {
+    font-size: 0.95rem;
+  }
+
+  .dash-user-profile {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .dash-user-avatar {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .dash-user-name {
+    font-size: 0.9rem;
+  }
+
+  .dash-tab {
+    padding: 12px 14px;
+    font-size: 0.88rem;
+  }
+
+  .dash-toast {
+    bottom: 16px;
+    right: 16px;
+    left: 16px;
+    padding: 12px 18px;
+    font-size: 0.82rem;
+  }
 }
+

@@ -85,8 +85,30 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   // ── Message Banner control ──
+  function getFriendlyErrorMessage(errorMsg) {
+    if (!errorMsg) return 'An unexpected error occurred. Please try again.';
+    const msg = errorMsg.toLowerCase();
+    
+    if (msg.includes('jwt') || msg.includes('session')) {
+      return 'Your session has expired. Please log in again.';
+    }
+    if (msg.includes('invalid login credentials')) {
+      return 'Invalid email or password.';
+    }
+    if (msg.includes('rate limit') || msg.includes('too many requests')) {
+      return 'Too many attempts. Please try again later.';
+    }
+    if (msg.includes('fetch') || msg.includes('network') || msg.includes('failed to fetch')) {
+      return 'Network error. Please check your connection and try again.';
+    }
+    if (msg.includes('user already registered')) {
+      return 'An account with this email already exists.';
+    }
+    return errorMsg;
+  }
+
   function showMessage(el, textEl, text, type = 'error') {
-    textEl.textContent = text;
+    textEl.textContent = getFriendlyErrorMessage(text);
     el.className = `auth-message show ${type}`;
     const icon = el.querySelector('i');
     if (type === 'success') icon.className = 'fas fa-check-circle';

@@ -117,7 +117,11 @@ document.addEventListener('DOMContentLoaded', () => {
         y: 40,
         duration: 0.6,
         stagger: 0.08,
-        ease: 'power3.out'
+        ease: 'power3.out',
+        clearProps: 'all',
+        onComplete: () => {
+          document.querySelectorAll('.service-card').forEach(el => el.classList.add('transition-enabled'));
+        }
       });
     },
     once: true
@@ -133,7 +137,11 @@ document.addEventListener('DOMContentLoaded', () => {
         y: 40,
         duration: 0.6,
         stagger: 0.1,
-        ease: 'power3.out'
+        ease: 'power3.out',
+        clearProps: 'all',
+        onComplete: () => {
+          document.querySelectorAll('.product-card').forEach(el => el.classList.add('transition-enabled'));
+        }
       });
     },
     once: true
@@ -149,7 +157,11 @@ document.addEventListener('DOMContentLoaded', () => {
         x: -30,
         duration: 0.6,
         stagger: 0.1,
-        ease: 'power3.out'
+        ease: 'power3.out',
+        clearProps: 'all',
+        onComplete: () => {
+          document.querySelectorAll('.why-card').forEach(el => el.classList.add('transition-enabled'));
+        }
       });
     },
     once: true
@@ -165,7 +177,11 @@ document.addEventListener('DOMContentLoaded', () => {
         scale: 0.9,
         duration: 0.5,
         stagger: 0.08,
-        ease: 'back.out(1.5)'
+        ease: 'back.out(1.5)',
+        clearProps: 'all',
+        onComplete: () => {
+          document.querySelectorAll('.area-card').forEach(el => el.classList.add('transition-enabled'));
+        }
       });
     },
     once: true
@@ -181,7 +197,11 @@ document.addEventListener('DOMContentLoaded', () => {
         scale: 0.9,
         duration: 0.5,
         stagger: 0.08,
-        ease: 'power3.out'
+        ease: 'power3.out',
+        clearProps: 'all',
+        onComplete: () => {
+          document.querySelectorAll('.gallery-item').forEach(el => el.classList.add('transition-enabled'));
+        }
       });
     },
     once: true
@@ -248,7 +268,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (badge) tl.from(badge, { opacity: 0, y: 20, duration: 0.5 });
     if (title) tl.from(title, { opacity: 0, y: 30, duration: 0.6 }, '-=0.3');
     if (desc) tl.from(desc, { opacity: 0, y: 20, duration: 0.5 }, '-=0.3');
-  }
+  });
+}
 
   // Defer animation initialization until preloader fades out, or run immediately if no preloader
   const preloader = document.getElementById('preloader');

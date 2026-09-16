@@ -105,67 +105,8 @@ window.simPaymentFail = function() {
 
 document.addEventListener('DOMContentLoaded', async () => {
 
-  // ── Update nav auth state ──
+  // Nav auth state is updated for Supabase session compatibility
   updateNavAuth();
-
-  // ── Set current year ──
-  const yearEl = document.getElementById('current-year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-  // ── Theme toggle ──
-  const themeToggle = document.getElementById('theme-toggle');
-  const themeIcon = themeToggle ? themeToggle.querySelector('i') : null;
-
-  function setTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('pe-theme', theme);
-    if (themeIcon) {
-      themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-    }
-  }
-
-  const savedTheme = localStorage.getItem('pe-theme');
-  if (savedTheme) setTheme(savedTheme);
-  else if (window.matchMedia('(prefers-color-scheme: dark)').matches) setTheme('dark');
-
-  if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-      const current = document.documentElement.getAttribute('data-theme');
-      setTheme(current === 'dark' ? 'light' : 'dark');
-    });
-  }
-
-  // ── Sticky navbar ──
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 60);
-  }, { passive: true });
-  if (navbar && window.scrollY > 60) navbar.classList.add('scrolled');
-
-  // ── Mobile menu ──
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('nav-links');
-  if (hamburger && navLinks) {
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navLinks.classList.toggle('open');
-      document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
-    });
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navLinks.classList.remove('open');
-        document.body.style.overflow = '';
-      });
-    });
-  }
-
-  // ── Back to top ──
-  const backToTop = document.getElementById('back-to-top');
-  window.addEventListener('scroll', () => {
-    if (backToTop) backToTop.classList.toggle('visible', window.scrollY > 400);
-  }, { passive: true });
-  if (backToTop) backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
   // ══════════════════════════════════════
   // DATA LOAD & RENDERING
